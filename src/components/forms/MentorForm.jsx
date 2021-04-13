@@ -1,37 +1,42 @@
 import React from 'react';
 import {Formik, Form, Field} from 'formik'
 import './MentorForm.css'
+import * as Yup from 'yup'
 
-// const helpOptions =  {
-//   '1:1 Mentoring'
-//   'Group Presentations'
-//   'Spring Planning',
-//   'Design Review',
-//   'Lightning Talks(Presenter)',
-//   'Lightning Talks(Audience)',
-//   'Interview Prep',
-//   'Portfolio Development'
-// };
+// const helpOptions =  [
+//     {key: 'Selct an option', value: ''},
+//     {key: '1:1 Mentoring', value: 'mentoring'},
+//     {key: 'Group Presentations', value: 'groupPres'},
+//     {key: 'Sprint Planning', value: 'sprintPlan'},
+//     {key: 'Lightning talk (Pres.)', value: 'ltPres'},
+//     {key: 'Lightning talk (Aud.)', value: 'ltAud'},
+//     {key: 'Interview Prep', value: 'intPrep'},
+// ];
 
-// const initialValues = {
-//   helpWith: '',
-//   availDates: '',
-//   workProfile: ''
-// }
+const initialValues = {
+  helpWith: '',
+  availDates: '',
+  workProfile: ''
+}
 
-// const onSubmit = values => {
-//   console.log('form values', values)
-// }
+const onSubmit = values => {
+  console.log('form values', values)
+}
 
-// const validate = values
+const validationSchema = Yup.object({
+  helpWith: Yup.string().required('Required'),
+  availDates: Yup.string().required('Required'),
+  workProf:  Yup.string().required('Required'),
+  selectOption:  Yup.string().required('Required'),
+})
 
 
 export const MentorForm = () => {
   return (
   <Formik
-    // initialValues={initialValues}
-    // validationSchema={validationSchema}
-    // onSubmit={onSubmit}
+    initialValues={initialValues}
+    validationSchema={validationSchema}
+    onSubmit={onSubmit}
     >
       <Form>
         <div className="form-control required">
@@ -65,6 +70,8 @@ export const MentorForm = () => {
             name='workProfile'
           />
         </div>
+
+        <button type='submit'>Submit</button>
       </Form>
 
     </Formik>

@@ -44,33 +44,34 @@ export const FormikContainer = () => {
       initialValues={initialValues} 
       validationSchema={validationSchema} 
       onSubmit={onSubmit}
-      
-      >
-      {
-        formik => (
-        <Form>
+      > 
+        <Form onSubmit={onSubmit}>
           <FormikControl
           control='select'
           label='Id like to help with: '
           name='selectOption'
           options={helpwithOptions}
+          
           />
           <FormikControl 
           control='select'
           label='I can help out: '
           name='selectOption'
           options={helpAvailability}
+          
           />
           <FormikControl 
             control='input'
             label='Linkedin Profile: '
-            name='linkedin' />
+            name='workProf' 
+            onSubmit={onSubmit}
+            placeholder='Paste your Linkedin URL here'
+            />
 
-          <submit type='submit'>Submit</submit>
-        </Form>
-        )
-      }
+          <button type='submit'> Submit</button> 
+          </Form>
     </Formik>
     </>
+      
   )
 }
