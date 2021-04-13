@@ -36,11 +36,14 @@ export const MentorForm = () => {
       <Form>
         <div className="form-control required">
           <label htmlFor="helpWith">I'd love to help with:</label>
-          <Field 
-            type='text' 
-            id='helpWith' 
-            name="helpWith"
-            />
+            <Field name="helpWith" id='helpWith' as='select' name='helpWith'>
+              <option value="one-on">1:1 Mentoring</option>
+              <option value="group-pres">Group Presentations</option>
+              <option value="des-review">Design Review</option>
+              <option value="light-tlk-pres">Lightning Talk (Presenter)</option>
+              <option value="light-tlk-aud">Lightning Talk (Audience)</option>
+              <option value="int-prep">Interview Prep</option>
+            </Field>
         </div>
 
         <div className="form-control required">
@@ -50,6 +53,7 @@ export const MentorForm = () => {
             id='availDates'
             name='availDates'
             />
+            
         </div>
 
         <div className="form-control required">
