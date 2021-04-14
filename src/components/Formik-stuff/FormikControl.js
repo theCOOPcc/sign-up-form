@@ -4,8 +4,8 @@ import Input from './Input'
 
 
 function FormikControl(props) {
-  
   const {control, ...rest} = props
+  
   switch(control) {
     case 'select':
       return <Select {...rest} />
@@ -17,4 +17,4 @@ function FormikControl(props) {
   }
 }
 
-export default FormikControl
+export default FormikControl;

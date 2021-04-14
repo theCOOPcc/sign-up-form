@@ -9,7 +9,7 @@ import * as Yup from 'yup'
 //     {key: 'Group Presentations', value: 'groupPres'},
 //     {key: 'Sprint Planning', value: 'sprintPlan'},
 //     {key: 'Lightning talk (Pres.)', value: 'ltPres'},
-//     {key: 'Lightning talk (Aud.)', value: 'ltAud'},
+//     {key: 'Lightning talk (Aud.)', value: 'ltAud'},l,n
 //     {key: 'Interview Prep', value: 'intPrep'},
 // ];
 
@@ -19,9 +19,10 @@ const initialValues = {
   workProfile: ''
 }
 
-const onSubmit = values => {
-  console.log('form values', values)
+const onSubmit = (values, actions) => {
+  
 }
+
 
 const validationSchema = Yup.object({
   helpWith: Yup.string().required('Required'),
@@ -38,7 +39,7 @@ export const MentorForm = () => {
     validationSchema={validationSchema}
     onSubmit={onSubmit}
     >
-      <Form>
+      <Form onSubmit={onSubmit} >
         <div className="form-control required">
           <label htmlFor="helpWith">I'd love to help with:</label>
             <Field id='helpWith' as='select' name='helpWith'>

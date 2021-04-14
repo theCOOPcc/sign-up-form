@@ -1,7 +1,9 @@
 import React from 'react'
 import {Formik, Form} from 'formik'
 import * as Yup from 'yup';
-import FormikControl from './FormikControl';
+// import FormikControl from './FormikControl';
+import Input from './Input'
+import Select from './Select'
 
 export const FormikContainer = () => {
   const helpwithOptions = [
@@ -29,6 +31,7 @@ export const FormikContainer = () => {
     workProf: '',
     selectOption: ''
   }
+  // May need to be asynchronus
   const validationSchema = Yup.object({
     helpWith: Yup.string().required('Required'),
     availDates: Yup.string().required('Required'),
@@ -36,7 +39,10 @@ export const FormikContainer = () => {
     selectOption:  Yup.string().required('Required'),
   })
 
-  const banana = values => console.log('Form Data', values)
+  const banana = (values, submitProps) => {
+    console.log('Form Data', values)
+
+  }
 
   
   return (
@@ -45,29 +51,28 @@ export const FormikContainer = () => {
     <Formik 
       initialValues={initialValues} 
       validationSchema={validationSchema} 
-      onSubmit={(values) => console.log('Form Data', values)}
+      onSubmit={banana}
       > 
       
         <Form >
-          <FormikControl
+          <Select
           control='select'
           label='Id like to help with: '
           name='selectOption'
           options={helpwithOptions}
           
           />
-          <FormikControl 
+          <Select 
           control='select'
           label='I can help out: '
-          name='selectOption'
+          name='selectOptions'
           options={helpAvailability}
           
           />
-          <FormikControl 
+          <Input
             control='input'
             label='Linkedin Profile: '
             name='workProf' 
-            onSubmit={banana}
             placeholder='Paste your Linkedin URL here'
             />
           <button type='submit'> Submit</button> 
