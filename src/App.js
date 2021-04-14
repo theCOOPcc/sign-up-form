@@ -1,4 +1,5 @@
 import './App.css';
+import CoryTestForm from './components/CoryTestForm/CoryTestForm';
 import { FormikContainer } from './components/Formik-stuff/FormikContainer';
 import FormikControl from './components/Formik-stuff/FormikControl';
 // import { MentorForm } from './components/forms/MentorForm';
@@ -6,11 +7,13 @@ import FormikControl from './components/Formik-stuff/FormikControl';
 function App() {
   return (
     <div className="App">
-     {/* <MentorForm />
-      */}
-     <FormikContainer />
+<CoryTestForm />
 
-     <FormikControl />
+     {/* <MentorForm /> */}
+     
+     {/* <FormikContainer /> */}
+
+     {/* <FormikControl /> */}
     </div>
   );
 }
