@@ -36,16 +36,19 @@ export const FormikContainer = () => {
     selectOption:  Yup.string().required('Required'),
   })
 
-  const onSubmit = values => console.log('Form Data', values)
+  const banana = values => console.log('Form Data', values)
+
+  
   return (
     <>
     <h1>TELL US MORE ABOUT YOU</h1>
     <Formik 
       initialValues={initialValues} 
       validationSchema={validationSchema} 
-      onSubmit={onSubmit}
+      onSubmit={(values) => console.log('Form Data', values)}
       > 
-        <Form onSubmit={onSubmit}>
+      
+        <Form >
           <FormikControl
           control='select'
           label='Id like to help with: '
@@ -64,14 +67,13 @@ export const FormikContainer = () => {
             control='input'
             label='Linkedin Profile: '
             name='workProf' 
-            onSubmit={onSubmit}
+            onSubmit={banana}
             placeholder='Paste your Linkedin URL here'
             />
-
           <button type='submit'> Submit</button> 
           </Form>
+            
     </Formik>
     </>
-      
   )
 }

@@ -54,10 +54,10 @@ export const MentorForm = () => {
         <div className="form-control required">
           <label htmlFor="availDates">I'm avalilable to help out: </label>
           <Field as='select' id='availDates' name='availDates'>
-            <option type='checkbox' value="">Monthly</option>
-            <option type='checkbox' value="">Weekly</option>
-            <option type='checkbox' value="">Daily</option>
-            <option type='checkbox' value="">On-Call</option>
+            <option type='checkbox' value="monthly">Monthly</option>
+            <option type='checkbox' value="weekly">Weekly</option>
+            <option type='checkbox' value="daily">Daily</option>
+            <option type='checkbox' value="on-call">On-Call</option>
           </Field>
             
         </div>
