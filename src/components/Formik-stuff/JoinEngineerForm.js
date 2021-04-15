@@ -45,7 +45,9 @@ const JoinUsEngineer = () => {
         name="skillSet"
         id='skillSet' 
         onChange={formik.handleChange}
-        value={formik.values.skillSet} >
+        value={formik.values.skillSet}
+        multiple
+        >
         <option value='engineer'>Engineer</option>
         <option value='graphData'>Graph Database</option>
         <option value='machLearn'>Machine Learning</option>
@@ -61,7 +63,9 @@ const JoinUsEngineer = () => {
         name="familiarTech"
         id='familiarTech' 
         onChange={formik.handleChange}
-        value={formik.values.familiarTech} >
+        value={formik.values.familiarTech} 
+        multiple
+        >
         <option value="react">React</option>
         <option value="node">Node</option>
         <option value="passport">Passport</option>

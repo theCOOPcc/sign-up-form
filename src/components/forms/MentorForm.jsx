@@ -45,6 +45,7 @@ export const MentorForm = () => {
             type='text'
             onChange={formik.handleChange}
             value={formik.values.helpWith}
+            multiple
             >
 						<option value="one-on">1:1 Mentoring</option>
 						<option value="group-pres">Group Presentations</option>
@@ -62,6 +63,7 @@ export const MentorForm = () => {
            name="availDates"
            onChange={formik.handleChange}
            value={formik.values.availDates}
+           multiple
            >
 						<option type="checkbox" value="monthly">
 							Monthly
