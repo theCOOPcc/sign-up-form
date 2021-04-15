@@ -4,23 +4,23 @@ import "./MentorForm.css";
 import * as Yup from "yup";
 
 
-const helpOptions =  [
-    {key: 'Selct an option', value: ''},
-    {key: '1:1 Mentoring', value: 'mentoring'},
-    {key: 'Group Presentations', value: 'groupPres'},
-    {key: 'Sprint Planning', value: 'sprintPlan'},
-    {key: 'Lightning talk (Pres.)', value: 'ltPres'},
-    {key: 'Lightning talk (Aud.)', value: 'ltAud'},
-    {key: 'Interview Prep', value: 'intPrep'},
-];
+// const helpOptions =  [
+//     {key: 'Selct an option', value: ''},
+//     {key: '1:1 Mentoring', value: 'mentoring'},
+//     {key: 'Group Presentations', value: 'groupPres'},
+//     {key: 'Sprint Planning', value: 'sprintPlan'},
+//     {key: 'Lightning talk (Pres.)', value: 'ltPres'},
+//     {key: 'Lightning talk (Aud.)', value: 'ltAud'},
+//     {key: 'Interview Prep', value: 'intPrep'},
+// ];
 
 
-const validationSchema = Yup.object({
-	helpWith: Yup.string().required("Required"),
-	availDates: Yup.string().required("Required"),
-	workProf: Yup.string().required("Required"),
-	selectOption: Yup.string().required("Required"),
-});
+// const validationSchema = Yup.object({
+// 	helpWith: Yup.string().required("Required"),
+// 	availDates: Yup.string().required("Required"),
+// 	workProf: Yup.string().required("Required"),
+// 	selectOption: Yup.string().required("Required"),
+// });
 
 export const MentorForm = () => {
   const formik = useFormik({
