@@ -23,7 +23,7 @@ import {useFormik} from 'formik'
 // ]
 
 
-const JoinUsEngineerTwo = () => {
+const JoinUsDesignerTwo = () => {
   const formik = useFormik({
     initialValues: {
       bootcampAtt: '',
@@ -40,6 +40,7 @@ const JoinUsEngineerTwo = () => {
   
   return (
     <form onSubmit={formik.handleSubmit}>
+      <h1>Designer 2</h1>
       <label htmlFor="bootcampAtt">Which Bootcamp Did You Attend?: </label>
       <select
         type="text" 
@@ -48,14 +49,14 @@ const JoinUsEngineerTwo = () => {
         onChange={formik.handleChange}
         value={formik.values.bootcampAtt}
         >
-        <option value='appAcad'>App Academy</option>
+        
         <option value='careerFound'>Career Foundery</option>
         <option value='flatiron'>Flatiron School</option>
+        <option value='interaction'>Interaction Design Foundation</option>
         <option value='genAssem'>General Assembly</option>
-        <option value='hackReac'>Hack Reactor</option>
-        <option value='ironHa'>Iron Hack</option>
-        <option value='kenzi'>Kenzie Academy</option>
-        <option value='thinkful'>Thinkful</option>
+        <option value='springboard'>Springboard</option>
+        <option value='desLab'>Design Lab</option>
+        <option value='otherrr'>Other</option>
         </select>
       
       <label htmlFor="gradDate">Graduation Date : </label>
@@ -92,10 +93,18 @@ const JoinUsEngineerTwo = () => {
         onChange={formik.handleChange}
         value={formik.values.linkedin}></input>
 
+      <label htmlFor="portfolio">Portfolio: </label>
+      <input
+        type="text" 
+        name="portfolio"
+        id='portfolio' 
+        onChange={formik.handleChange}
+        value={formik.values.portfolio}></input>
+
         <button type="submit">Submit</button>
       
     </form>
   )
 }
 
-export default JoinUsEngineerTwo;
+export default JoinUsDesignerTwo;

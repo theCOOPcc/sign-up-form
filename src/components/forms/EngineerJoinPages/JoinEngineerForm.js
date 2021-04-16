@@ -39,6 +39,7 @@ const JoinUsEngineer = () => {
   
   return (
     <form onSubmit={formik.handleSubmit}>
+      <h1>Engineer 1</h1>
       <label htmlFor="skillSet">My Skillset Includes: </label>
       <select
         type="text" 
@@ -55,6 +56,10 @@ const JoinUsEngineer = () => {
         <option value='test'>Testing</option>
         <option value='cicd'>CI/CD</option>
         <option value='mobDev'>Mobile Dev</option>
+        <option value='authentication'>Authentication</option>
+        <option value='css'>CSS</option>
+        <option value='gitDub'>GIT and Debugging</option>
+        <option value='other'>Other</option>
         </select>
       
       <label htmlFor="familiarTech">I'm Comfortable with the following technologies : </label>
@@ -72,6 +77,12 @@ const JoinUsEngineer = () => {
         <option value="sql">SQL</option>
         <option value="apollo">Apollo</option>
         <option value="neo4">NEO4</option>
+        <option value="next">NextJS</option>
+        <option value="gatsby">Gatsby</option>
+        <option value="typsc">Typescript</option>
+        <option value="json">JSON</option>
+        <option value="pyth">Python</option>
+        <option value="otherr">Other</option>
         </select>
       
       <label htmlFor="whyJoin">Tell us why you'd like to join theCOOP: </label>
