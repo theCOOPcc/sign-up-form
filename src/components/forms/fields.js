@@ -1,6 +1,6 @@
 
 export const engineerSkills = {
-  name: 'What is your skillset?',
+  name: 'My skill set includes: ',
   value:'skillSet',
   choices: [
     'Graph Database',
@@ -18,7 +18,7 @@ export const engineerSkills = {
 
 
 export const engineerTech = {
-  name: 'What Technologies are you comfortable with?',
+  name: 'I am comfortable with the following technologies: ',
   value: 'techs',
   choices: [
     'React',
@@ -55,8 +55,7 @@ choices: [
 ]
 }
 
-export const allFields = [
+export const firstFields = [
   engineerSkills,
   engineerTech,
-  bootcamps,
 ]

@@ -1,4 +1,4 @@
-import {useField} from 'formik'
+import {useField, Field} from 'formik'
 
 export const TextInput = ({label, ...props}) => {
   const [field, meta] = useField(props);
@@ -31,7 +31,7 @@ export const TextAreaInput = ({label, ...props}) => {
   return (
     <div>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <textarea {...field} {...props} />
+      <Field as='textarea' {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className='error'>{meta.error}</div>
       ) : null}
