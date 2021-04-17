@@ -59,3 +59,7 @@ export const firstFields = [
   engineerSkills,
   engineerTech,
 ]
+
+export const secondFields = [
+  bootcamps,
+]

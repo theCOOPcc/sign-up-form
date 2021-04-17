@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDom from 'react-dom'
+// import ReactDom from 'react-dom'
 import {Formik, Form, Field} from 'formik'
 import * as Yup from 'yup'
 import * as Fields from './fields'
@@ -21,11 +21,11 @@ const PageForm = () => {
 
   const initValues = formValues();
 
-  const onSubmit = values => console.log('Form Data', values)
+  const onSubmit = console.log('Form Data', initValues)
 
   return (
     <>
-    <h1>Tell us a little about your</h1>
+    <h1>Tell us a little about your interests</h1>
     <Formik
       initialValues={{
         helpWith: '',
@@ -48,24 +48,42 @@ const PageForm = () => {
       onSubmit={onSubmit}
       >
         <Form>
-          {/* <Inputs.SeclectInput label='My Skillset Includes' name='skillSet' />  */}
-
+          {/* This is causing the 'Each child in a list should have a unique key prop' warning */}
           { Fields.firstFields.map(f => (
-            <Inputs.SeclectInput label={f.name} name={f.value} >
-              <option value=''></option>
+        
+            <Inputs.SelectInput key={f.name} label={f.name} name={f.value} >
+              <option key=''></option>
               {f.choices.map(c => (
-                <option value={c}>{c}</option>
+                <option key={c} value={c}>{c}</option>
               ))}
-            </Inputs.SeclectInput>
+            </Inputs.SelectInput>
           ))}
+  
+            {/* <Inputs.TextInput></Inputs.TextInput> */}
           
           <label htmlFor="whyJoin">Tell us why you'd like to join: </label>
           <Field as='textarea' name="whyJoin" id='whyJoin'></Field>
 
-          <button onClick={onSubmit}>Submit</button>
+          <button type='submit' onClick={onSubmit}>Submit</button>
         </Form>
 
 
+
+      </Formik>
+
+      <Formik>
+        <Form>
+      {/* {Fields.secondFields.map(f => (
+        <Inputs.SelectInput label={f.name} name={f.value}>
+          <option value=""></option>
+          {f.choices.map(c => (
+            <option value={c}>{c}</option>
+          ))}
+        </Inputs.SelectInput>
+      ))} */}
+
+      {/* <Inputs.TextInput></Inputs.TextInput> */}
+        </Form>
       </Formik>
     </>
   )
