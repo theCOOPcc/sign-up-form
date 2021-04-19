@@ -1,4 +1,5 @@
-import './App.css';
+import "./App.css";
+import CoryTestForm from "./components/CoryTestForm/CoryTestForm";
 // import JoinUsDesigner from './components/forms/DesignerFormPages/JoinDesignerForm';
 // import CoryTestForm from './components/CoryTestForm/CoryTestForm';
 // import MentorSignUpForm from './components/Formik-stuff/Formik-test';
@@ -9,18 +10,16 @@ import './App.css';
 // import FormikControl from './components/Formik-stuff/FormikControl';
 // import { MentorForm } from './components/forms/MentorForm';
 // import JoinUsDesignerTwo from './components/forms/DesignerFormPages/JoinDesignerForm2';
-import PageForm from './components/forms';
+import PageForm from "./components/forms/Pageform";
 
 function App() {
-  return (
-    <div className="App">
+	return (
+		<div className="App">
+			<PageForm />
 
-     <PageForm />
-
-
-     
-    </div>
-  );
+			{/* <CoryTestForm /> */}
+		</div>
+	);
 }
 
 export default App;
