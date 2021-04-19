@@ -7,11 +7,13 @@ import * as Inputs from './inputs'
 
 
 const PageForm = () => {
+
+
   function formValues(){
     let arr = []
     Fields.firstFields.forEach(field => {
       const object = {}
-      Object.defineProperty(object, `${field.name}`, {value:" ", writable: true})
+      Object.defineProperty(object, `${field.name}`, {value: `${field.value}`, writable: true})
       arr.push(
         object
       )
@@ -20,13 +22,14 @@ const PageForm = () => {
   }
 
   const initValues = formValues();
-
-  const onSubmit = console.log('Form Data', initValues)
+  // const onSubmit = () => console.log('form valies : ', initValues)
+  
 
   return (
     <>
     <h1>Tell us a little about your interests</h1>
     <Formik
+  
       initialValues={{
         helpWith: '',
         availDates: '',
@@ -45,33 +48,33 @@ const PageForm = () => {
           .max(15, 'Must be 15 characters or less ')
           .required('Required'),
       })}
-      onSubmit={onSubmit}
+      onSubmit={(values, {setSubmitting }) => {
+        console.log('Submitting')
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400)
+      }}
       >
         <Form>
-          {/* This is causing the 'Each child in a list should have a unique key prop' warning */}
+          {/* This is causing the 'Each child in a list should have a unique key prop' warning  SOLVED */}
           { Fields.firstFields.map(f => (
         
-            <Inputs.SelectInput key={f.name} label={f.name} name={f.value} >
-              <option key=''></option>
+            <Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+              <option value={f.value} ></option>
               {f.choices.map(c => (
                 <option key={c} value={c}>{c}</option>
               ))}
             </Inputs.SelectInput>
           ))}
-  
-            {/* <Inputs.TextInput></Inputs.TextInput> */}
-          
           <label htmlFor="whyJoin">Tell us why you'd like to join: </label>
-          <Field as='textarea' name="whyJoin" id='whyJoin'></Field>
+            <Inputs.TextInput id='whyJoin' name='whyJoin'></Inputs.TextInput>
 
-          <button type='submit' onClick={onSubmit}>Submit</button>
+          <button type='submit'>Submit</button>
         </Form>
-
-
-
       </Formik>
 
-      <Formik>
+      {/* <Formik>
         <Form>
       {/* {Fields.secondFields.map(f => (
         <Inputs.SelectInput label={f.name} name={f.value}>
@@ -83,8 +86,7 @@ const PageForm = () => {
       ))} */}
 
       {/* <Inputs.TextInput></Inputs.TextInput> */}
-        </Form>
-      </Formik>
+        {/* </Form> */} 
     </>
   )
 }
