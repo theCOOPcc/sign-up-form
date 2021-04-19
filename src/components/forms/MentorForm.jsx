@@ -1,7 +1,8 @@
-import React from "react";
-import { Formik, Form, Field } from "formik";
-import "./MentorForm.css";
-import * as Yup from "yup";
+// import React from "react";
+// import { Formik, Form, Field, useFormik } from "formik";
+// import "./MentorForm.css";
+// import * as Yup from "yup";
+
 
 // const helpOptions =  [
 //     {key: 'Selct an option', value: ''},
@@ -13,45 +14,58 @@ import * as Yup from "yup";
 //     {key: 'Interview Prep', value: 'intPrep'},
 // ];
 
-const initialValues = {
-	helpWith: "",
-	availDates: "",
-	workProfile: "",
-};
 
-const onSubmit = (values) => {
-	console.log("form values", values);
-};
-
-const validationSchema = Yup.object({
-	helpWith: Yup.string().required("Required"),
-	availDates: Yup.string().required("Required"),
-	workProf: Yup.string().required("Required"),
-	selectOption: Yup.string().required("Required"),
-});
+// const validationSchema = Yup.object({
+// 	helpWith: Yup.string().required("Required"),
+// 	availDates: Yup.string().required("Required"),
+// 	workProf: Yup.string().required("Required"),
+// 	selectOption: Yup.string().required("Required"),
+// });
 
 export const MentorForm = () => {
+  const formik = useFormik({
+    initialValues: {
+      helpWith: '',
+      availDates: '',
+      workProfile:'',
+    },
+    onSubmit: values => {
+      console.log(values)
+    },
+  });
+
+
 	return (
-		<Formik
-			initialValues={initialValues}
-			validationSchema={validationSchema}
-			onSubmit={onSubmit}>
-			<Form>
-				<div className="form-control required">
+		<form onSubmit={formik.handleSubmit}>
+      <h1>Mentor Form</h1>
+				<div className="required">
 					<label htmlFor="helpWith">I'd love to help with:</label>
-					<Field id="helpWith" as="select" name="helpWith">
+					<select 
+            id="helpWith" 
+            name="helpWith"
+            type='text'
+            onChange={formik.handleChange}
+            value={formik.values.helpWith}
+            multiple
+            >
 						<option value="one-on">1:1 Mentoring</option>
 						<option value="group-pres">Group Presentations</option>
 						<option value="des-review">Design Review</option>
 						<option value="light-tlk-pres">Lightning Talk (Presenter)</option>
 						<option value="light-tlk-aud">Lightning Talk (Audience)</option>
 						<option value="int-prep">Interview Prep</option>
-					</Field>
+					</select>
 				</div>
 
-				<div className="form-control required">
+				<div className="required">
 					<label htmlFor="availDates">I'm avalilable to help out: </label>
-					<Field as="select" id="availDates" name="availDates">
+					<select 
+           id="availDates" 
+           name="availDates"
+           onChange={formik.handleChange}
+           value={formik.values.availDates}
+           multiple
+           >
 						<option type="checkbox" value="monthly">
 							Monthly
 						</option>
@@ -64,16 +78,21 @@ export const MentorForm = () => {
 						<option type="checkbox" value="on-call">
 							On-Call
 						</option>
-					</Field>
+					</select>
 				</div>
 
 				<div className="form-control required">
 					<label htmlFor="workProfile">Linkedin Profile: </label>
-					<Field type="text" id="workProfile" name="workProfile" />
+					<input 
+          type="text" 
+          id="workProfile" 
+          name="workProfile" 
+          onChange={formik.handleChange}
+          value={formik.values.workProfile}
+          />
 				</div>
 
 				<button type="submit">Submit</button>
-			</Form>
-		</Formik>
+		</form>
 	);
 };
