@@ -1,7 +1,7 @@
 
 export const engineerSkills = {
   name: 'My skill set includes: ',
-  value:'skillSet',
+  value:'skills',
   choices: [
     'Graph Database',
     'Machine Learning',

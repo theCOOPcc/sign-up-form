@@ -1,37 +1,19 @@
 import React from "react";
-// import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import * as Fields from "./fields";
 import * as Inputs from "./inputs";
+// import axios from "axios";
 
 const validationSchema = Yup.object().shape({
-	skillSet: Yup.mixed()
+	skills: Yup.mixed()
 		.oneOf(Fields.engineerSkills.choices)
 		.required("Please make a selection"),
 	techs: Yup.mixed().oneOf(Fields.engineerTech.choices).required(),
-	whyJoin: Yup.string().required("This field is required"),
+	tell_us: Yup.string().required("This field is required"),
 });
 
-const SignUp = () => {
-	// const validate = Yup.object({
-	// 	choices: Yup.string()
-	// 	.required('Required')
-	// })
-
-	// function formValues() {
-	// 	let arr = [];
-	// 	Fields.firstFields.forEach((field) => {
-	// 		const object = {};
-	// 		Object.defineProperty(object, `${field.name}`, {
-	// 			value: `${field.value}`,
-	// 			writable: true,
-	// 		});
-	// 		arr.push(object);
-	// 	});
-	// 	return arr;
-	// }
-
+const SignUp = (props) => {
 	return (
 		<>
 			<h1>Tell us a little about your interests!</h1>
@@ -45,14 +27,15 @@ const SignUp = () => {
 
 					// github: "",
 					// linkedin: "",
-					skillSet: "",
+					skills: "",
 					techs: "",
-					whyJoin: "",
+					tell_us: "",
 				}}
 				// TODO: Dial in validation for form
 				validationSchema={validationSchema}
 				onSubmit={(values) => {
 					console.log("Submit Successful", values);
+					props.addItem(values)
 				}}>
 				<Form>
 					{Fields.firstFields.map((f) => (
@@ -67,7 +50,7 @@ const SignUp = () => {
 					))}
 
 					<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
-					<Inputs.TextInput id="whyJoin" name="whyJoin"></Inputs.TextInput>
+					<Inputs.TextInput id="whyJoin" name="tell_us"></Inputs.TextInput>
 
 					<button type="submit">Submit</button>
 				</Form>
