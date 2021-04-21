@@ -1,7 +1,6 @@
-
 export const engineerSkills = {
   name: 'My skill set includes: ',
-  value:'skillSet',
+  value:'engineerSkillset',
   choices: [
     'Graph Database',
     'Machine Learning',
@@ -16,10 +15,9 @@ export const engineerSkills = {
   ]
 }
 
-
 export const engineerTech = {
   name: 'I am comfortable with the following technologies: ',
-  value: 'techs',
+  value: 'engineerTechs',
   choices: [
     'React',
     'Node',
@@ -35,10 +33,63 @@ export const engineerTech = {
   ]
 }
 
+export const designerSkills = {
+  name: 'I would like to focus on: ',
+  value: 'designSkillset',
+  choices: [
+    'User Research',
+    'Interaction Design',
+    'Design Systems',
+    'Information Architecture',
+    'UI / Visual Design',
+    'UX Strategy',
+    'Other'
+  ]
+}
+
+export const designerTech = {
+  name: 'My skillset includes',
+  value: 'designTechs',
+  choices: [
+    'Clickable Prototyping',
+    'Interactive Prototyping',
+    'Lean Methodologies',
+    'Sketching / Paper Prototyping',
+    'HTML/CSS',
+    'Usability Testing',
+    'User Flows',
+    'Synthesizing and Insights',
+    'Other'
+  ]
+}
+
+export const dataSciSkills = {
+  name: 'I am comfortable in the following areas: ',
+  value: 'dataSciSkillset',
+  choices: [
+    'Python',
+    'R Programming',
+    'Hadoop Platform (or Similar)',
+    'SQL Databases',
+    'Machine Learning',
+    'AI',
+    'Data Visualization',
+    'Business Intelligence Tools (i.e. tableau)',
+    'Synthesizing Data',
+    'Unstructured Data'
+  ]
+}
+
+// export const dataSciTechs = {
+//   name: '',
+//   value: '',
+//   choices: []
+// }
+
 
 
 export const bootcamps = {
-name: 'What bootcamp did you attend?',
+name: 'Which bootcamp did you attend?',
 value: 'bootcamp',
 choices: [
   'App Academy',
@@ -79,9 +130,32 @@ export const helpDates = {
   ]
 }
 
+export const pronouns = {
+  name: 'pronouns',
+  value: 'pronouns',
+  choices: [
+    'She, Her, Hers',
+    'He, Him, His',
+    'They, Them, Theirs'
+  ]
+}
+
+export const pronounField = [
+  pronouns
+]
+
 export const firstFields = [
   engineerSkills,
   engineerTech,
+]
+
+export const designFields = [
+  designerSkills,
+  designerTech
+]
+
+export const dataSciFields = [
+  dataSciSkills
 ]
 
 export const secondFields = [
