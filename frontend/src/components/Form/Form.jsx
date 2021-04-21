@@ -18,6 +18,7 @@ const SignUp = (props) => {
 		<>
 			<h1>Tell us a little about your interests!</h1>
 			<Formik
+			// initialValues must be written in snake_case to align with python backend serializer
 				initialValues={{
 					// helpWith: "",
 					// availDates: "",
@@ -31,7 +32,6 @@ const SignUp = (props) => {
 					techs: "",
 					tell_us: "",
 				}}
-				// TODO: Dial in validation for form
 				validationSchema={validationSchema}
 				onSubmit={(values) => {
 					console.log("Submit Successful", values);
