@@ -8,8 +8,9 @@ import * as Inputs from "./inputs";
 const validationSchema = Yup.object().shape({
 	skillSet: Yup.string()
 	.required('Please make a selection'),
-	techs: Yup.string()
-	.required('Please make a selection'),
+	techs: Yup.mixed()
+	.oneOf([Fields.engineerTech.choices], 'Please choose from one of the selections')
+	.required(),
 	whyJoin: Yup.string()
 	.required('This field is required'),
 })
@@ -56,7 +57,6 @@ const PageForm = () => {
 					console.log("Submit Successful", values);
 				}}>
 				<Form>
-					{/* This is causing the 'Each child in a list should have a unique key prop' warning  SOLVED */}
 					{Fields.firstFields.map((f) => (
 						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
 							<option  value={f.value}></option>
