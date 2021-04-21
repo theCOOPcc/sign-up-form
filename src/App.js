@@ -1,5 +1,5 @@
 import "./App.css";
-import CoryTestForm from "./components/CoryTestForm/CoryTestForm";
+// import CoryTestForm from "./components/CoryTestForm/CoryTestForm";
 // import JoinUsDesigner from './components/forms/DesignerFormPages/JoinDesignerForm';
 // import CoryTestForm from './components/CoryTestForm/CoryTestForm';
 // import MentorSignUpForm from './components/Formik-stuff/Formik-test';
@@ -11,11 +11,13 @@ import CoryTestForm from "./components/CoryTestForm/CoryTestForm";
 // import { MentorForm } from './components/forms/MentorForm';
 // import JoinUsDesignerTwo from './components/forms/DesignerFormPages/JoinDesignerForm2';
 import PageForm from "./components/forms/Pageform";
+// import { Signup } from "./components/forms/TylerTestsValidation/ValidationTest";
 
 function App() {
 	return (
 		<div className="App">
 			<PageForm />
+      {/* <Signup /> */}
 
 			{/* <CoryTestForm /> */}
 		</div>
