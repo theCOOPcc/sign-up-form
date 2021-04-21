@@ -15,7 +15,7 @@ export const TextInput = ({ label, ...props }) => {
 
 export const SelectInput = ({ label, ...props }) => {
 	const [field, meta] = useField(props);
-	console.log(field, meta)
+	// console.log(field, meta)
 	return (
 		<div>
 			<label htmlFor={props.id || props.name}>{label}</label>
