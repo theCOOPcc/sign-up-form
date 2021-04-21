@@ -12,11 +12,13 @@ import "./App.css";
 // import JoinUsDesignerTwo from './components/forms/DesignerFormPages/JoinDesignerForm2';
 import PageForm from "./components/forms/Pageform";
 // import { Signup } from "./components/forms/TylerTestsValidation/ValidationTest";
+import MentorForm from './components/forms/MentorForm'
 
 function App() {
 	return (
 		<div className="App">
-			<PageForm />
+			{/* <PageForm /> */}
+      <MentorForm />
       {/* <Signup /> */}
 
 			{/* <CoryTestForm /> */}

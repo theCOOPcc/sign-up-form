@@ -1,7 +1,9 @@
-// import React from "react";
-// import { Formik, Form, Field, useFormik } from "formik";
-// import "./MentorForm.css";
-// import * as Yup from "yup";
+import React from "react";
+import { Formik, Form } from "formik";
+import "./MentorForm.css";
+import * as Yup from "yup";
+import * as Fields from './fields'
+import * as Inputs from './inputs'
 
 
 // const helpOptions =  [
@@ -15,84 +17,47 @@
 // ];
 
 
-// const validationSchema = Yup.object({
-// 	helpWith: Yup.string().required("Required"),
-// 	availDates: Yup.string().required("Required"),
-// 	workProf: Yup.string().required("Required"),
-// 	selectOption: Yup.string().required("Required"),
-// });
+const validateSchema = Yup.object().shape({
+	helpWith: Yup.mixed()
+	.oneOf(Fields.helpOptions.choices, 'Please choose from one of the selections'),
+	availDates: Yup.mixed()
+	.oneOf(Fields.helpDates.choices, 'Please choose from one of the options'),
+	workProfile: Yup.string().required("Required")
+});
 
-export const MentorForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      helpWith: '',
-      availDates: '',
-      workProfile:'',
-    },
-    onSubmit: values => {
-      console.log(values)
-    },
-  });
-
-
+const MentorForm = () => {
 	return (
-		<form onSubmit={formik.handleSubmit}>
-      <h1>Mentor Form</h1>
-				<div className="required">
-					<label htmlFor="helpWith">I'd love to help with:</label>
-					<select 
-            id="helpWith" 
-            name="helpWith"
-            type='text'
-            onChange={formik.handleChange}
-            value={formik.values.helpWith}
-            multiple
-            >
-						<option value="one-on">1:1 Mentoring</option>
-						<option value="group-pres">Group Presentations</option>
-						<option value="des-review">Design Review</option>
-						<option value="light-tlk-pres">Lightning Talk (Presenter)</option>
-						<option value="light-tlk-aud">Lightning Talk (Audience)</option>
-						<option value="int-prep">Interview Prep</option>
-					</select>
-				</div>
+		<>
+		<h1>Mentor Form</h1>
+		<Formik 
+		initialValues={{
+      helpWith: "",
+      availDates: "''",
+      workProfile:"",
+    }}
+		validationSchema={validateSchema}
+		onSubmit={(values) => {
+			console.log('Submit Successful', values)
+		}}>
+			<Form>
+				{Fields.mentorFields.map((f) => (
+					<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+						<option value={f.value}></option>
+						{f.choices.map((c) => (
+							<option name={c.value} key={c} value={c}>{c}</option>
+						))}
+					</Inputs.SelectInput>
+				))}
 
-				<div className="required">
-					<label htmlFor="availDates">I'm avalilable to help out: </label>
-					<select 
-           id="availDates" 
-           name="availDates"
-           onChange={formik.handleChange}
-           value={formik.values.availDates}
-           multiple
-           >
-						<option type="checkbox" value="monthly">
-							Monthly
-						</option>
-						<option type="checkbox" value="weekly">
-							Weekly
-						</option>
-						<option type="checkbox" value="daily">
-							Daily
-						</option>
-						<option type="checkbox" value="on-call">
-							On-Call
-						</option>
-					</select>
-				</div>
 
-				<div className="form-control required">
-					<label htmlFor="workProfile">Linkedin Profile: </label>
-					<input 
-          type="text" 
-          id="workProfile" 
-          name="workProfile" 
-          onChange={formik.handleChange}
-          value={formik.values.workProfile}
-          />
-				</div>
+			<label htmlFor='workProfile'>Linkedin Profile: </label>
+			<Inputs.TextInput id='workProfile' name='workProfile' ></Inputs.TextInput>
 
-				<button type="submit">Submit</button>
-		</form>
-	);
-};
+			<button type='submit'>Submit</button>
+			</Form>
+			</Formik>
+			</>
+	)
+	}
+	
+	export default MentorForm

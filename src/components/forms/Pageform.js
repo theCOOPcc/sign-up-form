@@ -6,34 +6,16 @@ import * as Fields from "./fields";
 import * as Inputs from "./inputs";
 
 const validationSchema = Yup.object().shape({
-	skillSet: Yup.string()
-	.required('Please make a selection'),
+	skillSet: Yup.mixed()
+	.oneOf(Fields.engineerSkills.choices, 'Please choose from one of the selections'),
 	techs: Yup.mixed()
-	.oneOf([Fields.engineerTech.choices], 'Please choose from one of the selections')
+	.oneOf(Fields.engineerTech.choices, 'Please choose from one of the selections')
 	.required(),
 	whyJoin: Yup.string()
 	.required('This field is required'),
 })
 
 const PageForm = () => {
-	// const validate = Yup.object({
-	// 	choices: Yup.string()
-	// 	.required('Required')
-	// })
-	
-	// function formValues() {
-	// 	let arr = [];
-	// 	Fields.firstFields.forEach((field) => {
-	// 		const object = {};
-	// 		Object.defineProperty(object, `${field.name}`, {
-	// 			value: `${field.value}`,
-	// 			writable: true,
-	// 		});
-	// 		arr.push(object);
-	// 	});
-	// 	return arr;
-	// }
-
 	return (
 		<>
 			<h1>Tell us a little about your interests!</h1>
@@ -44,7 +26,6 @@ const PageForm = () => {
 					// workProf: "",
 					// selectOption: "",
 					// bootcampAtt: "",
-					
 					// github: "",
 					// linkedin: "",
 					skillSet: "",

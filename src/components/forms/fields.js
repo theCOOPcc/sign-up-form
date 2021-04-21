@@ -55,6 +55,30 @@ choices: [
 ]
 }
 
+export const helpOptions =  {
+  name: 'I would love to help with',
+  value: 'helpWith',
+  choices:[ 
+    '1:1 Mentoring',
+    'Group Presentations',
+    'Sprint Planning',
+    'Lightning talk (Pres.)',
+    'Lightning talk (Aud.)',
+    'Interview Prep']
+};
+
+export const helpDates = {
+  name: 'I am available to help out: ',
+  value: 'availDates',
+  choices: [
+    'Monthly',
+    'Weekly',
+    'Bi-Weekly',
+    'Daily',
+    'Sporadically'
+  ]
+}
+
 export const firstFields = [
   engineerSkills,
   engineerTech,
@@ -62,4 +86,9 @@ export const firstFields = [
 
 export const secondFields = [
   bootcamps,
+]
+
+export const mentorFields = [
+  helpOptions,
+  helpDates
 ]

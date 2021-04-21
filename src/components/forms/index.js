@@ -1,6 +1,6 @@
 import React from 'react'
 // import ReactDom from 'react-dom'
-import {Formik, Form, Field} from 'formik'
+import {Formik, Form} from 'formik'
 import * as Yup from 'yup'
 import * as Fields from './fields'
 import * as Inputs from './inputs'
@@ -19,7 +19,7 @@ const PageForm = () => {
     return arr
   }
 
-  const initValues = formValues();
+  // const initValues = formValues();
   // const onSubmit = () => console.log('form valies : ', initValues)
   
 
