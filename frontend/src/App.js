@@ -23,19 +23,18 @@ class App extends Component {
 
 	 deleteItem = (form) => {
 		 axios.delete(`/api/forms/${form.id}`)
-		 .then(res=> this.refreshList())
+		 .then(this.refreshList())
 	 }
 
 	render() { 
 		return (
 			<div className="App">
-				<h1>Cory Rules</h1>
 				<button onClick={this.refreshList}>Refresh</button>
 				<SignUp addItem={this.addItem} />
 				<ul className="forms">
 					{this.state.forms.map((form, idx) => (
 						<div key={idx}>
-							<li>{form.id}</li>
+							<li>{form.first_name} <span>{form.id}</span></li>
 							<button key={idx} onClick={() => this.deleteItem(form)}>
 								X
 							</button>
