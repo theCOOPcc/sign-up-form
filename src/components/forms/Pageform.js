@@ -6,24 +6,25 @@ import * as Fields from "./fields";
 import * as Inputs from "./inputs";
 
 const validationSchema = Yup.object().shape({
-	engineerSkillset: Yup.mixed()
+	role: Yup.mixed().oneOf(Fields.candidatePath.choices, 'Please choose from one of the selections'),
+	engineer_skillset: Yup.mixed()
 	.oneOf(Fields.engineerSkills.choices, 'Please choose from one of the selections'),
-	engineerTechs: Yup.mixed()
+	engineer_techs: Yup.mixed()
 	.oneOf(Fields.engineerTech.choices, 'Please choose from one of the selections'),
-	designSkillset: Yup.mixed()
+	design_skillset: Yup.mixed()
 	.oneOf(Fields.designerSkills.choices, 'Please choose from one of the selections'),
-	designTechs: Yup.mixed()
+	design_techs: Yup.mixed()
 	.oneOf(Fields.designerTech.choices, 'Please choose from one of the selections'),
-	dataSciSkillset: Yup.mixed().oneOf(Fields.dataSciSkills.choices, 'Please choose from one of the selections'),
+	data_sci_skillset: Yup.mixed().oneOf(Fields.dataSciSkills.choices, 'Please choose from one of the selections'),
 	bootcamp: Yup.mixed().oneOf(Fields.bootcamps.choices, 'Please choose from one of the selections'),
 	linkedin: Yup.string().required('This field is required'),
 	github: Yup.string().required('This field is required'),
 	portfolio: Yup.string().required('This field is required'),
-	whyJoin: Yup.string()
+	why_join: Yup.string()
 	.required('This field is required'),
-	firstName: Yup.string()
+	first_name: Yup.string()
 	.required('This field is required'),
-	lastName: Yup.string()
+	last_name: Yup.string()
 	.required('This field is required'),
 	email: Yup.string().email('Invalid email').required('This field is required')
 	.required(),
@@ -35,19 +36,20 @@ const PageForm = () => {
 			<h1>Tell us a little about your interests!</h1>
 			<Formik
 				initialValues={{
-					firstName: "",
-					lastName: "",
+					role: '',
+					first_name: "",
+					last_name: "",
 					email: "",
 					pronouns: "",
 					linkedin: "",
 					github: "",
 					portfolio: "",
-					dataSciSkillset: '',
-					designTechs: "",
-					designSkillset: "",
-					engineerSkillset: "",
-					engineerTechs: "",
-					whyJoin: "",
+					data_sci_skillset: '',
+					design_techs: "",
+					design_skillset: "",
+					engineer_skillset: "",
+					engineer_techs: "",
+					why_join: "",
 				}}
 				// TODO: Dial in validation for form
 				validationSchema={validationSchema}
@@ -55,7 +57,20 @@ const PageForm = () => {
 					console.log("Submit Successful", values);
 				}}>
 				<Form>
-					<h1>Engineer</h1>
+					<div>
+					<h3>We're constantly looking for new talent to join our efforts. Let us know what your interests are below, and we'll be in touch as soon as something comes up. </h3>
+						
+					</div>
+					{Fields.paths.map((f) => (
+						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+							<option value={f.value}></option>
+							{f.choices.map((c) => (
+								<option name={c.value} key={c} value={c}>{c}</option>
+							))}
+						</Inputs.SelectInput>
+					))}
+
+					<h3>Engineer</h3>
 					{Fields.firstFields.map((f) => (
 						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
 							<option  value={f.value}></option>
@@ -69,7 +84,7 @@ const PageForm = () => {
 
 
 					<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
-					<Inputs.TextInput id="whyJoin" name="whyJoin"></Inputs.TextInput>
+					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
 					<button type="submit">Submit</button>
 			
@@ -85,7 +100,7 @@ const PageForm = () => {
 					))}
 
 					<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
-					<Inputs.TextInput id="whyJoin" name="whyJoin"></Inputs.TextInput>
+					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 								<button type='submit'>Submit</button>
 				
 				<h1>Data Science</h1>
@@ -99,7 +114,7 @@ const PageForm = () => {
 					))}
 
 					<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
-					<Inputs.TextInput id="whyJoin" name="whyJoin"></Inputs.TextInput>
+					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
 					<button type='submit'>Submit</button>
 
@@ -130,44 +145,29 @@ const PageForm = () => {
 
 								<h1>CONTACT INFO</h1>
 
-								<label htmlFor="firstName">First Name: </label>
-					<Inputs.TextInput id="firstName" name="firstName"></Inputs.TextInput>
+					<label htmlFor="firstName">First Name: </label>
+					<Inputs.TextInput id="firstName" name="first_name"></Inputs.TextInput>
 
-								<label htmlFor="lastName">Last Name: </label>
-					<Inputs.TextInput id="lastName" name="lastName"></Inputs.TextInput>
+					<label htmlFor="lastName">Last Name: </label>
+					<Inputs.TextInput id="lastName" name="last_name"></Inputs.TextInput>
 
 					
-								{Fields.pronounField.map(f => (
-									<Inputs.SelectInput key={f.value} label={f.name} name={f.value}>
-										<option value={f.value} ></option>
-										{f.choices.map((c) => (
-											<option name={c.value} key={c}>{c}</option>
-										))}
-									</Inputs.SelectInput>
-								))}
+					{Fields.pronounField.map(f => (
+						<Inputs.SelectInput key={f.value} label={f.name} name={f.value}>
+							<option value={f.value} ></option>
+							{f.choices.map((c) => (
+								<option name={c.value} key={c}>{c}</option>
+							))}
+						</Inputs.SelectInput>
+					))}
 
 
-								<label htmlFor="email">Email: </label>
+					<label htmlFor="email">Email: </label>
 					<Inputs.TextInput id="email" name="email"></Inputs.TextInput>
+
 					<button type="submit">Submit</button>
-
 				</Form>
-
 			</Formik>
-
-			{/* <Formik>
-        <Form>
-      {/* {Fields.secondFields.map(f => (
-        <Inputs.SelectInput label={f.name} name={f.value}>
-          <option value=""></option>
-          {f.choices.map(c => (
-            <option value={c}>{c}</option>
-          ))}
-        </Inputs.SelectInput>
-      ))} */}
-
-			{/* <Inputs.TextInput></Inputs.TextInput> */}
-			{/* </Form> */}
 		</>
 	);
 };

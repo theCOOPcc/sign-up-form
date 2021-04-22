@@ -27,15 +27,3 @@ export const SelectInput = ({ label, ...props }) => {
 	);
 };
 
-// export const TextAreaInput = ({label, ...props}) => {
-//   const [field, meta] = useField(props);
-//   return (
-//     <div>
-//       <label htmlFor={props.id || props.name}>{label}</label>
-//       <Field as='textarea' {...field} {...props} />
-//       {meta.touched && meta.error ? (
-//         <div className='error'>{meta.error}</div>
-//       ) : null}
-//     </div>
-//   )
-// }

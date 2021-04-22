@@ -17,7 +17,7 @@ import MentorForm from './components/forms/MentorForm'
 function App() {
 	return (
 		<div className="App">
-			{/* <PageForm /> */}
+			<PageForm />
       <MentorForm />
       {/* <Signup /> */}
 

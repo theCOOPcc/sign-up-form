@@ -6,17 +6,6 @@ import * as Fields from './fields'
 import * as Inputs from './inputs'
 
 
-// const helpOptions =  [
-//     {key: 'Selct an option', value: ''},
-//     {key: '1:1 Mentoring', value: 'mentoring'},
-//     {key: 'Group Presentations', value: 'groupPres'},
-//     {key: 'Sprint Planning', value: 'sprintPlan'},
-//     {key: 'Lightning talk (Pres.)', value: 'ltPres'},
-//     {key: 'Lightning talk (Aud.)', value: 'ltAud'},
-//     {key: 'Interview Prep', value: 'intPrep'},
-// ];
-
-
 const validateSchema = Yup.object().shape({
 	helpWith: Yup.mixed()
 	.oneOf(Fields.helpOptions.choices, 'Please choose from one of the selections'),
@@ -48,8 +37,6 @@ const MentorForm = () => {
 						))}
 					</Inputs.SelectInput>
 				))}
-
-
 			<label htmlFor='workProfile'>Linkedin Profile: </label>
 			<Inputs.TextInput id='workProfile' name='workProfile' ></Inputs.TextInput>
 
