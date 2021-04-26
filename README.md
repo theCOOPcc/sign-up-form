@@ -1,4 +1,4 @@
-# Django React Todo List #
+# TheCoop User Sign Up List #
 
 An application to make Todos using an SQL database accessed via Django and then rendered using React.
 
