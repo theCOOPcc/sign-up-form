@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from rest_framework import routers
+# from form.views import FormView, FrontEndAppView
 from form import views
 
 router = routers.DefaultRouter()
@@ -23,5 +25,6 @@ router.register(r'forms', views.FormView, 'form')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    url(r'^', views.FrontEndAppView.as_view())
 ]
