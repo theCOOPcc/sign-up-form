@@ -7,11 +7,11 @@ import * as Inputs from './inputs'
 
 
 const validateSchema = Yup.object().shape({
-	helpWith: Yup.mixed()
+	help_with: Yup.mixed()
 	.oneOf(Fields.helpOptions.choices, 'Please choose from one of the selections'),
-	availDates: Yup.mixed()
+	avail_dates: Yup.mixed()
 	.oneOf(Fields.helpDates.choices, 'Please choose from one of the options'),
-	workProfile: Yup.string().required("Required")
+	linkedin: Yup.string().required("Required")
 });
 
 const MentorForm = () => {
@@ -20,9 +20,9 @@ const MentorForm = () => {
 		<h1>Mentor Form</h1>
 		<Formik 
 		initialValues={{
-      helpWith: "",
-      availDates: "''",
-      workProfile:"",
+      help_with: "",
+      avail_dates: "",
+      linkedin:"",
     }}
 		validationSchema={validateSchema}
 		onSubmit={(values) => {
@@ -37,8 +37,8 @@ const MentorForm = () => {
 						))}
 					</Inputs.SelectInput>
 				))}
-			<label htmlFor='workProfile'>Linkedin Profile: </label>
-			<Inputs.TextInput id='workProfile' name='workProfile' ></Inputs.TextInput>
+			<label htmlFor='linkedin'>Linkedin Profile: </label>
+			<Inputs.TextInput id='linkedin' name='linkedin' ></Inputs.TextInput>
 
 			<button type='submit'>Submit</button>
 			</Form>

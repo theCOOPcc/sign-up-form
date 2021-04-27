@@ -1,4 +1,9 @@
 import "./App.css";
+import ContactForm from "./components/forms/ContactForm";
+// import DataScienceForm from "./components/forms/DataScienceForm";
+// import DesignerForm from "./components/forms/DesignerForm";
+// import EngineerForm from "./components/forms/EngineerForm";
+// import InfoIntakeForm from "./components/forms/InfoIntakeForm";
 // import CoryTestForm from "./components/CoryTestForm/CoryTestForm";
 // import JoinUsDesigner from './components/forms/DesignerFormPages/JoinDesignerForm';
 // import CoryTestForm from './components/CoryTestForm/CoryTestForm';
@@ -10,18 +15,26 @@ import "./App.css";
 // import FormikControl from './components/Formik-stuff/FormikControl';
 // import { MentorForm } from './components/forms/MentorForm';
 // import JoinUsDesignerTwo from './components/forms/DesignerFormPages/JoinDesignerForm2';
-import PageForm from "./components/forms/Pageform";
+// import PageForm from "./components/forms/Pageform";
 // import { Signup } from "./components/forms/TylerTestsValidation/ValidationTest";
-import MentorForm from './components/forms/MentorForm'
+// import MentorForm from './components/forms/MentorForm'
+// import ChoosePath from "./components/forms/ChoosePath";
 
 function App() {
 	return (
 		<div className="App">
-			<PageForm />
-      <MentorForm />
+			{/* <PageForm />
+      <MentorForm /> */}
       {/* <Signup /> */}
 
 			{/* <CoryTestForm /> */}
+
+			{/* <ChoosePath /> */}
+			{/* <EngineerForm />
+			<DataScienceForm /> */}
+			{/* <DesignerForm /> */}
+			{/* <InfoIntakeForm /> */}
+			<ContactForm />
 		</div>
 	);
 }

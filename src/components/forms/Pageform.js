@@ -57,9 +57,9 @@ const PageForm = () => {
 					console.log("Submit Successful", values);
 				}}>
 				<Form>
-					<div>
+					{/* <div>
 					<h3>We're constantly looking for new talent to join our efforts. Let us know what your interests are below, and we'll be in touch as soon as something comes up. </h3>
-						
+	
 					</div>
 					{Fields.paths.map((f) => (
 						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
@@ -68,9 +68,11 @@ const PageForm = () => {
 								<option name={c.value} key={c} value={c}>{c}</option>
 							))}
 						</Inputs.SelectInput>
-					))}
+					))} */}
 
-					<h3>Engineer</h3>
+
+
+					{/* <h3>Engineer</h3>
 					{Fields.firstFields.map((f) => (
 						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
 							<option  value={f.value}></option>
@@ -87,8 +89,9 @@ const PageForm = () => {
 					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
 					<button type="submit">Submit</button>
-			
-					<h1>Designer</h1>
+			 */}
+
+					{/* <h1>Designer</h1>
 			
 					{Fields.designFields.map(f => (
 						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
@@ -101,9 +104,9 @@ const PageForm = () => {
 
 					<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
 					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-								<button type='submit'>Submit</button>
+								<button type='submit'>Submit</button> */}
 				
-				<h1>Data Science</h1>
+				{/* <h1>Data Science</h1>
 					{Fields.dataSciFields.map(f => (
 						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
 							<option value={f.value} ></option>
@@ -116,11 +119,11 @@ const PageForm = () => {
 					<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
 					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
-					<button type='submit'>Submit</button>
+					<button type='submit'>Submit</button> */}
 
 
 
-					<h1>Tell us EVEN MORE about you! </h1>
+					{/* <h1>Tell us EVEN MORE about you! </h1>
 
 					{Fields.secondFields.map(f => (
 						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
@@ -140,9 +143,9 @@ const PageForm = () => {
 					<label htmlFor="linkedin">Linkedin: </label>
 					<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
 
-								<button type="submit">Submit</button>
+								<button type="submit">Submit</button> */}
 
-
+{/* 
 								<h1>CONTACT INFO</h1>
 
 					<label htmlFor="firstName">First Name: </label>
@@ -165,7 +168,7 @@ const PageForm = () => {
 					<label htmlFor="email">Email: </label>
 					<Inputs.TextInput id="email" name="email"></Inputs.TextInput>
 
-					<button type="submit">Submit</button>
+					<button type="submit">Submit</button> */}
 				</Form>
 			</Formik>
 		</>
