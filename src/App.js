@@ -3,6 +3,9 @@ import SignUp from "./components/Form/Form";
 import axios from 'axios'
 import "./App.css";
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 
 class App extends Component {
 	state = { 
