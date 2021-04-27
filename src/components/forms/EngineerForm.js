@@ -4,6 +4,21 @@ import { Formik, Form} from "formik";
 import * as Yup from "yup";
 import * as Fields from "./fields";
 import * as Inputs from "./inputs";
+import styled from 'styled-components'
+
+
+const FormStyle = styled.form`
+background-color: black;
+
+color: #F25187;
+display:flex;
+flex-direction: column;
+text-align: center;
+justify-content: center;
+align-items: center;
+height: 100%;
+`
+
 
 const validationSchema = Yup.object().shape({
   engineer_skillset: Yup.mixed()
@@ -28,6 +43,8 @@ const EngineerForm = () => {
     }}
     >
       <Form>
+        <FormStyle>
+
       <h3>Tell us a little about your interests</h3>
 
       {Fields.firstFields.map((f) => (
@@ -45,6 +62,7 @@ const EngineerForm = () => {
 					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
 <button type="submit">Submit</button>
+        </FormStyle>
       </Form>
     </Formik>
 

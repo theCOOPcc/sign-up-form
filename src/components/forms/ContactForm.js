@@ -4,6 +4,19 @@ import { Formik, Form} from "formik";
 import * as Yup from "yup";
 import * as Fields from "./fields";
 import * as Inputs from "./inputs";
+import styled from 'styled-components'
+
+const FormStyle = styled.form`
+background-color: black;
+
+color: #F25187;
+display:flex;
+flex-direction: column;
+text-align: center;
+justify-content: center;
+align-items: center;
+height: 100%;
+`
 
 const validationSchema = Yup.object().shape({
   first_name: Yup.string().required('This field is required'),
@@ -25,6 +38,8 @@ const ContactForm = () => {
       console.log('Submit Successful', values)
     }}>
       <Form>
+
+        <FormStyle>
       <h1>CONTACT INFO</h1>
 
         <label htmlFor="firstName">First Name: </label>
@@ -48,6 +63,8 @@ const ContactForm = () => {
         <Inputs.TextInput id="email" name="email"></Inputs.TextInput>
 
         <button type="submit">Submit</button>
+
+        </FormStyle>
       </Form>
     </Formik>
   )
