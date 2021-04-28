@@ -19,7 +19,6 @@ class App extends Component {
 	refreshList = () => {
 		axios.get("/api/forms")
 		 .then(res=> this.setState({ forms: res.data }))
-		console.log(this.state.forms)
 	 }
 
 	 addItem = (newItem) => {
