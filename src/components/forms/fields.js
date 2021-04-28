@@ -45,7 +45,7 @@ export const engineerTech = {
 }
 
 export const designerSkills = {
-  name: 'I would like to focus on: ',
+  name: 'My skillset includes: ',
   value: 'design_skillset',
   choices: [
     'User Research',
@@ -59,7 +59,7 @@ export const designerSkills = {
 }
 
 export const designerTech = {
-  name: 'My skillset includes',
+  name: 'I would like to focus in: ',
   value: 'design_techs',
   choices: [
     'Clickable Prototyping',

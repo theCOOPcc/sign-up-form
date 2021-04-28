@@ -12,12 +12,12 @@ function App() {
 	return (
 		<div className="App">
 
-			<ChoosePath />
+			{/* <ChoosePath /> */}
       {/* <MentorForm />  */}
 			{/* <EngineerForm /> */}
 
 			{/* <DataScienceForm />  */}
-			{/* <DesignerForm /> */}
+			<DesignerForm />
 			{/* <InfoIntakeForm />  */}
 			{/* <ContactForm /> */}
 		</div>

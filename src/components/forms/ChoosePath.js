@@ -6,6 +6,7 @@ import * as Fields from "./fields";
 import * as Inputs from "./inputs";
 import styled from 'styled-components'
 
+// Basic form styling for each file--probably can do this differently and more cleanly
 const FormStyle = styled.div`
 background-color: black;
 color: #FEFEFE;

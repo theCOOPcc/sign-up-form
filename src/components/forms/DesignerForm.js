@@ -6,6 +6,7 @@ import * as Fields from "./fields";
 import * as Inputs from "./inputs";
 import styled from 'styled-components'
 
+// Basic form styling for each page
 const FormStyle = styled.div`
 background-color: black;
 color: #FEFEFE;
@@ -18,13 +19,17 @@ height: 50vh;
 width: 50vw;
 `
 
+// const Options = styled.option`
+// color: white;
+// `
+
+// 'Max' callreturn text field as if it were password field. --SOLVED 
 const validationSchema= Yup.object().shape({
   design_skillset: Yup.mixed()
 	.oneOf(Fields.designerSkills.choices, 'Please choose from one of the selections'),
 	design_techs: Yup.mixed()
 	.oneOf(Fields.designerTech.choices, 'Please choose from one of the selections'),
-  why_join: Yup.string()
-	.required('This field is required')
+  why_join: Yup.string().required('This field is required').max(100)
 })
 
 const DesignerForm = () => {
@@ -48,12 +53,12 @@ const DesignerForm = () => {
         <Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
           <option value={f.value} ></option>
           {f.choices.map((c) => (
-            <option name={c.value} key={c}>{c}</option>
-          ))}
+            <option  name={c.value} key={c}>{c}</option>
+            ))}
         </Inputs.SelectInput>
       ))}
 
-      <label htmlFor="whyJoin">Tell us why you'd like to join: </label>
+      <label htmlFor="whyJoin">Tell us why you'd like to join The COOP: </label>
       <Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
             <button type='submit'>Submit</button>
