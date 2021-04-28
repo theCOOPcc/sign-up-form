@@ -3,21 +3,24 @@ import styled from 'styled-components'
 
 
 const Input = styled.input`
-display: block;
+display: inline-block;
 padding: 0.75em;
 margin: 0.75em;
-border: none;
+border:none;
 cursor: pointer;
 background-color: transparent;
-border: 1px solid #F25187
+border-bottom: 1px solid #F25187;
+text-decoration: underline;
 `
 const Label = styled.label`
 color: #FEFEFE;
 `
 
-const SelectInputStyle = styled.select`
-border: 1px solid #F25187;
+export const SelectInputStyle = styled.select`
+border:none;
+border-bottom: 1px solid #F25187;
 background-color: transparent;
+text-decoration: underline;
 `
 
 

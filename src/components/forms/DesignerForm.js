@@ -6,16 +6,16 @@ import * as Fields from "./fields";
 import * as Inputs from "./inputs";
 import styled from 'styled-components'
 
-const FormStyle = styled.form`
+const FormStyle = styled.div`
 background-color: black;
-
-color: #F25187;
+color: #FEFEFE;
 display:flex;
 flex-direction: column;
-text-align: center;
 justify-content: center;
 align-items: center;
-height: 100%;
+text-align: center;
+height: 50vh;
+width: 50vw;
 `
 
 const validationSchema= Yup.object().shape({
@@ -42,7 +42,7 @@ const DesignerForm = () => {
     >
       <Form>
         <FormStyle>
-      <h1>Tell us a little about your interests</h1>
+      <h1>Tell us a little about your interests...</h1>
 			
       {Fields.designFields.map(f => (
         <Inputs.SelectInput key={f.name} label={f.name} name={f.value}>

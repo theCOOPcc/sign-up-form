@@ -118,7 +118,7 @@ choices: [
 }
 
 export const helpOptions =  {
-  name: 'I would love to help with',
+  name: 'I would love to help with: ',
   value: 'help_with',
   choices:[ 
     '1:1 Mentoring',

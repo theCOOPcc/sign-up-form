@@ -6,16 +6,16 @@ import * as Fields from './fields'
 import * as Inputs from './inputs'
 import styled from 'styled-components'
 
-const FormStyle = styled.form`
+const FormStyle = styled.div`
 background-color: black;
-
-color: #F25187;
+color: #FEFEFE;
 display:flex;
 flex-direction: column;
-text-align: center;
 justify-content: center;
 align-items: center;
-height: 100%;
+text-align: center;
+height: 50vh;
+width: 50vw;
 `
 
 
@@ -42,7 +42,7 @@ const MentorForm = () => {
 		}}>
 			<Form>
 				<FormStyle>
-			<h1>Mentor Form</h1>
+			<h1>Tell us more about You</h1>
 				{Fields.mentorFields.map((f) => (
 					<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
 						<option value={f.value}></option>
