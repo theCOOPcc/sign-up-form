@@ -13,11 +13,13 @@ class App extends Component {
 	 }
 	 componentDidMount() {
 		 this.refreshList()
+		 console.log("React works")
 	 }
 
-	 refreshList = () => {
-		 axios.get("/api/forms")
+	refreshList = () => {
+		axios.get("/api/forms")
 		 .then(res=> this.setState({ forms: res.data }))
+		console.log(this.state.forms)
 	 }
 
 	 addItem = (newItem) => {
