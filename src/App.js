@@ -36,7 +36,7 @@ class App extends Component {
 			<div className="App">
 				<button onClick={this.refreshList}>Refresh</button>
 				<SignUp addItem={this.addItem} />
-				{ this.state.forms ?
+				{/* { this.state.forms ? */}
 				<ul className="forms">
 					{this.state.forms.map((form, idx) => (
 						<div key={idx}>
@@ -47,8 +47,8 @@ class App extends Component {
 						</div>
 					))}
 				</ul> 
-				:
-				<div></div>}
+				{/* :
+				<div></div>} */}
 			</div>
 		);
 	}
