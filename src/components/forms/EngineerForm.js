@@ -5,19 +5,24 @@ import * as Yup from "yup";
 import * as Fields from "./fields";
 import * as Inputs from "./inputs";
 import styled from 'styled-components'
-
+import '../../App.css'
 
 const FormStyle = styled.form`
 background-color: black;
-
-color: #F25187;
+color: #FEFEFE;
 display:flex;
 flex-direction: column;
-text-align: center;
 justify-content: center;
 align-items: center;
-height: 100%;
+height: 50vh;
+width: 50vw;
 `
+
+const Label = styled.label`
+color: #FEFEFE;
+`
+
+
 
 
 const validationSchema = Yup.object().shape({
@@ -31,6 +36,7 @@ const validationSchema = Yup.object().shape({
 
 const EngineerForm = () => {
   return (
+    <div>
     <Formik
     initialValues={{
       engineer_skillset: "",
@@ -58,13 +64,16 @@ const EngineerForm = () => {
         </Inputs.SelectInput>
       ))}
 
-<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
+
+<Label htmlFor="whyJoin">Tell us why you'd like to join: </Label>
 					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
 <button type="submit">Submit</button>
         </FormStyle>
       </Form>
-    </Formik>
+      </Formik>
+
+    </div>
 
     
   )
