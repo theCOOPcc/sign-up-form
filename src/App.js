@@ -8,9 +8,12 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 
 class App extends Component {
-	state = { 
-		forms: []
-	 }
+	constructor(){
+		super()
+		this.state = { 
+			forms: []
+		 }
+	}
 	 componentDidMount() {
 		 this.refreshList()
 		 console.log("React works")
