@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import SignUp from "./components/Form/Form";
 import axios from 'axios'
 import "./App.css";
@@ -7,43 +7,46 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 
-class App extends Component {
-	constructor(){
-		super()
-		this.state = { 
-			forms: []
-		 }
-	}
-	 componentDidMount() {
-		 this.refreshList()
-		 console.log("React works")
-	 }
+const App = () => {
 
-	refreshList = () => {
+	const [forms, setForms] = useState([])
+
+	useEffect(() => {
+		if (forms === undefined) {
+			refreshList()
+		}
+	})
+ 
+	//  componentDidMount() {
+	// 	 this.refreshList()
+	// 	 console.log("React works")
+	//  }
+
+	function refreshList (){
 		axios.get("/api/forms")
-		 .then(res=> this.setState({ forms: res.data }))
+		 .then(res=> setForms(res.data))
 	 }
 
-	 addItem = (newItem) => {
-		 axios.post("/api/forms/", newItem).then(this.refreshList())
+	 function addItem(newItem) {
+		 axios.post("/api/forms/", newItem).then(refreshList())
 	 }
 
-	 deleteItem = (form) => {
+	 function deleteItem(form) {
 		 axios.delete(`/api/forms/${form.id}`)
-		 .then(this.refreshList())
+		 .then(refreshList())
 	 }
 
-	render() { 
+	// render() { 
 		return (
 			<div className="App">
-				<button onClick={this.refreshList}>Refresh</button>
-				<SignUp addItem={this.addItem} />
+				<button onClick={refreshList}>Refresh</button>
+				<SignUp addItem={addItem} />
 				{/* { this.state.forms ? */}
 				<ul className="forms">
-					{this.state.forms.map((form, idx) => (
+					{forms.map((form, idx) => (
 						<div key={idx}>
 							<li>{form.first_name} <span>{form.id}</span></li>
-							<button key={idx} onClick={() => this.deleteItem(form)}>
+							<button key={idx} onClick={() => deleteItem(form)}>
 								X
 							</button>
 						</div>
@@ -54,7 +57,7 @@ class App extends Component {
 			</div>
 		);
 	}
-}
+
 
 
 export default App;
