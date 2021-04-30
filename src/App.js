@@ -21,18 +21,24 @@ const App = () => {
 	//  }
 
 	function refreshList() {
-		axios.get("/api/forms/").then((res) => 
-		setForms(res.data)
-		// console.log(res.data)
+		axios.get("/api/forms/").then(
+			(res) => setForms(res.data)
+			// console.log(res.data)
 		);
 	}
 
 	function addItem(newItem) {
-		axios.post("/api/forms/", newItem).then(refreshList());
+		axios
+			.post("/api/forms/", newItem)
+			.then(refreshList())
+			.catch((err) => console.log(err));
 	}
 
 	function deleteItem(form) {
-		axios.delete(`/api/forms/${form.id}/`).then(refreshList());
+		axios
+			.delete(`/api/forms/${form.id}/`)
+			.then(refreshList())
+			.catch((err) => console.log(err));
 	}
 
 	// render() {
