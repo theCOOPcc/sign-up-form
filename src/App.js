@@ -13,7 +13,7 @@ const App = () => {
 		if (forms === undefined) {
 			refreshList();
 		}
-	});
+	}, [forms]);
 
 	//  componentDidMount() {
 	// 	 this.refreshList()
@@ -21,7 +21,10 @@ const App = () => {
 	//  }
 
 	function refreshList() {
-		axios.get("/api/forms").then((res) => setForms(res.data));
+		axios.get("/api/forms").then((res) => 
+		setForms(res.data)
+		// console.log(res.data)
+		);
 	}
 
 	function addItem(newItem) {
