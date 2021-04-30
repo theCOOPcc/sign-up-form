@@ -4,7 +4,7 @@ An application to make Todos using an SQL database accessed via Django and then 
 
 See it [here](https://applicant-form.herokuapp.com/).
 
-Access the [admin](https://applicant-form.herokuapp.com/admin/).
+Access the [admin](https://applicant-form.herokuapp.com/admin/) portal. Consult with Cory to create a superuser. 
 
 Access the [api](https://applicant-form.herokuapp.com/api/).
 
