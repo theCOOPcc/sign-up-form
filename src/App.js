@@ -21,7 +21,7 @@ const App = () => {
 	//  }
 
 	function refreshList() {
-		axios.get("/api/forms").then((res) => 
+		axios.get("/api/forms/").then((res) => 
 		// setForms(res.data)
 		console.log(res.data)
 		);
@@ -32,7 +32,7 @@ const App = () => {
 	}
 
 	function deleteItem(form) {
-		axios.delete(`/api/forms/${form.id}`).then(refreshList());
+		axios.delete(`/api/forms/${form.id}/`).then(refreshList());
 	}
 
 	// render() {
