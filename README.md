@@ -17,3 +17,10 @@ We built the form using the Formik React library. Documentation for the library 
 
 `initialValues` fields must be written in `snake_case` to align with Python serializer in the back end.
 
+## Built by ##
+
+1. Cory S.
+2. Patrick O.
+3. Lauren F.
+4. Tyler R.
+5. Stephanie P.
