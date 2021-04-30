@@ -24,7 +24,7 @@ router = routers.DefaultRouter()
 router.register(r'forms', views.FormView, 'form')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    url(r'^', views.FrontEndAppView.as_view())
+    path('admin/', admin.site.urls),
+    url(r'^', views.FrontEndAppView.as_view()),
 ]
