@@ -1,8 +1,32 @@
-# form-sandbox
+# TheCoop User Sign Up List #
 
-A react testing ground for Formik library work for Tyler and Cory at The Coop.
+An application to make Todos using an SQL database accessed via Django and then rendered using React.
 
-## Loading
+See it [here](https://applicant-form.herokuapp.com/).
 
-1. In the this directory in your terminal type `npm i` to install node modules.
-2. Run the program by typing `npm start` and navigating in your browser to `localhost:3000`.
+Access the [admin](https://applicant-form.herokuapp.com/admin/) portal. Consult with Cory to create a superuser. 
+
+Access the [api](https://applicant-form.herokuapp.com/api/).
+
+## Use ##
+
+1. Open up base directory and type `npm i` to install node modules and then type `npm start` to start up front end.
+2. Open up backend directory in a different terminal and type `pip install -r requirements.txt` to install dependencies and then return to the base directory, type `python3 manage.py runserver` to start up backend.
+
+Note: You will need to create a `.env` file that contains a KEY VALUE pair `SECRET_KEY=foo` with the secret of your application entered.
+
+## Formik ##
+
+We built the form using the Formik React library. Documentation for the library can be found here: https://formik.org/
+
+## A note on JSON naming convention in formik initialValues ##
+
+`initialValues` fields must be written in `snake_case` to align with Python serializer in the back end.
+
+## Built by ##
+
+1. Cory S.
+2. Patrick O.
+3. Lauren F.
+4. Tyler R.
+5. Stephanie P.

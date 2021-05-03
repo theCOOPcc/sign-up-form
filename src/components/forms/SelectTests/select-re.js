@@ -22,7 +22,7 @@ export const colorStyles = {
   option: (provided, state) => ({
     ...provided,
     width:state.selectProps.width ,
-    borderBottom: '2px solid black',
+    borderBottom: '2px solid #F25187',
     color: state.selectProps.menuColor,
     backgroundColor: 'black',
     padding: 5
