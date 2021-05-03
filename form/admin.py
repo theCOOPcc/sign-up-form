@@ -21,8 +21,9 @@ class EmailFilter(SimpleListFilter):
     if self.value().lower() == 'no_email':
       return queryset.filter(email='')
 class FormAdmin(admin.ModelAdmin):
-  list_display = ('id', 'first_name', 'last_name', 'email', 'pronouns', 'why_join', 'linkedin', 'github', 'portfolio', 'engineer_skillset', 'engineer_techs', 'design_skillset', 'design_techs', 'data_sci_skillset', 'bootcamps', 'help_with', 'avail_dates')
-  list_filter = ('first_name', 'last_name', 'email', EmailFilter)
+  list_display = ('id', 'first_name', 'last_name', 'email', 'pronouns', 'why_join', 'linkedin', 'github', 'portfolio', 'engineer_skillset', 'engineer_techs', 'design_skillset', 'design_techs', 'data_sci_skillset', 'bootcamps', 'help_with', 'avail_dates', 'created_at', 'updated_at')
+  list_filter = ('first_name', EmailFilter)
+  search_fields = ('first_name', 'last_name', 'email', 'pronouns', 'why_join', 'linkedin', 'github', 'portfolio', 'engineer_skillset', 'engineer_techs', 'design_skillset', 'design_techs', 'data_sci_skillset', 'bootcamps', 'help_with', 'avail_dates', 'created_at', 'updated_at')
 
 # Register your models here.
 
