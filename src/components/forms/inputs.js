@@ -20,6 +20,8 @@ color: #FEFEFE;
 `
 
 export const SelectInputStyle = styled.select`
+--webkit-appearance: none;
+--moz-appearance: none;
 border:none;
 border-bottom: 1px solid #F25187;
 background-color: transparent;
