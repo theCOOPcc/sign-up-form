@@ -23,5 +23,11 @@ class Form(models.Model):
   avail_dates = models.CharField(max_length=50, default='', blank=True)
   pronouns = models.CharField(max_length=50, default='', blank=True)
 
+
+  @property
+  def emailQuery(self):
+    return "%s"%(self.email)
+    # return self.email
+    
   def _str_(self):
-    return self.last_name
+    return self.first_name
