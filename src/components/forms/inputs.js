@@ -90,7 +90,7 @@ export const SelectInput = ({ label, ...props }) => {
 		<div>
 			<Label htmlFor={props.id || props.name}>{label}</Label>
 			{console.log(designFields)}
-			<ReactSelect options={designFields}>
+			<ReactSelect>
 			<FormStyling placeholder='Select up to 4' key={props.name} {...field} {...props}/>
 			</ReactSelect>
           
