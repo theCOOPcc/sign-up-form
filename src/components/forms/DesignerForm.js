@@ -93,7 +93,7 @@ const DesignerForm = () => {
       {Fields.designFields.map(f => (
        
         <Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
-          <Options  ></Options>
+          {/* <Options ></Options> */}
           {f.choices.map((c) => (
             <Options value={f.value} name={c.value} key={c}>{c}</Options>
             ))}
