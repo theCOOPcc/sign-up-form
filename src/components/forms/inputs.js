@@ -35,6 +35,9 @@ export const FormStyling = {
 		...provided,
 		width: 200,
 	}),
+  control: (provided, state) => ({
+    borderBottom: '1px solid #F25187'
+  }),
   menu: (provided, state) => ({
     ...provided,
     backgroundColor:'black',
@@ -45,7 +48,7 @@ export const FormStyling = {
 	// }),
 	option: (provided, state) => ({
 		...provided,
-		borderBottom: "1px solid #C4C4C4",
+		borderBottom: "1px solid #F25187",
 		color: "white",
 		backgroundColor: "#562636",
 		padding: 5,
@@ -61,11 +64,11 @@ export const FormStyling = {
 		backgroundColor: "#F25187",
 		color: "white",
 	}),
-	singleValue: (provided, state) => ({
-    ...provided,
-    backgroundColor: '#F25187',
-    color:'white',
-	}),
+	// singleValue: (provided, state) => ({
+  //   ...provided,
+  //   backgroundColor: '#F25187',
+  //   color:'white',
+	// }),
 };
 
 export const TextInput = ({ label, ...props }) => {
