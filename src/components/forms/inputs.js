@@ -45,8 +45,8 @@ export const FormStyling = {
 	// }),
 	option: (provided, state) => ({
 		...provided,
-		borderBottom: "1px solid #F25187",
-		color: "black",
+		borderBottom: "1px solid #C4C4C4",
+		color: "white",
 		backgroundColor: "#562636",
 		padding: 5,
 		width: 200,
@@ -61,12 +61,11 @@ export const FormStyling = {
 		backgroundColor: "#F25187",
 		color: "white",
 	}),
-	// singleValue: (provided, state) => {
-	// 	const opacity = state.isDisabled ? 0.5 : 1;
-	// 	const transition = "opacity 300ms";
-
-	// 	return { ...provided, opacity, transition };
-	// },
+	singleValue: (provided, state) => ({
+    ...provided,
+    backgroundColor: '#F25187',
+    color:'white',
+	}),
 };
 
 export const TextInput = ({ label, ...props }) => {
@@ -103,7 +102,7 @@ export const SelectInput = ({ label, ...props }) => {
 		<div>
 			<Label htmlFor={props.id || props.name}>{label}</Label>
 			{/* {console.log(designFields)} */}
-			<ReactSelect styles={FormStyling} options={bananas}>
+			<ReactSelect styles={FormStyling} options={bananas} isMulti>
 				{/* <FormStyling
 					placeholder="Select up to 4"
 					key={props.name}
