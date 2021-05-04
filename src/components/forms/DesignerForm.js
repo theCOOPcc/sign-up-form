@@ -51,7 +51,6 @@ const DesignerForm = () => {
 			
       {Fields.designFields.map(f => (
         <Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
-
           <Options value={f.value} ></Options>
           {f.choices.map((c) => (
             <Options  name={c.value} key={c}>{c}</Options>
