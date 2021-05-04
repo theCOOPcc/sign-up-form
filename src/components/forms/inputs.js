@@ -48,11 +48,7 @@ export const SelectInput = ({ label, ...props }) => {
 	return (
 		<div>
 			<Label htmlFor={props.id || props.name}>{label}</Label>
-			{console.log(designFields)}
-			<ReactSelect>
-			<FormStyling placeholder='Select up to 4' key={props.name} {...field} {...props}/>
-			</ReactSelect>
-
+			<SelectInputStyle placeholder='Select up to 4' key={props.name} {...field} {...props}/>
           
 			{meta.touched && meta.error ? (
 				<div className="error">{meta.error}</div>
