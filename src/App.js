@@ -4,7 +4,7 @@ import axios from "axios";
 import "./App.css";
 // import ContactForm from "./components/forms/ContactForm";
 // import DataScienceForm from "./components/forms/DataScienceForm";
-// import DesignerForm from "./components/forms/DesignerForm";
+import DesignerForm from "./components/forms/DesignerForm";
 // import EngineerForm from "./components/forms/EngineerForm";
 // import InfoIntakeForm from "./components/forms/InfoIntakeForm";
 
@@ -61,17 +61,19 @@ const App = () => {
 			{/* <EngineerForm /> */}
 
 			{/* <DataScienceForm />  */}
-			{/* <DesignerForm /> */}
+			<DesignerForm />
 			{/* <InfoIntakeForm />  */}
 			{/* <ContactForm /> */}
 
 			<MySelect styles={colorStyles} options={choices} />
+			
 		</div>
-		<div className="App">
+		{/* <div className="App">
 			<button onClick={refreshList}>Refresh</button>
-			<SignUp addItem={addItem} />
+			<SignUp addItem={addItem} /> */}
 			{/* { this.state.forms ? */}
-			<ul className="forms">
+
+			{/* <ul className="forms">
 				{forms.map((form, idx) => (
 					<div key={idx}>
 						<li>
@@ -85,7 +87,7 @@ const App = () => {
 			</ul>
 			{/* :
 				<div></div>} */}
-		</div>
+		{/* </div> */} 
 		</>
 	);
 };
