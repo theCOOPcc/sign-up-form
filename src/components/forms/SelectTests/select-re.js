@@ -1,12 +1,23 @@
 import React from 'react';
-import Select from 'react-select';
+import ReactSelect from 'react-select';
 import styled from 'styled-components';
 
-// const MultiSelect = styled(Select)`
+// const MultiSelect = styled(ReactSelect)`
 // background:black;
 // width: 200px;
 // text-decoration: none;
 // color: #FEFEFE;
+
+// &.Select--multi {
+//   .Select-value {
+//     display: inline-flex;
+//     align-items: center
+//   }
+// }
+// &.Select-placeholder {
+//   font-size:smaller;
+// }
+
 // `
 
 // const mainColor = '#FEFEFE'
@@ -19,33 +30,56 @@ export const choices = [
 ]
 
 export const colorStyles = {
+  container: (provided, state) => ({
+    ...provided,
+    width: 200,
+  }),
+  // input: (provided, state) => ({
+  //   display: 
+  // }),
   option: (provided, state) => ({
     ...provided,
-    width:state.selectProps.width ,
-    borderBottom: '2px solid #F25187',
-    color: state.selectProps.menuColor,
-    backgroundColor: 'black',
-    padding: 5
-  }),
-  control: () => ({
+    borderBottom: '1px solid #F25187',
+    color: 'white',
+    backgroundColor: '#562636',
+
+    padding: 5,
     width: 200,
+   
+  }),
+  valueContainer: (provided, state) => ({
+    ...provided,
+    backgroundColor:'black',
+    color: 'white'
+  }),
+  multiValue: (provided, state) => ({
+    ...provided,
+    backgroundColor: '#F25187', 
+    color: 'white'
   }),
   singleValue: (provided, state)=> {
     const opacity = state.isDisabled ? 0.5 : 1;
     const transition = 'opacity 300ms';
-
+    
     return {...provided, opacity, transition}
   }
 }
 
 
 
-const MySelect =() => (
-
-    <Select width='200px' options={choices} styles={colorStyles} menuColor='#F25187' />
+export const MySelect =() => (
   // <MultiSelect>
-
+  
   // </MultiSelect>
+<ReactSelect 
+    name='choices' 
+    isMulti 
+    width='200px' 
+    options={choices} 
+    styles={colorStyles} 
+    menuColor='#F25187'
+    closeMenuOnSelect={false}
+    />
 )
 
 
