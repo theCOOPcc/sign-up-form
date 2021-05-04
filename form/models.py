@@ -22,6 +22,14 @@ class Form(models.Model):
   help_with = models.CharField(max_length=50, default='', blank=True)
   avail_dates = models.CharField(max_length=50, default='', blank=True)
   pronouns = models.CharField(max_length=50, default='', blank=True)
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
 
-  def _str_(self):
-    return self.last_name
+
+  @property
+  def emailQuery(self):
+    # return "%s"%(self.email)
+    return self.email
+    
+  def __str__(self):
+    return self.first_name
