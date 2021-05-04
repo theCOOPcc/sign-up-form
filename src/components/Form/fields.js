@@ -1,7 +1,7 @@
 export const candidatePath = {
 	name: "I am a(n)",
 	value: "role",
-	choices: ["Engineer", "Desinger", "Data Scientist", "Mentor"],
+	choices: ["Engineer", "Designer", "Data Scientist", "Mentor"],
 };
 
 export const engineerSkills = {
