@@ -72,9 +72,17 @@ export const FormStyling = {
     width: 200
   
 	}),
+  // indicatorSeperator: (provided, state) => ({
+  //   bacgroundColor: 'black'
+  // }),
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    color: '#F25187'
+
+  }),
   indicatorsContainer: (provided, state) => ({
     ...provided,
-    flexWrap: 'nowrap'
+    color: '#F25187'
   }),
     input: (provided, state) => ({
     display: 'inline'
