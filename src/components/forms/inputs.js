@@ -43,6 +43,7 @@ export const FormStyling = {
   control: (provided, state) => ({
     ...provided,
     border: 'none',
+    borderRadius: 0,
     backgroundColor: 'transparent',
     borderBottom: '1px solid #F25187'
 
