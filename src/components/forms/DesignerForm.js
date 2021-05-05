@@ -51,13 +51,14 @@ import MySelect from './SelectTests/select-re';
 const FormStyle = styled.div`
 background-color: black;
 color: #FEFEFE;
-display:flex;
+display: inline-block;
 flex-direction: column;
-justify-content: center;
+justify-content: space-around;
 align-items: center;
 text-align: center;
 height: 50vh;
-width: 50vw;
+width: 50;
+line-height:1;
 `
 
 const Options = styled.option`

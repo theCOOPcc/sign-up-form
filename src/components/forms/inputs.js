@@ -20,6 +20,8 @@ const Label = styled.label`
 	color: #fefefe;
 `;
 
+
+
 // export const SelectInputStyle = styled.select`
 // --webkit-appearance: none;
 // --moz-appearance: none;
@@ -33,12 +35,17 @@ const Label = styled.label`
 export const FormStyling = {
 	container: (provided, state) => ({
 		...provided,
-		width: 200
+		width: 200,
+    display: 'inline-flex',
+    flexDirection: 'row'
+
 	}),
   control: (provided, state) => ({
-
+    ...provided,
+    border: 'none',
+    backgroundColor: 'transparent',
     borderBottom: '1px solid #F25187'
-    
+
   }),
   menu: (provided, state) => ({
     ...provided,
@@ -58,11 +65,18 @@ export const FormStyling = {
 	}),
 	valueContainer: (provided, state) => ({
 		...provided,
+    flexWrap: 'nowrap',
     placeholder: 'please select up to 4',
 		backgroundColor: "black",
 		color: "white",
+    width: 200
+  
 	}),
-  input: (provided, state) => ({
+  indicatorsContainer: (provided, state) => ({
+    ...provided,
+    flexWrap: 'nowrap'
+  }),
+    input: (provided, state) => ({
     display: 'inline'
   }),
 	multiValue: (provided, state) => ({
