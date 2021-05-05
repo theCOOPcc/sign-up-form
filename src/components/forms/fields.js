@@ -3,7 +3,7 @@ export const candidatePath = {
   value: 'role',
   choices: [
     'Engineer',
-    'Desinger',
+    'Designer',
     'Data Scientist',
     'Mentor'
   ]
@@ -54,7 +54,7 @@ export const designerSkills = {
     'Information Architecture',
     'UI / Visual Design',
     'UX Strategy',
-    'Other'
+    'Other' 
   ]
 }
 

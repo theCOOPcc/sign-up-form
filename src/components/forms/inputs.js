@@ -33,10 +33,12 @@ const Label = styled.label`
 export const FormStyling = {
 	container: (provided, state) => ({
 		...provided,
-		width: 200,
+		width: 200
 	}),
   control: (provided, state) => ({
+
     borderBottom: '1px solid #F25187'
+    
   }),
   menu: (provided, state) => ({
     ...provided,
@@ -56,9 +58,13 @@ export const FormStyling = {
 	}),
 	valueContainer: (provided, state) => ({
 		...provided,
+    placeholder: 'please select up to 4',
 		backgroundColor: "black",
 		color: "white",
 	}),
+  input: (provided, state) => ({
+    display: 'inline'
+  }),
 	multiValue: (provided, state) => ({
 		...provided,
 		backgroundColor: "#F25187",

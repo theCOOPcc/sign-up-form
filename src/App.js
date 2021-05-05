@@ -65,7 +65,7 @@ const App = () => {
 			{/* <InfoIntakeForm />  */}
 			{/* <ContactForm /> */}
 
-			<MySelect styles={colorStyles} options={choices} />
+			{/* <MySelect styles={colorStyles} options={choices} /> */}
 			
 		</div>
 		{/* <div className="App">
