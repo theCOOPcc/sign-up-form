@@ -8,12 +8,11 @@ import DesignerForm from "./components/forms/DesignerForm";
 import EngineerForm from "./components/forms/EngineerForm";
 import InfoIntakeForm from "./components/forms/InfoIntakeForm";
 
-import MentorForm from './components/forms/MentorForm'
+import MentorForm from "./components/forms/MentorForm";
 import ChoosePath from "./components/forms/ChoosePath";
 // import CoryForm from "./components/CoryTestForm/CoryForm"
 // import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
 // import ResearchForm from "./components/CoryTestForm/Codepen/ResearchForm";
-
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -74,12 +73,16 @@ const App = () => {
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm} */}
 				/>
-				<DataScienceForm
+				{/* <DataScienceForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
-				/>
-				{/* <DesignerForm /> */}
-				{/* <InfoIntakeForm />  */}
+				/> */}
+				{/* <DesignerForm
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm}
+				/> */}
+				<InfoIntakeForm currentForm={currentForm}
+					setCurrentForm={setCurrentForm}/> 
 				{/* <ContactForm /> */}
 				{/* <MySelect styles={colorStyles} options={choices} /> */}
 				{/* <CoryForm /> */}
