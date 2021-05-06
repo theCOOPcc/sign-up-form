@@ -113,7 +113,7 @@ const App = () => {
 	return (
 		<>
 			<div className="App">
-				{/* <ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
+				<ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
 				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
 				<EngineerForm
 					currentForm={currentForm}
@@ -136,15 +136,12 @@ const App = () => {
 					setCurrentForm={setCurrentForm}
 					addItem={addItem}
 					newForm={newForm}
-				/> */}
-				{/* <MySelect styles={colorStyles} options={choices} /> */}
-				{/* <CoryForm /> */}
-				{/* <ResearchForm /> */}
-			{/* </div> */}
+				/>
+			</div>
 {/* <div className="App"> */}
-			<button onClick={refreshList}>Refresh</button>
-			<SignUp addItem={addItem} /> 
-			{ forms ?
+			{/* <button onClick={refreshList}>Refresh</button>
+			<SignUp addItem={addItem} />  */}
+			{/* { forms ?
 
 			<ul className="forms">
 				{forms.map((form, idx) => (
@@ -159,8 +156,8 @@ const App = () => {
 				))}
 			</ul>
 		 :
-				<div></div>} 
-			</div>
+				<div></div>}  */}
+			{/* </div> */}
 		</>
 	);
 };
