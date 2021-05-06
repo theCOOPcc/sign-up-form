@@ -31,20 +31,37 @@ const validateSchema = Yup.object().shape({
 });
 
 const MentorForm = (props) => {
+		const helpOptionOptions = [];
+		helpOptions.choices.forEach((element) => {
+			let option = { label: `${element}`, value: `${element}` };
+			helpOptionOptions.push(option);
+		});
+		
 	return (
-		<>
-			<Formik
-				initialValues={{
-					help_with: "",
-					avail_dates: "",
-					linkedin: "",
-				}}
-				// validationSchema={validateSchema}
-				onSubmit={(values) => {
-					console.log("Submit Successful", values);
-					props.setCurrentForm({ ...props.currentForm, role: values.role });
-					console.log(props.currentForm);
-				}}>
+		<Formik
+			initialValues={{
+				help_with: "",
+				avail_dates: "",
+				linkedin: "",
+			}}
+			// validationSchema={validateSchema}
+			onSubmit={(values) => {
+				console.log("Submit Successful", values);
+				props.setCurrentForm({
+					...props.currentForm,
+					help_with: values.help_with,
+					linkedin: values.linkedin,
+				});
+				console.log(props.currentForm);
+			}}
+			render={({
+				values,
+				errors,
+				touched,
+				setFieldValue,
+				setFieldTouched,
+				isSubmitting,
+			}) => (
 				<Form>
 					<FormStyle>
 						<h1>Tell us more about You</h1>
@@ -58,14 +75,23 @@ const MentorForm = (props) => {
 								))}
 							</Inputs.SelectInput>
 						))} */}
+
+						<Inputs.SelectField
+							onBlur={setFieldTouched}
+							onChange={setFieldValue}
+							key={helpOptions.name}
+							label={helpOptions.name}
+							name={helpOptions.value}
+							options={helpOptionOptions}
+						/>
+
 						<label htmlFor="linkedin">Linkedin Profile: </label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
-
 						<button type="submit">Submit</button>
 					</FormStyle>
 				</Form>
-			</Formik>
-		</>
+			)}
+		/>
 	);
 };
 
