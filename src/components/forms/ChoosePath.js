@@ -8,17 +8,19 @@ import styled from "styled-components";
 
 // Basic form styling for each file--probably can do this differently and more cleanly
 const FormStyle = styled.div`
-	background-color: black;
-	color: #fefefe;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: 50vh;
-	width: 50vw;
-`;
 
+background-color: black;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;git
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
+`
 const validationSchema = Yup.object().shape({
 	role: Yup.mixed().oneOf(
 		candidatePath.choices,
@@ -70,6 +72,7 @@ const ChoosePath = (props) => {
 							onChange={setFieldValue}
 						/>
 
+
 						<button style={{ marginTop: "5px" }} type="submit">
 							Submit
 						</button>
@@ -79,5 +82,6 @@ const ChoosePath = (props) => {
 		/>
 	);
 };
+
 
 export default ChoosePath;

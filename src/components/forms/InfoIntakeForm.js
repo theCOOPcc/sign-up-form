@@ -7,16 +7,20 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 
 const FormStyle = styled.div`
-	background-color: black;
-	color: #fefefe;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: 50vh;
-	width: 50vw;
-`;
+
+background-color: black;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
+`
+
 
 const validationSchema = Yup.object().shape({
 	bootcamp: Yup.mixed().oneOf(
@@ -74,6 +78,7 @@ const InfoIntakeForm = (props) => {
 							onChange={setFieldValue}
 						/>
 
+
 						<label htmlFor="github">Github: </label>
 						<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
 
@@ -81,6 +86,7 @@ const InfoIntakeForm = (props) => {
 						<Inputs.TextInput
 							id="portfolio"
 							name="portfolio"></Inputs.TextInput>
+
 
 						<label htmlFor="linkedin">Linkedin: </label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
@@ -93,4 +99,6 @@ const InfoIntakeForm = (props) => {
 	);
 };
 
+
 export default InfoIntakeForm;
+

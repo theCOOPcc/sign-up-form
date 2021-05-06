@@ -7,16 +7,20 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 
 const FormStyle = styled.div`
-	background-color: black;
-	color: #fefefe;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: 50vh;
-	width: 50vw;
-`;
+
+background-color: black;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
+`
+
 
 const validateSchema = Yup.object().shape({
 	help_with: Yup.mixed().oneOf(
@@ -38,6 +42,7 @@ const MentorForm = (props) => {
 		});
 		
 	return (
+
 		<Formik
 			initialValues={{
 				help_with: "",
@@ -85,6 +90,7 @@ const MentorForm = (props) => {
 							options={helpOptionOptions}
 						/>
 
+
 						<label htmlFor="linkedin">Linkedin Profile: </label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
 						<button type="submit">Submit</button>
@@ -95,4 +101,6 @@ const MentorForm = (props) => {
 	);
 };
 
+
 export default MentorForm;
+

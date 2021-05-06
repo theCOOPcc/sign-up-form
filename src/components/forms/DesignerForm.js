@@ -7,6 +7,7 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 import ReactSelect from "react-select";
 import MySelect from "./SelectTests/select-re";
+
 import { designerTech, designerSkills } from "./fields";
 
 // export const FormStyles = {
@@ -48,20 +49,30 @@ import { designerTech, designerSkills } from "./fields";
 
 // Basic form styling for each page
 const FormStyle = styled.div`
-	background-color: black;
-	color: #fefefe;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: 50vh;
-	width: 50vw;
-`;
+
+  background-color: black;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
+`
 
 const Options = styled.option`
-	color: white !important;
-`;
+  color: white !important;
+`
+
+const FullForm = styled.div`
+width: 100%;
+height: 100%;
+`
+
+
 
 const validationSchema = Yup.object().shape({
 	design_skillset: Yup.mixed().oneOf(
@@ -148,5 +159,6 @@ const DesignerForm = (props) => {
 		/>
 	);
 };
+
 
 export default DesignerForm;

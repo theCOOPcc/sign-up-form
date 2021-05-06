@@ -7,22 +7,27 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 
 const FormStyle = styled.div`
-	background-color: black;
-	color: #fefefe;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: 50vh;
-	width: 50vw;
-`;
+
+background-color: black;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
+`
+
 
 const validationSchema = Yup.object().shape({
 	first_name: Yup.string().required("This field is required"),
 	last_name: Yup.string().required("This field is required"),
 	email: Yup.string().email("Invalid email").required("This field is required"),
 });
+
 
 const ContactForm = (props) => {
 	const pronounOptions = [];
@@ -83,6 +88,7 @@ const ContactForm = (props) => {
 							onChange={setFieldValue}
 						/>
 
+
 						<button type="submit">Submit</button>
 					</FormStyle>
 				</Form>
@@ -91,3 +97,4 @@ const ContactForm = (props) => {
 	);
 };
 export default ContactForm;
+
