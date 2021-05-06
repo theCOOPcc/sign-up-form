@@ -15,7 +15,7 @@ background-color: black;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
+  height: 100%;git
   width: 100%;
   line-height: 1;
   padding: 10px;
