@@ -309,11 +309,9 @@ export const SelectInput = ({ label, ...props }) => {
 					{...props}
 				/> */}
         </ReactSelect>
+				{meta.touched && meta.error ? (
+					<div className="error">{meta.error}</div>
+				) : null}
       </div>
-
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </StyleDiv>
   );
 };

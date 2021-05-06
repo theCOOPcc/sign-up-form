@@ -30,11 +30,6 @@ width: 100%;
 height: 100%;
 `
 
-
-const Label = styled.label`
-	color: #fefefe;
-`;
-
 const validationSchema = Yup.object().shape({
 	engineer_skillset: Yup.mixed().oneOf(
 		engineerSkills.choices,
