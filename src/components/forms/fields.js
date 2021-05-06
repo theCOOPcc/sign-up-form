@@ -142,7 +142,7 @@ export const helpDates = {
 }
 
 export const pronouns = {
-  name: 'pronouns',
+  name: 'Pronouns:',
   value: 'pronouns',
   choices: [
     'She, Her, Hers',

@@ -67,23 +67,26 @@ const App = () => {
 	return (
 		<>
 			<div className="App">
-				{/* <ChoosePath currentForm={currentForm} setCurrentForm={setCurrentForm} /> */}
-				{/* <MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} /> */}
-				{/* <EngineerForm
+				<ChoosePath currentForm={currentForm} setCurrentForm={setCurrentForm} />
+				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
+				<EngineerForm
 					currentForm={currentForm}
-					setCurrentForm={setCurrentForm} */}
+					setCurrentForm={setCurrentForm}
 				/>
-				{/* <DataScienceForm
+				<DataScienceForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
-				/> */}
-				{/* <DesignerForm
+				/>
+				<DesignerForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
-				/> */}
+				/>
 				<InfoIntakeForm currentForm={currentForm}
 					setCurrentForm={setCurrentForm}/> 
-				{/* <ContactForm /> */}
+				<ContactForm
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm}
+				/>
 				{/* <MySelect styles={colorStyles} options={choices} /> */}
 				{/* <CoryForm /> */}
 				{/* <ResearchForm /> */}

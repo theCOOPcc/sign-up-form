@@ -1,30 +1,32 @@
 import React from "react";
 // import ReactDom from 'react-dom'
-import { Formik, Form} from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { bootcamps } from "./fields";
 import * as Inputs from "./inputs";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const FormStyle = styled.div`
-background-color: black;
-color: #FEFEFE;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 50vh;
-width: 50vw;
-`
+	background-color: black;
+	color: #fefefe;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 50vh;
+	width: 50vw;
+`;
 
 const validationSchema = Yup.object().shape({
-  bootcamp: Yup.mixed().oneOf(bootcamps.choices, 'Please choose from one of the selections'),
-	linkedin: Yup.string().required('This field is required'),
-	github: Yup.string().required('This field is required'),
-	portfolio: Yup.string().required('This field is required'),
-})
-
+	bootcamp: Yup.mixed().oneOf(
+		bootcamps.choices,
+		"Please choose from one of the selections"
+	),
+	linkedin: Yup.string().required("This field is required"),
+	github: Yup.string().required("This field is required"),
+	portfolio: Yup.string().required("This field is required"),
+});
 
 const InfoIntakeForm = (props) => {
 	const bootcampOptions = [];

@@ -199,17 +199,17 @@ export const SelectField = ({ label, ...props }) => {
 
 export const SelectInput = ({ label, ...props }) => {
 	const [field, meta] = useField(props);
-		function handleChange(value) {
-			const { onChange, name } = props;
+	function handleChange(value) {
+		const { onChange, name } = props;
 
-			onChange(name, value);
-		}
+		onChange(name, value);
+	}
 
-		function handleBlur() {
-			const { onBlur, name } = props;
+	function handleBlur() {
+		const { onBlur, name } = props;
 
-			onBlur(name, true);
-		}
+		onBlur(name, true);
+	}
 	const {
 		id,
 		name,
