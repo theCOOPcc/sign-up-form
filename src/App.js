@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import SignUp from "./components/Form/Form";
 import axios from "axios";
 import "./App.css";
-// import ContactForm from "./components/forms/ContactForm";
-// import DataScienceForm from "./components/forms/DataScienceForm";
+import ContactForm from "./components/forms/ContactForm";
+import DataScienceForm from "./components/forms/DataScienceForm";
 import DesignerForm from "./components/forms/DesignerForm";
-// import EngineerForm from "./components/forms/EngineerForm";
-// import InfoIntakeForm from "./components/forms/InfoIntakeForm";
+import EngineerForm from "./components/forms/EngineerForm";
+import InfoIntakeForm from "./components/forms/InfoIntakeForm";
 
-// import MentorForm from './components/forms/MentorForm'
-// import ChoosePath from "./components/forms/ChoosePath";
+import MentorForm from './components/forms/MentorForm'
+import ChoosePath from "./components/forms/ChoosePath";
 import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
 
 
@@ -59,11 +59,10 @@ const App = () => {
 			{/* <ChoosePath /> */}
       {/* <MentorForm />  */}
 			{/* <EngineerForm /> */}
-
 			{/* <DataScienceForm />  */}
-			<DesignerForm />
+			{/* <DesignerForm /> */}
 			{/* <InfoIntakeForm />  */}
-			{/* <ContactForm /> */}
+			<ContactForm />
 
 			{/* <MySelect styles={colorStyles} options={choices} /> */}
 			

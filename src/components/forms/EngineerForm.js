@@ -10,22 +10,26 @@ import '../../App.css'
 
 const FormStyle = styled.div`
 background-color: black;
-color: #FEFEFE;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 50vh;
-width: 50vw;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
 `
 
 const Label = styled.label`
 color: #FEFEFE;
 `
 
-
-
+const FullForm = styled.div`
+width: 100%;
+height: 100%;
+`
 
 
 const validationSchema = Yup.object().shape({
@@ -39,7 +43,8 @@ const validationSchema = Yup.object().shape({
 
 const EngineerForm = () => {
   return (
-    <FormStyle>
+    <FullForm>
+
     <Formik
     initialValues={{
       engineer_skillset: "",
@@ -52,19 +57,19 @@ const EngineerForm = () => {
     }}
     >
       <Form>
-        
+      <FormStyle>
 
       <h3>Tell us a little about your interests...</h3>
 
       {Fields.firstFields.map((f) => (
-        <Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+        <Inputs.EngineerSelectInput key={f.name} label={f.name} name={f.value}>
           <option  value={f.value}></option>
           {f.choices.map((c) => (
             <option name={c.value} key={c} value={c}>
               {c}
             </option>
           ))}
-        </Inputs.SelectInput>
+        </Inputs.EngineerSelectInput>
       ))}
         
 
@@ -73,11 +78,12 @@ const EngineerForm = () => {
 					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
 <button type="submit">Submit</button>
-        
+</FormStyle>
       </Form>
       </Formik>
+    </FullForm>
 
-    </FormStyle>
+    
 
     
   )

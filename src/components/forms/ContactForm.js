@@ -8,14 +8,16 @@ import styled from 'styled-components'
 
 const FormStyle = styled.div`
 background-color: black;
-color: #FEFEFE;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 50vh;
-width: 50vw;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
 `
 
 const validationSchema = Yup.object().shape({
@@ -26,6 +28,7 @@ const validationSchema = Yup.object().shape({
 
 const ContactForm = () => {
   return (
+    <FormStyle>
     <Formik
     initialValues={{
       first_name: '',
@@ -40,7 +43,6 @@ const ContactForm = () => {
 
         
       <Form>
-        <FormStyle>
       <h1>CONTACT INFO</h1>
 
         <label htmlFor="firstName">First Name: </label>
@@ -51,12 +53,12 @@ const ContactForm = () => {
 
 
         {Fields.pronounField.map(f => (
-          <Inputs.SelectInput key={f.value} label={f.name} name={f.value}>
+          <Inputs.ContactSelectInput key={f.value} label={f.name} name={f.value}>
             <option value={f.value} ></option>
             {f.choices.map((c) => (
               <option name={c.value} key={c}>{c}</option>
             ))}
-          </Inputs.SelectInput>
+          </Inputs.ContactSelectInput>
         ))}
 
 
@@ -65,11 +67,11 @@ const ContactForm = () => {
 
         <button type="submit">Submit</button>
 
-        </FormStyle>
 
       </Form>
         
     </Formik>
+        </FormStyle>
   )
 }
 

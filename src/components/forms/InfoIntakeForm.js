@@ -8,14 +8,16 @@ import styled from 'styled-components'
 
 const FormStyle = styled.div`
 background-color: black;
-color: #FEFEFE;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 50vh;
-width: 50vw;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
 `
 
 const validationSchema = Yup.object().shape({
@@ -28,6 +30,7 @@ const validationSchema = Yup.object().shape({
 
 const InfoIntakeForm = () => {
   return (
+    <FormStyle>
     <Formik
     initialValues={{
       bootcamp: '',
@@ -41,16 +44,15 @@ const InfoIntakeForm = () => {
     }}
     >
       <Form>
-        <FormStyle>
 
       <h1>Tell us more about you</h1>
       {Fields.secondFields.map(f => (
-						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+						<Inputs.InfoIntakeSelectInput key={f.name} label={f.name} name={f.value}>
 							<option value={f.value} ></option>
 							{f.choices.map((c) => (
 								<option name={c.value} key={c} >{c}</option>
 							))}
-						</Inputs.SelectInput>
+						</Inputs.InfoIntakeSelectInput>
 					))}
 
 					<label htmlFor="github">Github: </label>
@@ -63,10 +65,10 @@ const InfoIntakeForm = () => {
 					<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
 
 								<button type="submit">Submit</button>
-        </FormStyle>
 
       </Form>
     </Formik>
+        </FormStyle>
   )
 }
 

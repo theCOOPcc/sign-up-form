@@ -9,14 +9,16 @@ import styled from 'styled-components'
 // Basic form styling for each file--probably can do this differently and more cleanly
 const FormStyle = styled.div`
 background-color: black;
-color: #FEFEFE;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 50vh;
-width: 50vw;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
 `
 
 const validationSchema = Yup.object().shape({
@@ -42,12 +44,12 @@ const ChoosePath = () => {
       </div>
 
       {Fields.paths.map((f) => (
-        <Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+        <Inputs.ChoosePathSelectInput key={f.name} label={f.name} name={f.value}>
           <option value={f.value}></option>
           {f.choices.map((c) => (
             <option name={c.value} key={c} value={c}>{c}</option>
           ))}
-        </Inputs.SelectInput>
+        </Inputs.ChoosePathSelectInput>
       ))}
 
 <button style={{marginTop: '5px'}} type="submit">Submit</button>

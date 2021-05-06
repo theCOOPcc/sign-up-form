@@ -8,14 +8,16 @@ import styled from 'styled-components'
 
 const FormStyle = styled.div`
 background-color: black;
-color: #FEFEFE;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 50vh;
-width: 50vw;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
 `
 
 
@@ -29,7 +31,8 @@ const validateSchema = Yup.object().shape({
 
 const MentorForm = () => {
 	return (
-		<>
+		
+		<FormStyle>
 		<Formik 
 		initialValues={{
 			help_with: "",
@@ -41,25 +44,24 @@ const MentorForm = () => {
 			console.log('Submit Successful', values)
 		}}>
 			<Form>
-				<FormStyle>
 			<h1>Tell us more about You</h1>
 				{Fields.mentorFields.map((f) => (
-					<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+					<Inputs.MentorSelectInput key={f.name} label={f.name} name={f.value}>
 						<option value={f.value}></option>
 						{f.choices.map((c) => (
 							<option name={c.value} key={c} value={c}>{c}</option>
 						))}
-					</Inputs.SelectInput>
+					</Inputs.MentorSelectInput>
 				))}
 			<label htmlFor='linkedin'>Linkedin Profile: </label>
 			<Inputs.TextInput id='linkedin' name='linkedin' ></Inputs.TextInput>
 
 			<button type='submit'>Submit</button>
 
-				</FormStyle>
 			</Form>
 			</Formik>
-			</>
+				</FormStyle>
+			
 	)
 	}
 	

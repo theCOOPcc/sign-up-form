@@ -9,14 +9,21 @@ import styled from 'styled-components'
 
 const FormStyle = styled.div`
 background-color: black;
-color: #FEFEFE;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 50vh;
-width: 50vw;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
+`
+
+const FullForm = styled.div`
+width: 100%;
+height: 100%;
 `
 
 const validationSchema = Yup.object().shape({
@@ -27,6 +34,9 @@ const validationSchema = Yup.object().shape({
 
 const DataScienceForm = () => {
   return (
+
+    <FullForm>
+
     <Formik
     initialValues={{
       data_sci_skillset: '',
@@ -44,12 +54,12 @@ const DataScienceForm = () => {
             
           </div>
 					{Fields.dataSciFields.map(f => (
-						<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
+						<Inputs.DataScienceSelectInput key={f.name} label={f.name} name={f.value}>
 							<option value={f.value} ></option>
 							{f.choices.map((c) => (
 								<option name={c.value} key={c} >{c}</option>
 							))}
-						</Inputs.SelectInput>
+						</Inputs.DataScienceSelectInput>
 					))}
 
 					<label htmlFor="whyJoin">Tell us why you'd like to join: </label>
@@ -60,6 +70,7 @@ const DataScienceForm = () => {
 
       </Form>
     </Formik>
+    </FullForm>
   )
 }
 
