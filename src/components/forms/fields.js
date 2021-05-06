@@ -1,8 +1,15 @@
 export const candidatePath = {
-  name: "I am a(n)",
-  value: "role",
-  choices: ["Engineer", "Designer", "Data Scientist", "Mentor"],
-};
+
+  name: 'I am a(n)',
+  value: 'role',
+  choices: [
+    'Engineer',
+    'Designer',
+    'Data Scientist',
+    'Mentor'
+  ]
+}
+
 
 export const engineerSkills = {
   name: "My skill set includes: ",
@@ -130,21 +137,44 @@ export const helpDates = {
 };
 
 export const pronouns = {
-  name: "pronouns",
-  value: "pronouns",
-  choices: ["She, Her, Hers", "He, Him, His", "They, Them, Theirs"],
-};
 
-export const paths = [candidatePath];
+  name: 'Pronouns:',
+  value: 'pronouns',
+  choices: [
+    'She, Her, Hers',
+    'He, Him, His',
+    'They, Them, Theirs'
+  ]
+}
 
-export const pronounField = [pronouns];
+export const paths = [
+  candidatePath
+]
 
-export const firstFields = [engineerSkills, engineerTech];
+export const pronounField = [
+  pronouns
+]
 
-export const designFields = [designerSkills, designerTech];
+export const firstFields = [
+  engineerSkills,
+  engineerTech,
+]
 
-export const dataSciFields = [dataSciSkills];
+export const designFields = [
+  designerSkills,
+  designerTech
+]
 
-export const secondFields = [bootcamps];
+export const dataSciFields = [
+  dataSciSkills
+]
 
-export const mentorFields = [helpOptions, helpDates];
+export const secondFields = [
+  bootcamps,
+]
+
+export const mentorFields = [
+  helpOptions,
+  helpDates
+]
+

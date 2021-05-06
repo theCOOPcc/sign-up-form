@@ -1,12 +1,11 @@
 import React from "react";
 // import ReactDom from 'react-dom'
-import { Formik, Form} from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import * as Fields from "./fields";
+import { engineerSkills, engineerTech } from "./fields";
 import * as Inputs from "./inputs";
-import styled from 'styled-components'
-import '../../App.css'
-
+import styled from "styled-components";
+import "../../App.css";
 
 const FormStyle = styled.div`
 background-color: black;
@@ -32,61 +31,89 @@ height: 100%;
 `
 
 
+const Label = styled.label`
+	color: #fefefe;
+`;
+
 const validationSchema = Yup.object().shape({
-  engineer_skillset: Yup.mixed()
-	.oneOf(Fields.engineerSkills.choices, 'Please choose from one of the selections'),
-	engineer_techs: Yup.mixed()
-	.oneOf(Fields.engineerTech.choices, 'Please choose from one of the selections'),
-  why_join: Yup.string()
-	.required('This field is required'),
-})
+	engineer_skillset: Yup.mixed().oneOf(
+		engineerSkills.choices,
+		"Please choose from one of the selections"
+	),
+	engineer_techs: Yup.mixed().oneOf(
+		engineerTech.choices,
+		"Please choose from one of the selections"
+	),
+	why_join: Yup.string().required("This field is required"),
+});
 
-const EngineerForm = () => {
-  return (
-    <FullForm>
+const EngineerForm = (props) => {
+  	const engineerSkillsOptions = [];
+		engineerSkills.choices.forEach((element) => {
+			let skill = { label: `${element}`, value: `${element}` };
+			engineerSkillsOptions.push(skill);
+		});
 
-    <Formik
-    initialValues={{
-      engineer_skillset: "",
-			engineer_techs: "",
-      why_join: ""
-    }}
-    validationSchema={validationSchema}
-    onSubmit={(values) => {
-      console.log('Submit Successful', values)
-    }}
-    >
-      <Form>
-      <FormStyle>
+		const engineerTechOptions = [];
+		engineerTech.choices.forEach((element) => {
+			let tech = { label: `${element}`, value: `${element}` };
+			engineerTechOptions.push(tech);
+		});
+	return (
+		<Formik
+			initialValues={{
+				engineer_skillset: "",
+				engineer_techs: "",
+				why_join: "",
+			}}
+			// validationSchema={validationSchema}
+			onSubmit={(values) => {
+				console.log("Submit Successful", values);
+				props.setCurrentForm({
+					...props.currentForm,
+					engineer_skillset: values.engineer_skillset,
+					engineer_techs: values.engineer_techs,
+          why_join: values.why_join
+				});
+				console.log(props.currentForm);
+			}}
+			render={({
+				values,
+				errors,
+				touched,
+				setFieldValue,
+				setFieldTouched,
+				isSubmitting,
+			}) => (
+				<Form>
+					<FormStyle>
+						<h4>Tell us a little about your interests...</h4>
 
-      <h3>Tell us a little about your interests...</h3>
-
-      {Fields.firstFields.map((f) => (
-        <Inputs.EngineerSelectInput key={f.name} label={f.name} name={f.value}>
-          <option  value={f.value}></option>
-          {f.choices.map((c) => (
-            <option name={c.value} key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </Inputs.EngineerSelectInput>
-      ))}
-        
-
-
-<Label htmlFor="whyJoin">Tell us why you'd like to join: </Label>
-					<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-
-<button type="submit">Submit</button>
-</FormStyle>
-      </Form>
-      </Formik>
-    </FullForm>
-
-    
-
-    
-  )
-}
+						<Inputs.SelectField
+							onBlur={setFieldTouched}
+							onChange={setFieldValue}
+							key={engineerSkills.name}
+							label={engineerSkills.name}
+							name={engineerSkills.value}
+							options={engineerSkillsOptions}
+						/>
+						<Inputs.SelectField
+							onBlur={setFieldTouched}
+							onChange={setFieldValue}
+							key={engineerTech.name}
+							label={engineerTech.name}
+							name={engineerTech.value}
+							options={engineerTechOptions}
+						/>
+						<Label htmlFor="whyJoin">Tell us why you'd like to join: </Label>
+						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+						<button type="submit">Submit</button>
+					</FormStyle>
+				</Form>
+			)}
+		/>
+	);
+};
 
 export default EngineerForm;
+

@@ -1,7 +1,10 @@
-import { Form, useField } from "formik";
+import { Form, useField, FieldProps } from "formik";
 import styled from "styled-components";
-import ReactSelect from "react-select";
+import ReactSelect, { ReactSelectProps } from "react-select";
 import * as Fields from "./fields";
+
+import { designFields } from "../Form/fields";
+
 
  
 const Input = styled.input`
@@ -145,205 +148,161 @@ export const EngineerSelectInput = ({ label, ...props }) => {
 };
 
 
+export const Dropdown = ({ label, ...props }) => {
+	const [field, meta, helpers] = useField(props);
 
-export const DesignSelectInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  let bananas = [];
-  function createSelectors() {
-    Fields.designFields.map((fields) => {
-      fields.choices.map((choice) => {
-        bananas.push({ value: `${choice}`, label: `${choice}` });
-      });
-    });
-  }
-  createSelectors();
-  return (
-    <StyleDiv>
-      <div>
-        <Label htmlFor={props.id || props.name}>{label}</Label>
-      </div>
-      {/* {console.log(designFields)} */}
-      <div>
-        <ReactSelect styles={FormStyling} options={bananas} isMulti>
-          {/* <FormStyling
-					placeholder="Select up to 4"
-					key={props.name}
-					{...field}
-					{...props}
-				/> */}
-        </ReactSelect>
-      </div>
+	const { options } = props;
+	const { touched, error, value } = meta;
+	const { setValue } = helpers;
 
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </StyleDiv>
-  );
+	return (
+		<>
+			<label htmlFor={props.id || props.name}>{label}</label>
+			<ReactSelect
+				options={options}
+				name={field.name}
+				onChange={(option) => setValue(option.value)}
+				instanceId={props.iid}
+			/>
+		</>
+	);
 };
 
-export const DataScienceSelectInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  let bananas = [];
-  function createSelectors() {
-    Fields.dataSciFields.map((fields) => {
-      fields.choices.map((choice) => {
-        bananas.push({ value: `${choice}`, label: `${choice}` });
-      });
-    });
-  }
-  createSelectors();
-  return (
-    <StyleDiv>
-      <div>
-        <Label htmlFor={props.id || props.name}>{label}</Label>
-      </div>
-      {/* {console.log(designFields)} */}
-      <div>
-        <ReactSelect styles={FormStyling} options={bananas} isMulti>
-          {/* <FormStyling
-					placeholder="Select up to 4"
-					key={props.name}
-					{...field}
-					{...props}
-				/> */}
-        </ReactSelect>
-      </div>
+export const SelectField = ({ label, ...props }) => {
+	const colorStyles = {
+		container: (provided, state) => ({
+			...provided,
+			width: 200,
+		}),
+		// input: (provided, state) => ({
+		//   display:
+		// }),
+		option: (provided, state) => ({
+			...provided,
+			borderBottom: "1px solid #F25187",
+			color: "white",
+			backgroundColor: "#562636",
 
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </StyleDiv>
-  );
+			padding: 5,
+			width: 200,
+		}),
+		valueContainer: (provided, state) => ({
+			...provided,
+			backgroundColor: "black",
+			color: "white",
+		}),
+		multiValue: (provided, state) => ({
+			...provided,
+			backgroundColor: "#F25187",
+			color: "white",
+		}),
+		singleValue: (provided, state) => {
+			const opacity = state.isDisabled ? 0.5 : 1;
+			const transition = "opacity 300ms";
+
+			return { ...provided, opacity, transition };
+		},
+	};
+	function handleChange(value) {
+		const { onChange, name } = props;
+
+		onChange(name, value);
+	}
+
+	function handleBlur() {
+		const { onBlur, name } = props;
+
+		onBlur(name, true);
+	}
+
+	const {
+		id,
+		name,
+		// label,
+		placeholder,
+		options,
+		value,
+		isMulti,
+		isDisabled,
+		touched,
+		error,
+		isClearable,
+		backspaceRemovesValue,
+	} = props;
+	return (
+		<div className="input-field-wrapper">
+			{label && (
+				<h3 className="input-label" htmlFor={name} error={error}>
+					{label}
+				</h3>
+			)}
+
+			<ReactSelect
+				id={id}
+				placeholder={placeholder}
+				options={options}
+				value={value}
+				onChange={handleChange}
+				onBlur={handleBlur}
+				touched={touched}
+				error={error}
+				isMulti
+				isDisabled={isDisabled}
+				isClearable={isClearable}
+				backspaceRemovesValue={backspaceRemovesValue}
+				components={{ ClearIndicator: null }}
+				// styles={colorStyles}
+			/>
+
+			{touched && error ? <p className="error-text">{error}</p> : null}
+		</div>
+	);
 };
 
+export const SelectInput = ({ label, ...props }) => {
+	const [field, meta] = useField(props);
+	function handleChange(value) {
+		const { onChange, name } = props;
 
-export const InfoIntakeSelectInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  let bananas = [];
-  function createSelectors() {
-    Fields.secondFields.map((fields) => {
-      fields.choices.map((choice) => {
-        bananas.push({ value: `${choice}`, label: `${choice}` });
-      });
-    });
-  }
-  createSelectors();
-  return (
-    <StyleDiv>
-      <div>
-        <Label htmlFor={props.id || props.name}>{label}</Label>
-      </div>
-      {/* {console.log(designFields)} */}
-      <div>
-        <ReactSelect styles={FormStyling} options={bananas} isMulti>
-          {/* <FormStyling
-					placeholder="Select up to 4"
-					key={props.name}
-					{...field}
-					{...props}
-				/> */}
-        </ReactSelect>
-      </div>
+		onChange(name, value);
+	}
 
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </StyleDiv>
-  );
-};
+	function handleBlur() {
+		const { onBlur, name } = props;
 
-
-export const MentorSelectInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  let bananas = [];
-  function createSelectors() {
-    Fields.mentorFields.map((fields) => {
-      fields.choices.map((choice) => {
-        bananas.push({ value: `${choice}`, label: `${choice}` });
-      });
-    });
-  }
-  createSelectors();
-  return (
-    <StyleDiv>
-      <div>
-        <Label htmlFor={props.id || props.name}>{label}</Label>
-      </div>
-      {/* {console.log(designFields)} */}
-      <div>
-        <ReactSelect styles={FormStyling} options={bananas} isMulti>
-          {/* <FormStyling
-					placeholder="Select up to 4"
-					key={props.name}
-					{...field}
-					{...props}
-				/> */}
-        </ReactSelect>
-      </div>
-
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </StyleDiv>
-  );
-};
-
-export const ChoosePathSelectInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  let bananas = [];
-  function createSelectors() {
-    Fields.paths.map((fields) => {
-      fields.choices.map((choice) => {
-        bananas.push({ value: `${choice}`, label: `${choice}` });
-      });
-    });
-  }
-  createSelectors();
-  return (
-    <StyleDiv>
-      <div>
-        <Label htmlFor={props.id || props.name}>{label}</Label>
-      </div>
-      {/* {console.log(designFields)} */}
-      <div>
-        <ReactSelect styles={FormStyling} options={bananas} isMulti>
-          {/* <FormStyling
-					placeholder="Select up to 4"
-					key={props.name}
-					{...field}
-					{...props}
-				/> */}
-        </ReactSelect>
-      </div>
-
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </StyleDiv>
-  );
-};
-
-
-export const ContactSelectInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  let bananas = [];
-  function createSelectors() {
-    Fields.pronounField.map((fields) => {
-      fields.choices.map((choice) => {
-        bananas.push({ value: `${choice}`, label: `${choice}` });
-      });
-    });
-  }
-  createSelectors();
-  return (
-    <StyleDiv>
-      <div>
-        <Label htmlFor={props.id || props.name}>{label}</Label>
-      </div>
-      {/* {console.log(designFields)} */}
-      <div>
-        <ReactSelect styles={FormStyling} options={bananas} isMulti>
-          {/* <FormStyling
+		onBlur(name, true);
+	}
+	const {
+		id,
+		name,
+		// label,
+		placeholder,
+		options,
+		value,
+		isMulti,
+		isDisabled,
+		touched,
+		error,
+		isClearable,
+		backspaceRemovesValue,
+	} = props;
+	return (
+		<div>
+			<Label htmlFor={props.id || props.name}>{label}</Label>
+			{/* {console.log(designFields)} */}
+			<ReactSelect
+				// options={options}
+				id={id}
+				placeholder={placeholder}
+				options={options}
+				value={value}
+				onChange={handleChange}
+				onBlur={handleBlur}
+				touched={touched}
+				error={error}
+				backspaceRemovesValue={backspaceRemovesValue}
+				components={{ ClearIndicator: null }}>
+				{/* <FormStyling
 					placeholder="Select up to 4"
 					key={props.name}
 					{...field}
