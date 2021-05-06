@@ -1,3 +1,4 @@
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 # Create your models here.
@@ -12,16 +13,16 @@ class Form(models.Model):
   linkedin = models.CharField(max_length=254, default='', blank=True)
   github = models.CharField(max_length=254, default='', blank=True)
   portfolio = models.CharField(max_length=254,default='', blank=True)
-  engineer_skillset = models.CharField(max_length=50, default='', blank=True)
-  engineer_techs = models.CharField(max_length=50, default='', blank=True)
   why_join = models.TextField(default='')
-  design_skillset = models.CharField(max_length=50, default='', blank=True)
-  design_techs = models.CharField(max_length=50, default='', blank=True)
-  data_sci_skillset = models.CharField(max_length=50, default='', blank=True)
-  bootcamps = models.CharField(max_length=50, default='', blank=True)
-  help_with = models.CharField(max_length=50, default='', blank=True)
-  avail_dates = models.CharField(max_length=50, default='', blank=True)
   pronouns = models.CharField(max_length=50, default='', blank=True)
+  avail_dates = models.CharField(max_length=50, default='', blank=True)
+  help_with = models.CharField(max_length=50, default='', blank=True)
+  bootcamps = models.CharField(max_length=50, default='', blank=True)
+  engineer_skillset = ArrayField(models.CharField(max_length=50, default=list, blank=True))
+  engineer_techs = ArrayField(models.CharField(max_length=50, default=list, blank=True))
+  design_skillset = ArrayField(models.CharField(max_length=50, default=list, blank=True))
+  design_techs = ArrayField(models.CharField(max_length=50, default=list, blank=True))
+  data_sci_skillset = ArrayField(models.CharField(max_length=50, default=list, blank=True))
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 

@@ -99,7 +99,7 @@ const App = () => {
 	function addItem(newForm) {
 		axios
 			.post("/api/forms/", newForm)
-			// .then(refreshList())
+			.then(refreshList())
 			.catch((err) => console.log(err));
 	}
 
@@ -113,7 +113,7 @@ const App = () => {
 	return (
 		<>
 			<div className="App">
-				<ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
+				{/* <ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
 				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
 				<EngineerForm
 					currentForm={currentForm}
@@ -136,17 +136,17 @@ const App = () => {
 					setCurrentForm={setCurrentForm}
 					addItem={addItem}
 					newForm={newForm}
-				/>
+				/> */}
 				{/* <MySelect styles={colorStyles} options={choices} /> */}
 				{/* <CoryForm /> */}
 				{/* <ResearchForm /> */}
-			</div>
-			{/* <div className="App">
+			{/* </div> */}
+{/* <div className="App"> */}
 			<button onClick={refreshList}>Refresh</button>
-			<SignUp addItem={addItem} /> */}
-			{/* { this.state.forms ? */}
+			<SignUp addItem={addItem} /> 
+			{ forms ?
 
-			{/* <ul className="forms">
+			<ul className="forms">
 				{forms.map((form, idx) => (
 					<div key={idx}>
 						<li>
@@ -158,9 +158,9 @@ const App = () => {
 					</div>
 				))}
 			</ul>
-			{/* :
-				<div></div>} */}
-			{/* </div> */}
+		 :
+				<div></div>} 
+			</div>
 		</>
 	);
 };
