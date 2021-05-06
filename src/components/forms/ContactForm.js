@@ -49,6 +49,7 @@ const ContactForm = (props) => {
 					pronouns: values.pronouns,
 				});
 				console.log(props.currentForm);
+        props.addItem(props.newForm)
 			}}
 			render={({
 				values,
