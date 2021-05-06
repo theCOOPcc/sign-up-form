@@ -67,25 +67,25 @@ const App = () => {
 
 	return (
 		<>
-		<div className="App">
-
-			<ChoosePath 
-				currentForm={currentForm}
-				setCurrentForm={setCurrentForm}
-			/>
-      {/* <MentorForm />  */}
-			{/* <EngineerForm /> */}
-			{/* <DataScienceForm />  */}
-			{/* <DesignerForm /> */}
-			{/* <InfoIntakeForm />  */}
-			{/* <ContactForm /> */}
-
-			
-			{/* <MySelect styles={colorStyles} options={choices} /> */}
-			{/* <CoryForm /> */}
-			{/* <ResearchForm /> */}
-		</div>
-		{/* <div className="App">
+			<div className="App">
+				{/* <ChoosePath currentForm={currentForm} setCurrentForm={setCurrentForm} /> */}
+				{/* <MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} /> */}
+				{/* <EngineerForm
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm} */}
+				/>
+				<DataScienceForm
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm}
+				/>
+				{/* <DesignerForm /> */}
+				{/* <InfoIntakeForm />  */}
+				{/* <ContactForm /> */}
+				{/* <MySelect styles={colorStyles} options={choices} /> */}
+				{/* <CoryForm /> */}
+				{/* <ResearchForm /> */}
+			</div>
+			{/* <div className="App">
 			<button onClick={refreshList}>Refresh</button>
 			<SignUp addItem={addItem} /> */}
 			{/* { this.state.forms ? */}
@@ -104,7 +104,7 @@ const App = () => {
 			</ul>
 			{/* :
 				<div></div>} */}
-		{/* </div> */} 
+			{/* </div> */}
 		</>
 	);
 };

@@ -75,7 +75,7 @@ const validationSchema = Yup.object().shape({
 	why_join: Yup.string().required("This field is required").max(100),
 });
 
-const DesignerForm = () => {
+const DesignerForm = (props) => {
 	const designSkillOptions = [];
 	designerSkills.choices.forEach((element) => {
 		let skill = { label: `${element}`, value: `${element}` };
