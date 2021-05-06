@@ -3,7 +3,7 @@ export const candidatePath = {
   value: 'role',
   choices: [
     'Engineer',
-    'Desinger',
+    'Designer',
     'Data Scientist',
     'Mentor'
   ]
@@ -142,7 +142,7 @@ export const helpDates = {
 }
 
 export const pronouns = {
-  name: 'pronouns',
+  name: 'Pronouns:',
   value: 'pronouns',
   choices: [
     'She, Her, Hers',
