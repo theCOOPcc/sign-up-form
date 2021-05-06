@@ -199,20 +199,47 @@ export const SelectField = ({ label, ...props }) => {
 
 export const SelectInput = ({ label, ...props }) => {
 	const [field, meta] = useField(props);
-	let bananas = [];
-	function createSelectors() {
-		designFields.map((fields) => {
-			fields.choices.map((choice) => {
-				bananas.push({ value: `${choice}`, label: `${choice}` });
-			});
-		});
-	}
-	createSelectors();
+		function handleChange(value) {
+			const { onChange, name } = props;
+
+			onChange(name, value);
+		}
+
+		function handleBlur() {
+			const { onBlur, name } = props;
+
+			onBlur(name, true);
+		}
+	const {
+		id,
+		name,
+		// label,
+		placeholder,
+		options,
+		value,
+		isMulti,
+		isDisabled,
+		touched,
+		error,
+		isClearable,
+		backspaceRemovesValue,
+	} = props;
 	return (
 		<div>
 			<Label htmlFor={props.id || props.name}>{label}</Label>
 			{/* {console.log(designFields)} */}
-			<ReactSelect options={bananas}>
+			<ReactSelect
+				// options={options}
+				id={id}
+				placeholder={placeholder}
+				options={options}
+				value={value}
+				onChange={handleChange}
+				onBlur={handleBlur}
+				touched={touched}
+				error={error}
+				backspaceRemovesValue={backspaceRemovesValue}
+				components={{ ClearIndicator: null }}>
 				{/* <FormStyling
 					placeholder="Select up to 4"
 					key={props.name}

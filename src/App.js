@@ -2,23 +2,40 @@ import React, { useState, useEffect } from "react";
 import SignUp from "./components/Form/Form";
 import axios from "axios";
 import "./App.css";
-// import ContactForm from "./components/forms/ContactForm";
-// import DataScienceForm from "./components/forms/DataScienceForm";
+import ContactForm from "./components/forms/ContactForm";
+import DataScienceForm from "./components/forms/DataScienceForm";
 import DesignerForm from "./components/forms/DesignerForm";
-// import EngineerForm from "./components/forms/EngineerForm";
-// import InfoIntakeForm from "./components/forms/InfoIntakeForm";
+import EngineerForm from "./components/forms/EngineerForm";
+import InfoIntakeForm from "./components/forms/InfoIntakeForm";
 
-// import MentorForm from './components/forms/MentorForm'
-// import ChoosePath from "./components/forms/ChoosePath";
-import CoryForm from "./components/CoryTestForm/CoryForm"
-import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
-import ResearchForm from "./components/CoryTestForm/Codepen/ResearchForm";
+import MentorForm from './components/forms/MentorForm'
+import ChoosePath from "./components/forms/ChoosePath";
+// import CoryForm from "./components/CoryTestForm/CoryForm"
+// import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
+// import ResearchForm from "./components/CoryTestForm/Codepen/ResearchForm";
 
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const App = () => {
+	const [currentForm, setCurrentForm] = useState({
+		role: "",
+		first_name: "",
+		last_name: "",
+		email: "",
+		pronouns: "",
+		linkedin: "",
+		github: "",
+		portfolio: "",
+		data_sci_skillset: "",
+		design_techs: "",
+		design_skillset: "",
+		engineer_skillset: "",
+		engineer_techs: "",
+		why_join: "",
+	});
+
 	const [forms, setForms] = useState([]);
 
 	useEffect(() => {
@@ -26,11 +43,6 @@ const App = () => {
 			refreshList();
 		}
 	}, [forms]);
-
-	//  componentDidMount() {
-	// 	 this.refreshList()
-	// 	 console.log("React works")
-	//  }
 
 	function refreshList() {
 		axios.get("/api/forms/").then(
@@ -53,23 +65,25 @@ const App = () => {
 			.catch((err) => console.log(err));
 	}
 
-	// render() {
 	return (
 		<>
 		<div className="App">
 
-			{/* <ChoosePath /> */}
+			<ChoosePath 
+				currentForm={currentForm}
+				setCurrentForm={setCurrentForm}
+			/>
       {/* <MentorForm />  */}
 			{/* <EngineerForm /> */}
-			{/* <CoryForm /> */}
-			<ResearchForm />
 			{/* <DataScienceForm />  */}
-			<DesignerForm />
+			{/* <DesignerForm /> */}
 			{/* <InfoIntakeForm />  */}
 			{/* <ContactForm /> */}
 
-			<MySelect styles={colorStyles} options={choices} />
 			
+			{/* <MySelect styles={colorStyles} options={choices} /> */}
+			{/* <CoryForm /> */}
+			{/* <ResearchForm /> */}
 		</div>
 		{/* <div className="App">
 			<button onClick={refreshList}>Refresh</button>

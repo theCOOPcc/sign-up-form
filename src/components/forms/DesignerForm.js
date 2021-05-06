@@ -76,17 +76,17 @@ const validationSchema = Yup.object().shape({
 });
 
 const DesignerForm = () => {
-  const designSkillOptions = []
-  designerSkills.choices.forEach(element => {
-    let skill = {label: `${element}`, value: `${element}`}
-    designSkillOptions.push(skill)
-  });
+	const designSkillOptions = [];
+	designerSkills.choices.forEach((element) => {
+		let skill = { label: `${element}`, value: `${element}` };
+		designSkillOptions.push(skill);
+	});
 
-  const designTechOptions = []
-    designerTech.choices.forEach(element => {
-			let tech = { label: `${element}`, value: `${element}` };
-			designTechOptions.push(tech);
-		});
+	const designTechOptions = [];
+	designerTech.choices.forEach((element) => {
+		let tech = { label: `${element}`, value: `${element}` };
+		designTechOptions.push(tech);
+	});
 
 	return (
 		<Formik
@@ -95,7 +95,7 @@ const DesignerForm = () => {
 				design_skillset: "",
 				why_join: "",
 			}}
-      // TODO: Reconfigure validation!!!!
+			// TODO: Reconfigure validation!!!!
 			// validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
@@ -112,7 +112,6 @@ const DesignerForm = () => {
 					<FormStyle>
 						<h4>Tell us a little about your interests...</h4>
 
-						{/* {Fields.designFields.map((f) => ( */}
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
