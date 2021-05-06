@@ -61,6 +61,7 @@ const EngineerForm = (props) => {
 					...props.currentForm,
 					engineer_skillset: values.engineer_skillset,
 					engineer_techs: values.engineer_techs,
+          why_join: values.why_join
 				});
 				console.log(props.currentForm);
 			}}

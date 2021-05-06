@@ -99,6 +99,13 @@ const DesignerForm = (props) => {
 			// validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
+				props.setCurrentForm({
+					...props.currentForm,
+					design_techs: values.design_techs,
+					design_skillset: values.design_skillset,
+					why_join: values.why_join,
+				});
+				console.log(props.currentForm);
 			}}
 			render={({
 				values,
