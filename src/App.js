@@ -10,6 +10,7 @@ import DesignerForm from "./components/forms/DesignerForm";
 
 // import MentorForm from './components/forms/MentorForm'
 // import ChoosePath from "./components/forms/ChoosePath";
+import CoryForm from "./components/CoryTestForm/CoryForm"
 import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
 
 
@@ -59,7 +60,7 @@ const App = () => {
 			{/* <ChoosePath /> */}
       {/* <MentorForm />  */}
 			{/* <EngineerForm /> */}
-
+			<CoryForm />
 			{/* <DataScienceForm />  */}
 			<DesignerForm />
 			{/* <InfoIntakeForm />  */}

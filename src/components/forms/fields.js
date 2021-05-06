@@ -3,7 +3,7 @@ export const candidatePath = {
   value: 'role',
   choices: [
     'Engineer',
-    'Desinger',
+    'Designer',
     'Data Scientist',
     'Mentor'
   ]

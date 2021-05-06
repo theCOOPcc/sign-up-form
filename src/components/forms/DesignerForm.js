@@ -1,12 +1,14 @@
 import React from "react";
 // import ReactDom from 'react-dom'
-import { Formik, Form} from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import * as Fields from "./fields";
 import * as Inputs from "./inputs";
 import styled from 'styled-components'
 import ReactSelect from 'react-select';
 import MySelect from './SelectTests/select-re';
+import { designFields } from './fields'
+
 
 // export const FormStyles = {
 //   container: (provided, state) => ({
