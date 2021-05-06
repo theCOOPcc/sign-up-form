@@ -12,6 +12,7 @@ import DesignerForm from "./components/forms/DesignerForm";
 // import ChoosePath from "./components/forms/ChoosePath";
 import CoryForm from "./components/CoryTestForm/CoryForm"
 import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
+import ResearchForm from "./components/CoryTestForm/Codepen/ResearchForm";
 
 
 axios.defaults.xsrfCookieName = "csrftoken";
@@ -60,7 +61,8 @@ const App = () => {
 			{/* <ChoosePath /> */}
       {/* <MentorForm />  */}
 			{/* <EngineerForm /> */}
-			<CoryForm />
+			{/* <CoryForm /> */}
+			<ResearchForm />
 			{/* <DataScienceForm />  */}
 			<DesignerForm />
 			{/* <InfoIntakeForm />  */}

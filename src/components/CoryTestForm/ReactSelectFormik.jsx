@@ -9,17 +9,19 @@ const Dropdown = ({label, ...props}) => {
   const { touched, error,value } = meta;
   const { setValue } = helpers;
 
-  return ( 
-    <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <Select 
-      options={options}
-      name={field.name}
-      onChange={(option) => setValue(option.value)}
-      instanceId={props.iid}
-      />
-    </>
-   );
+  return (
+		<>
+			<label htmlFor={props.id || props.name}>{label}</label>
+			<Select
+				isMulti
+				options={options}
+				name={field.name}
+				onChange={(option) => setValue(option.value)}
+				instanceId={props.iid}
+			/>
+			{error ? <p>{error}</p> : <p></p>}
+		</>
+	);
 }
  
 export default Dropdown;

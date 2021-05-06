@@ -10,14 +10,25 @@ const options = [
 ];
 
 const schema = Yup.object({
-  dogBreed: Yup.string().required("Required")
+  dogBreed: Yup.array()
+  .min(1, "Select  at least one field")
+  .of(
+    Yup.object()
+    .shape({
+      label: Yup.string(),
+      value: Yup.string()
+    })
+  )
+  .required("Required")
 })
+
+// const { error } = meta;
 
 const DogForm = () => {
   return ( 
     <Formik
       initialValues={{
-        dogBreed: "",
+        dogBreed: [],
       }}
       validationSchema={schema}
       onSubmit={(values) => {
