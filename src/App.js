@@ -37,7 +37,7 @@ const App = () => {
 		engineer_techs: [],
 	});
 
-	// const [forms, setForms] = useState([]);
+	const [forms, setForms] = useState([]);
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -118,30 +118,30 @@ const App = () => {
 	return (
 		<>
 			<div className="App">
-				<ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
-				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
+				{/* <ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
+				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} /> */}
 				<EngineerForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
 				/>
-				<DataScienceForm
+				{/* <DataScienceForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
-				/>
+				/> */}
 				<DesignerForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
 				/>
-				<InfoIntakeForm
+				{/* <InfoIntakeForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
-				/>
-				<ContactForm
+				/> */}
+				{/* <ContactForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
 					addItem={addItem}
 					newForm={newForm}
-				/>
+				/> */}
 			</div>
 {/* <div className="App"> */}
 			{/* <button onClick={refreshList}>Refresh</button>

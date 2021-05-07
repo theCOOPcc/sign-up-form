@@ -7,7 +7,6 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 
 const FormStyle = styled.div`
-
 background-color: black;
   color: #fefefe;
   display: flex;
@@ -69,7 +68,7 @@ const InfoIntakeForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h1>Tell us more about you</h1>
-						<Inputs.SelectInput
+						<Inputs.SelectField
 							options={bootcampOptions}
 							key={bootcamps.name}
 							label={bootcamps.name}

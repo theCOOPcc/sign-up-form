@@ -83,7 +83,6 @@ const EngineerForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h4>Tell us a little about your interests...</h4>
-
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -92,6 +91,7 @@ const EngineerForm = (props) => {
 							name={engineerSkills.value}
 							options={engineerSkillsOptions}
 						/>
+
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}

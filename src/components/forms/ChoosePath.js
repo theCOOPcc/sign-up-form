@@ -16,7 +16,7 @@ background-color: black;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;git
+  height: 100%;
   width: 100%;
   line-height: 1;
   padding: 10px;
@@ -62,7 +62,7 @@ const ChoosePath = (props) => {
 							</h4>
 						</div>
 
-						<Inputs.SelectInput
+						<Inputs.SelectField
 							options={roleOptions}
 							key={candidatePath.name}
 							label={candidatePath.name}
