@@ -9,6 +9,7 @@ import EngineerForm from "./components/forms/EngineerForm";
 import InfoIntakeForm from "./components/forms/InfoIntakeForm";
 import MentorForm from './components/forms/MentorForm'
 import ChoosePath from "./components/forms/ChoosePath";
+import coopLogo from "./components/forms/imgs/coopLogo.svg"
 
 // import CoryForm from "./components/CoryTestForm/CoryForm"
 // import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
@@ -118,6 +119,9 @@ const App = () => {
 	return (
 		<>
 			<div className="App">
+				<div className="logobar">
+					<img src={coopLogo}/>
+				</div>
 				<ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
 				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
 				<EngineerForm
