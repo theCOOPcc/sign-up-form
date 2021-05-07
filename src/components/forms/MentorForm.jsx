@@ -22,6 +22,16 @@ background-color: black;
 `
 
 
+const Button = styled.button`
+background-color: #00C9B1;
+color: #F6F6F6;
+border: none;
+border-radius: 3px;
+width: 100px;
+height:25px;
+`
+
+
 const validateSchema = Yup.object().shape({
 	help_with: Yup.mixed().oneOf(
 		helpOptions.choices,
@@ -93,7 +103,7 @@ const MentorForm = (props) => {
 
 						<label htmlFor="linkedin">Linkedin Profile: </label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
-						<button type="submit">Submit</button>
+						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>
 			)}

@@ -20,6 +20,15 @@ background-color: black;
   padding: 10px;
 `
 
+const Button = styled.button`
+background-color: #00C9B1;
+color: #F6F6F6;
+border: none;
+border-radius: 3px;
+width: 100px;
+height:25px;
+`
+
 
 const validationSchema = Yup.object().shape({
 	bootcamp: Yup.mixed().oneOf(
@@ -89,7 +98,7 @@ const InfoIntakeForm = (props) => {
 						<label htmlFor="linkedin">Linkedin: </label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
 
-						<button type="submit">Submit</button>
+						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>
 			)}

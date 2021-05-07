@@ -28,6 +28,16 @@ const validationSchema = Yup.object().shape({
 	),
 });
 
+
+const Button = styled.button`
+background-color: #00C9B1;
+color: #F6F6F6;
+border: none;
+border-radius: 3px;
+width: 100px;
+height:25px;
+`
+
 const ChoosePath = (props) => {
 	const roleOptions = [];
 	candidatePath.choices.forEach((element) => {
@@ -71,9 +81,9 @@ const ChoosePath = (props) => {
 							onChange={setFieldValue}
 						/> 
 
-						<button style={{ marginTop: "5px" }} type="submit">
+						<Button style={{ marginTop: "5px" }} type="submit">
 							Submit
-						</button>
+						</Button>
 					</FormStyle>
 				</Form>
 			)}

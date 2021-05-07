@@ -7,7 +7,6 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 
 const FormStyle = styled.div`
-
 background-color: black;
   color: #fefefe;
   display: flex;
@@ -24,6 +23,16 @@ background-color: black;
 const FullForm = styled.div`
 width: 100%;
 height: 100%;
+`
+
+
+const Button = styled.button`
+background-color: #00C9B1;
+color: #F6F6F6;
+border: none;
+border-radius: 3px;
+width: 100px;
+height:25px;
 `
 
 
@@ -88,7 +97,7 @@ const DataScienceForm = (props) => {
 						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
 
-						<button type="submit">Submit</button>
+						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>
 			)}

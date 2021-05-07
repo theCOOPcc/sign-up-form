@@ -95,11 +95,12 @@ export const FormStyling = {
     backgroundColor: "#F25187",
     color: "white",
   }),
-  // singleValue: (provided, state) => ({
-  //   ...provided,
-  //   backgroundColor: '#F25187',
-  //   color:'white',
-  // }),
+  singleValue: (provided, state) => ({
+    ...provided,
+    backgroundColor: '#F25187',
+    color:'white',
+		padding: '10px'
+  }),
 };
 
 const StyleDiv = styled.div`
