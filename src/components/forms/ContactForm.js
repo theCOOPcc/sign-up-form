@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { pronouns } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
+import { string } from "yup/lib/locale";
 
 const FormStyle = styled.div`
 
@@ -36,10 +37,16 @@ const validationSchema = Yup.object().shape({
 	first_name: Yup.string().required("This field is required"),
 	last_name: Yup.string().required("This field is required"),
 	email: Yup.string().email("Invalid email").required("This field is required"),
+	pronouns: Yup.object({
+		label: Yup.string(),
+		value: Yup.string()
+	}).required("This field is required")
 });
 
 
+
 const ContactForm = (props) => {
+	const submitForm = () => props.addItem(props.newForm);
 	const pronounOptions = [];
 	pronouns.choices.forEach((element) => {
 		let pronoun = { label: `${element}`, value: `${element}` };
@@ -53,7 +60,7 @@ const ContactForm = (props) => {
 				email: "",
 				pronouns: "",
 			}}
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({
@@ -64,7 +71,6 @@ const ContactForm = (props) => {
 					pronouns: values.pronouns,
 				});
 				console.log("contact form", props.currentForm);
-				props.addItem(props.newForm);
 			}}
 			render={({
 				values,
@@ -74,6 +80,7 @@ const ContactForm = (props) => {
 				setFieldTouched,
 				isSubmitting,
 			}) => (
+				<>
 				<Form>
 					<FormStyle>
 						<h1>CONTACT INFO</h1>
@@ -89,7 +96,7 @@ const ContactForm = (props) => {
 						<label htmlFor="email">Email: </label>
 						<Inputs.TextInput id="email" name="email"></Inputs.TextInput>
 
-						<Inputs.SelectField
+						<Inputs.SelectInput
 							options={pronounOptions}
 							key={pronouns.name}
 							label={pronouns.name}
@@ -101,6 +108,8 @@ const ContactForm = (props) => {
 						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>
+				<button onClick={submitForm}>Submit</button>
+				</>
 			)}
 		/>
 	);
