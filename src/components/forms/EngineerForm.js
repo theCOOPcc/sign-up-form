@@ -70,7 +70,7 @@ const EngineerForm = (props) => {
 					engineer_techs: values.engineer_techs,
           why_join: values.why_join
 				});
-				console.log(props.currentForm);
+				console.log('engineer', props.currentForm);
 			}}
 			render={({
 				values,

@@ -53,8 +53,8 @@ const ContactForm = (props) => {
 					email: values.email,
 					pronouns: values.pronouns,
 				});
-				console.log(props.currentForm);
-        props.addItem(props.newForm)
+				console.log("contact form", props.currentForm);
+				props.addItem(props.newForm);
 			}}
 			render={({
 				values,
@@ -87,7 +87,6 @@ const ContactForm = (props) => {
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
 						/>
-
 
 						<button type="submit">Submit</button>
 					</FormStyle>

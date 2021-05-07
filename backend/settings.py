@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from dotenv import load_dotenv
 import dotenv
-import os
+import os 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cooperform',
     }
 }
 
@@ -156,3 +156,6 @@ REACT_APP_DIR = os.path.join(BASE_DIR)
 STATICFILES_DIRS = [
     os.path.join(REACT_APP_DIR, 'build', 'static')
 ]
+
+import django_heroku
+django_heroku.settings(locals())

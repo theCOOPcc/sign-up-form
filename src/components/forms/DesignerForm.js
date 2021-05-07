@@ -116,7 +116,7 @@ const DesignerForm = (props) => {
 					design_skillset: values.design_skillset,
 					why_join: values.why_join,
 				});
-				console.log(props.currentForm);
+				console.log('design', props.currentForm);
 			}}
 			render={({
 				values,

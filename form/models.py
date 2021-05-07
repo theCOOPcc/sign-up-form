@@ -6,7 +6,6 @@ from django.db import models
 # TODO: update form model to reflect selector choices
 
 class Form(models.Model):
-  role = models.CharField(max_length=50, default='', blank=True)
   first_name = models.CharField(max_length=50, default='', blank=True)
   last_name = models.CharField(max_length=50, default='', blank=True)
   email = models.EmailField(max_length=254, default='', blank=True)
@@ -14,15 +13,16 @@ class Form(models.Model):
   github = models.CharField(max_length=254, default='', blank=True)
   portfolio = models.CharField(max_length=254,default='', blank=True)
   why_join = models.TextField(default='')
-  pronouns = models.CharField(max_length=50, default='', blank=True)
   avail_dates = models.CharField(max_length=50, default='', blank=True)
-  help_with = models.CharField(max_length=50, default='', blank=True)
+  role = models.CharField(max_length=50, default='', blank=True)
+  pronouns = models.CharField(max_length=50, default='', blank=True)
   bootcamps = models.CharField(max_length=50, default='', blank=True)
-  engineer_skillset = ArrayField(models.CharField(max_length=50, default=list, blank=True))
-  engineer_techs = ArrayField(models.CharField(max_length=50, default=list, blank=True))
-  design_skillset = ArrayField(models.CharField(max_length=50, default=list, blank=True))
-  design_techs = ArrayField(models.CharField(max_length=50, default=list, blank=True))
-  data_sci_skillset = ArrayField(models.CharField(max_length=50, default=list, blank=True))
+  help_with = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
+  engineer_skillset = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
+  engineer_techs = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
+  design_skillset = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
+  design_techs = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
+  data_sci_skillset = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
