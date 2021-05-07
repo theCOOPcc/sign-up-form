@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { pronouns } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
+import { string } from "yup/lib/locale";
 
 const FormStyle = styled.div`
 
@@ -36,6 +37,10 @@ const validationSchema = Yup.object().shape({
 	first_name: Yup.string().required("This field is required"),
 	last_name: Yup.string().required("This field is required"),
 	email: Yup.string().email("Invalid email").required("This field is required"),
+	pronouns: Yup.object({
+		label: Yup.string(),
+		value: Yup.string()
+	}).required("This field is required")
 });
 
 
@@ -55,7 +60,7 @@ const ContactForm = (props) => {
 				email: "",
 				pronouns: "",
 			}}
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({

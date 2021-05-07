@@ -22,11 +22,11 @@ background-color: black;
   padding: 10px;
 `
 const validationSchema = Yup.object().shape({
-	role: Yup.mixed().oneOf(
-		candidatePath.choices,
-		"Please choose from one of the selections"
-	),
-});
+	role: Yup.object({
+		label: Yup.string().oneOf(candidatePath.choices),
+		value: Yup.string().oneOf(candidatePath.choices)
+	}),
+}, "Please choose from one of the selections")
 
 
 const Button = styled.button`
@@ -49,7 +49,7 @@ const ChoosePath = (props) => {
 			initialValues={{
 				role: "",
 			}}
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({ ...props.currentForm, role: values.role });
