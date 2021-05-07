@@ -58,7 +58,7 @@ const DataScienceForm = (props) => {
 					data_sci_skillset: values.data_sci_skillset,
 					why_join: values.why_join,
 				});
-				console.log(props.currentForm);
+				console.log('data science', props.currentForm);
 			}}
 			render={({
 				values,

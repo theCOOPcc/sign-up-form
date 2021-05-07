@@ -41,7 +41,7 @@ const InfoIntakeForm = (props) => {
 	return (
 		<Formik
 			initialValues={{
-				bootcamp: "",
+				bootcamps: "",
 				linkedin: "",
 				github: "",
 				portfolio: "",
@@ -51,12 +51,12 @@ const InfoIntakeForm = (props) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({
 					...props.currentForm,
-					bootcamp: values.bootcamp,
+					bootcamps: values.bootcamps,
 					linkedin: values.linkedin,
 					github: values.github,
 					portfolio: values.portfolio,
 				});
-				console.log(props.currentForm);
+				console.log('info intake', props.currentForm);
 			}}
 			render={({
 				values,

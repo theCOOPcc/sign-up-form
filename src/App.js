@@ -20,14 +20,16 @@ axios.defaults.xsrfHeaderName = "X-CSRFToken";
 const App = () => {
 	const [currentForm, setCurrentForm] = useState({
 		role: "",
+		pronouns: "",
 		first_name: "",
 		last_name: "",
 		email: "",
-		pronouns: "",
 		linkedin: "",
 		github: "",
 		portfolio: "",
+		bootcamps: "",
 		why_join: "",
+		help_with: [],
 		data_sci_skillset: [],
 		design_techs: [],
 		design_skillset: [],
@@ -35,8 +37,7 @@ const App = () => {
 		engineer_techs: [],
 	});
 
-	const [forms, setForms] = useState([]);
-
+	// const [forms, setForms] = useState([]);
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -63,6 +64,11 @@ const App = () => {
 		finalEngineerTechs.push(tech.value);
 	});
 
+	const finalHelpWith = [];
+	currentForm.help_with.map((help) => {
+		finalHelpWith.push(help.value);
+	});
+
 	const newForm = {
 		first_name: currentForm.first_name,
 		last_name: currentForm.last_name,
@@ -71,10 +77,12 @@ const App = () => {
 		github: currentForm.github,
 		portfolio: currentForm.portfolio,
 		why_join: currentForm.why_join,
-
+		
+		bootcamps: currentForm.bootcamps.value,
 		role: currentForm.role.value,
 		pronouns: currentForm.pronouns.value,
 		
+		help_with: finalHelpWith,
 		data_sci_skillset: finalDataSciSkillset,
 		design_techs: finalDesignTechs,
 		design_skillset: finalDesignSkills,
@@ -83,30 +91,27 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		if (forms === undefined) {
-			refreshList();
-		}
-		console.log(newForm)
-	}, [forms, currentForm]);
+		console.log('newForm', newForm)
+	}, [currentForm]);
 
-	function refreshList() {
-		axios.get("/api/forms/").then(
-			(res) => setForms(res.data)
-			// console.log(res.data)
-		);
-	}
+	// function refreshList() {
+	// 	axios.get("/api/forms/").then(
+	// 		(res) => setForms(res.data)
+	// 		// console.log(res.data)
+	// 	);
+	// }
 
 	function addItem(newForm) {
 		axios
 			.post("/api/forms/", newForm)
-			.then(refreshList())
+			// .then(refreshList())
 			.catch((err) => console.log(err));
 	}
 
 	function deleteItem(form) {
 		axios
 			.delete(`/api/forms/${form.id}/`)
-			.then(refreshList())
+			// .then(refreshList())
 			.catch((err) => console.log(err));
 	}
 

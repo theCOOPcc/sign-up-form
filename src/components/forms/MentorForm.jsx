@@ -57,7 +57,7 @@ const MentorForm = (props) => {
 					help_with: values.help_with,
 					linkedin: values.linkedin,
 				});
-				console.log(props.currentForm);
+				console.log('mentor', props.currentForm);
 			}}
 			render={({
 				values,

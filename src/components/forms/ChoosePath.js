@@ -43,7 +43,6 @@ const ChoosePath = (props) => {
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({ ...props.currentForm, role: values.role });
-        console.log(props.newForm)
 			}}
 			render={({
 				values,
