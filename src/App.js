@@ -37,7 +37,6 @@ const App = () => {
 
 	const [forms, setForms] = useState([]);
 
-
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
 		finalDataSciSkillset.push(skill.value);
@@ -123,10 +122,10 @@ const App = () => {
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
 				/> */}
-				{/* <DesignerForm
+				<DesignerForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
-				/> */}
+				/>
 				{/* <InfoIntakeForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}

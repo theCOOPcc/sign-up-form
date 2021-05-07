@@ -20,6 +20,20 @@ const Label = styled.label`
   color: #fefefe;
 `;
 
+const FormStyle = styled.div`
+background-color: black;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 10px;
+`
+
 export const FormStyling = {
   container: (provided, state) => ({
     ...provided,
@@ -289,32 +303,37 @@ export const SelectInput = ({ label, ...props }) => {
 		backspaceRemovesValue,
 	} = props;
 	return (
-		<div>
+		<>
+	
 			<Label htmlFor={props.id || props.name}>{label}</Label>
 			{/* {console.log(designFields)} */}
-			<ReactSelect
-				// options={options}
-				id={id}
-				placeholder={placeholder}
-				options={options}
-				value={value}
-				onChange={handleChange}
-				styles={FormStyling}
-				onBlur={handleBlur}
-				touched={touched}
-				error={error}
-				backspaceRemovesValue={backspaceRemovesValue}
-				components={{ ClearIndicator: null }}>
-				{/* <FormStyling
-					placeholder="Select up to 4"
-					key={props.name}
-					{...field}
-					{...props}
-				/> */}
+			
+			
+				<ReactSelect
+					// options={options}
+					id={id}
+					placeholder={placeholder}
+					options={options}
+					value={value}
+					onChange={handleChange}
+					styles={FormStyling}
+					onBlur={handleBlur}
+					touched={touched}
+					error={error}
+					backspaceRemovesValue={backspaceRemovesValue}
+					components={{ ClearIndicator: null }}>
+					{/* <FormStyling
+						placeholder="Select up to 4"
+						key={props.name}
+						{...field}
+						{...props}
+					/> */}
+				
         </ReactSelect>
+			
 				{meta.touched && meta.error ? (
 					<div className="error">{meta.error}</div>
 				) : null}
-      </div>
+      </>
   );
 };
