@@ -62,15 +62,14 @@ const ChoosePath = (props) => {
 							</h4>
 						</div>
 
-						<Inputs.SelectField
+						<Inputs.SelectInput
 							options={roleOptions}
 							key={candidatePath.name}
 							label={candidatePath.name}
 							name={candidatePath.value}
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
-						/>
-
+						/> 
 
 						<button style={{ marginTop: "5px" }} type="submit">
 							Submit

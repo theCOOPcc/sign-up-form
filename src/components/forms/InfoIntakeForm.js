@@ -55,7 +55,7 @@ const InfoIntakeForm = (props) => {
 					github: values.github,
 					portfolio: values.portfolio,
 				});
-				console.log('info intake', props.currentForm);
+				console.log("info intake", props.currentForm);
 			}}
 			render={({
 				values,
@@ -68,7 +68,8 @@ const InfoIntakeForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h1>Tell us more about you</h1>
-						<Inputs.SelectField
+
+						<Inputs.SelectInput
 							options={bootcampOptions}
 							key={bootcamps.name}
 							label={bootcamps.name}
@@ -77,7 +78,6 @@ const InfoIntakeForm = (props) => {
 							onChange={setFieldValue}
 						/>
 
-
 						<label htmlFor="github">Github: </label>
 						<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
 
@@ -85,7 +85,6 @@ const InfoIntakeForm = (props) => {
 						<Inputs.TextInput
 							id="portfolio"
 							name="portfolio"></Inputs.TextInput>
-
 
 						<label htmlFor="linkedin">Linkedin: </label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
