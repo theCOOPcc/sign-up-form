@@ -20,9 +20,14 @@ const validationSchema = Yup.object().shape({
   first_name: Yup.string().required("This field is required"),
   last_name: Yup.string().required("This field is required"),
   email: Yup.string().email("Invalid email").required("This field is required"),
+	pronouns: Yup.object({
+		label: Yup.string(),
+		value: Yup.string()
+	}).required("Please fill out this section")
 });
 
 const ContactForm = (props) => {
+	const submitForm = () => props.addItem(props.newForm)
   const pronounOptions = [];
   pronouns.choices.forEach((element) => {
     let pronoun = { label: `${element}`, value: `${element}` };
@@ -36,7 +41,7 @@ const ContactForm = (props) => {
         email: "",
         pronouns: "",
       }}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log("Submit Successful", values);
         props.setCurrentForm({
@@ -57,6 +62,7 @@ const ContactForm = (props) => {
         setFieldTouched,
         isSubmitting,
       }) => (
+				<>
         <Form>
           <FormStyle>
             <h3>CONTACT INFO</h3>
