@@ -21,6 +21,15 @@ background-color: black;
   padding: 10px;
 `
 
+const Button = styled.button`
+background-color: #00C9B1;
+color: #F6F6F6;
+border: none;
+border-radius: 3px;
+width: 100px;
+height:25px;
+`
+
 const Label = styled.label`
 color: #FEFEFE;
 `
@@ -102,7 +111,7 @@ const EngineerForm = (props) => {
 						/>
 						<Label htmlFor="whyJoin">Tell us why you'd like to join: </Label>
 						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-						<button type="submit">Submit</button>
+						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>
 			)}

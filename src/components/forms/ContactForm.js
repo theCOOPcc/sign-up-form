@@ -22,6 +22,16 @@ background-color: black;
 `
 
 
+const Button = styled.button`
+background-color: #00C9B1;
+color: #F6F6F6;
+border: none;
+border-radius: 3px;
+width: 100px;
+height:25px;
+`
+
+
 const validationSchema = Yup.object().shape({
 	first_name: Yup.string().required("This field is required"),
 	last_name: Yup.string().required("This field is required"),
@@ -88,7 +98,7 @@ const ContactForm = (props) => {
 							onChange={setFieldValue}
 						/>
 
-						<button type="submit">Submit</button>
+						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>
 			)}
