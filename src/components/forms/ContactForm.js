@@ -88,12 +88,22 @@ const ContactForm = (props) => {
               onBlur={setFieldTouched}
               onChange={setFieldValue}
             />
+						<Inputs.SelectInput
+							options={pronounOptions}
+							key={pronouns.name}
+							label={pronouns.name}
+							name={pronouns.value}
+							onBlur={setFieldTouched}
+							onChange={setFieldValue}
+						/>
 
-            <Button type="submit">Submit</Button>
-          </FormStyle>
-        </Form>
-      )}
-    />
-  );
+						<Button type="submit">Submit</Button>
+					</FormStyle>
+				</Form>
+				<button onClick={submitForm}>Submit</button>
+				</>
+			)}
+		/>
+	);
 };
 export default ContactForm;

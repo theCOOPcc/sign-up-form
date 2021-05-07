@@ -42,7 +42,7 @@ const InfoIntakeForm = (props) => {
 				github: "",
 				portfolio: "",
 			}}
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({

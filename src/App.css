@@ -6,6 +6,20 @@ body {
   height: 100%;
 }
 
+.logobar {
+  background-color: black;
+}
+
+button {
+  width: 183px;
+  height: 50px;
+  background-color: #c4c4c4;
+  color: #f6f6f6;
+  font-size: 18px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
 /* .App {
   display: flex;
   justify-content: space-evenly;
