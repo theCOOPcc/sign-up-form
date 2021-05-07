@@ -19,6 +19,10 @@ export const Label = styled.label`
 	padding-right: 20px;
 `;
 
+export const TextLabel = styled(Label)`
+	margin-bottom: 20px;
+`
+
 export const FormStyle = styled.div`
 background-color: black;
   color: #fefefe;

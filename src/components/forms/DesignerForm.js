@@ -7,7 +7,7 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 import ReactSelect from "react-select";
 import MySelect from "./SelectTests/select-re";
-import {FormStyle, Label, StyleDiv} from './inputs'
+import {FormStyle, TextLabel, StyleDiv} from './inputs'
 import { designerTech, designerSkills } from "./fields";
 
 // export const FormStyles = {
@@ -146,9 +146,9 @@ const DesignerForm = (props) => {
 						/>
             <StyleDiv>
 
-    					<Label htmlFor="whyJoin">
+    					<TextLabel htmlFor="whyJoin">
 							Tell us why you'd like to join The COOP:{" "}
-						</Label>
+						</TextLabel>
 						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
             </StyleDiv>
               

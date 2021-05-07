@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { pronouns } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
-import { FormStyle, StyleDiv } from "./inputs";
+import { FormStyle, StyleDiv, TextLabel } from "./inputs";
 
 const Button = styled.button`
   background-color: #00c9b1;
@@ -61,14 +61,14 @@ const ContactForm = (props) => {
           <FormStyle>
             <h3>CONTACT INFO</h3>
             <StyleDiv>
-              <label htmlFor="firstName">First Name: </label>
+              <TextLabel htmlFor="firstName">First Name: </TextLabel>
               <Inputs.TextInput
                 id="firstName"
                 name="first_name"
               ></Inputs.TextInput>
             </StyleDiv>
             <StyleDiv>
-              <label htmlFor="lastName">Last Name: </label>
+              <TextLabel htmlFor="lastName">Last Name: </TextLabel>
               <Inputs.TextInput
                 id="lastName"
                 name="last_name"
@@ -76,7 +76,7 @@ const ContactForm = (props) => {
             </StyleDiv>
 
             <StyleDiv>
-              <label htmlFor="email">Email: </label>
+              <TextLabel htmlFor="email">Email: </TextLabel>
               <Inputs.TextInput id="email" name="email"></Inputs.TextInput>
             </StyleDiv>
 

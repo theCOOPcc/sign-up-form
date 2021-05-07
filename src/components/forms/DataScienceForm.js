@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { dataSciSkills } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv} from './inputs'
+import {FormStyle, StyleDiv, TextLabel} from './inputs'
 
 
 const FullForm = styled.div`
@@ -81,9 +81,9 @@ const DataScienceForm = (props) => {
 
             <StyleDiv>
 
-						<label htmlFor="whyJoin">
+						<TextLabel htmlFor="whyJoin">
 							Tell us why you'd like to join The COOP:{" "}
-						</label>
+						</TextLabel>
 						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 
             </StyleDiv>

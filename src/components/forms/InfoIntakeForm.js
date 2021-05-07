@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { bootcamps } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv} from './inputs'
+import {FormStyle, StyleDiv, TextLabel} from './inputs'
 
 
 const Button = styled.button`
@@ -76,20 +76,20 @@ const InfoIntakeForm = (props) => {
 						/>
             <StyleDiv>
 
-						<label htmlFor="github">Github: </label>
+						<TextLabel htmlFor="github">Github: </TextLabel>
 						<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
             </StyleDiv>
             
             <StyleDiv>
 
-						<label htmlFor="portfolio">Portfolio: </label>
+						<TextLabel htmlFor="portfolio">Portfolio: </TextLabel>
 						<Inputs.TextInput
 							id="portfolio"
 							name="portfolio"></Inputs.TextInput>
             </StyleDiv>
 
         <StyleDiv>
-						<label htmlFor="linkedin">Linkedin: </label>
+						<TextLabel htmlFor="linkedin">Linkedin: </TextLabel>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
         </StyleDiv>
 

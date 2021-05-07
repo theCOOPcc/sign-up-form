@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { helpOptions, helpDates } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, Label} from './inputs'
+import {FormStyle, StyleDiv, TextLabel} from './inputs'
 
 const Button = styled.button`
 background-color: #00C9B1;
@@ -86,7 +86,7 @@ const MentorForm = (props) => {
 						/>
 
 							<StyleDiv>
-						<Label htmlFor="linkedin">Linkedin Profile: </Label>
+						<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
 
 							</StyleDiv>

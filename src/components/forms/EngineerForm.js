@@ -6,7 +6,7 @@ import { engineerSkills, engineerTech } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
 import "../../App.css";
-import {FormStyle, StyleDiv} from './inputs'
+import {FormStyle, StyleDiv, TextLabel} from './inputs'
 
 
 const Button = styled.button`
@@ -99,7 +99,7 @@ const EngineerForm = (props) => {
 						/>
 						<StyleDiv>
 
-						<Label htmlFor="whyJoin">Tell us why you'd like to join: </Label>
+						<TextLabel htmlFor="whyJoin">Tell us why you'd like to join: </TextLabel>
 						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 						</StyleDiv>
 						<Button type="submit">Submit</Button>
