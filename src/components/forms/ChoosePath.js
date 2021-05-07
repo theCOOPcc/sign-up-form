@@ -5,22 +5,8 @@ import * as Yup from "yup";
 import { candidatePath } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
+import {FormStyle} from './inputs'
 
-// Basic form styling for each file--probably can do this differently and more cleanly
-const FormStyle = styled.div`
-
-background-color: black;
-  color: #fefefe;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  line-height: 1;
-  padding: 10px;
-`
 const validationSchema = Yup.object().shape({
 	role: Yup.object({
 		label: Yup.string().oneOf(candidatePath.choices),

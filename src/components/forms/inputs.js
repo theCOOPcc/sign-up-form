@@ -5,8 +5,6 @@ import * as Fields from "./fields";
 import { designFields } from "../Form/fields";
 
 const Input = styled.input`
-  display: flex;
-	flex-direction:row;
   padding: 0.75em;
   margin: 0.75em;
   cursor: pointer;
@@ -16,15 +14,20 @@ const Input = styled.input`
   color: #fefefe;
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
   color: #fefefe;
+	padding-right: 20px;
 `;
 
-const FormStyle = styled.div`
+export const TextLabel = styled(Label)`
+	margin-bottom: 20px;
+`
+
+export const FormStyle = styled.div`
 background-color: black;
   color: #fefefe;
   display: flex;
-  flex-direction: column;
+	flex-direction:column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -69,6 +72,7 @@ export const FormStyling = {
   }),
   valueContainer: (provided, state) => ({
     ...provided,
+		display:'flex',
     flexWrap: "nowrap",
     placeholder: "please select up to 4",
     backgroundColor: "black",
@@ -103,15 +107,17 @@ export const FormStyling = {
   }),
 };
 
-const StyleDiv = styled.div`
+export const StyleDiv = styled.div`
   display: flex;
-	height: 100;
+	padding: 10px;
+	align-items:center;
+	margin-bottom:20px;
 `;
 
 export const TextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <>
+    <StyleDiv>
       <Label htmlFor={props.id || props.name}>{label}</Label>
       <Input
         placeholder="Type response here..."
@@ -123,44 +129,10 @@ export const TextInput = ({ label, ...props }) => {
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}
-    </>
+    </StyleDiv>
   );
 };
 
-// export const EngineerSelectInput = ({ label, ...props }) => {
-//   const [field, meta] = useField(props);
-//   let bananas = [];
-//   function createSelectors() {
-//     Fields.firstFields.map((fields) => {
-//       fields.choices.map((choice) => {
-//         bananas.push({ value: `${choice}`, label: `${choice}` });
-//       });
-//     });
-//   }
-//   createSelectors();
-//   return (
-//     <StyleDiv>
-//       <div>
-//         <Label htmlFor={props.id || props.name}>{label}</Label>
-//       </div>
-//       {/* {console.log(designFields)} */}
-//       <div>
-//         <ReactSelect styles={FormStyling} options={bananas} isMulti>
-//           {/* <FormStyling
-// 					placeholder="Select up to 4"
-// 					key={props.name}
-// 					{...field}
-// 					{...props}
-// 				/> */}
-//         </ReactSelect>
-//       </div>
-
-//       {meta.touched && meta.error ? (
-//         <div className="error">{meta.error}</div>
-//       ) : null}
-//     </StyleDiv>
-//   );
-// };
 
 
 export const Dropdown = ({ label, ...props }) => {
@@ -171,53 +143,25 @@ export const Dropdown = ({ label, ...props }) => {
 	const { setValue } = helpers;
 
 	return (
-		<>
-			<label htmlFor={props.id || props.name}>{label}</label>
+		<FormStyle>
+		<div>
+			<Label htmlFor={props.id || props.name}>{label}</Label>
+		</div>
+		<div>
 			<ReactSelect
 				options={options}
 				name={field.name}
 				onChange={(option) => setValue(option.value)}
 				instanceId={props.iid}
 			/>
-		</>
+			
+		</div>
+		</FormStyle>
 	);
 };
 
 export const SelectField = ({ label, ...props }) => {
-	// const colorStyles = {
-	// 	container: (provided, state) => ({
-	// 		...provided,
-	// 		width: 200,
-	// 	}),
-	// 	// input: (provided, state) => ({
-	// 	//   display:
-	// 	// }),
-	// 	option: (provided, state) => ({
-	// 		...provided,
-	// 		borderBottom: "1px solid #F25187",
-	// 		color: "white",
-	// 		backgroundColor: "#562636",
-
-	// 		padding: 5,
-	// 		width: 200,
-	// 	}),
-	// 	valueContainer: (provided, state) => ({
-	// 		...provided,
-	// 		backgroundColor: "black",
-	// 		color: "white",
-	// 	}),
-	// 	multiValue: (provided, state) => ({
-	// 		...provided,
-	// 		backgroundColor: "#F25187",
-	// 		color: "white",
-	// 	}),
-	// 	singleValue: (provided, state) => {
-	// 		const opacity = state.isDisabled ? 0.5 : 1;
-	// 		const transition = "opacity 300ms";
-
-	// 		return { ...provided, opacity, transition };
-	// 	},
-	// };
+	
 	function handleChange(value) {
 		const { onChange, name } = props;
 
@@ -245,13 +189,14 @@ export const SelectField = ({ label, ...props }) => {
 		backspaceRemovesValue,
 	} = props;
 	return (
-		<div className="input-field-wrapper" style={{alignItems:'center'}}>
+		<div className="input-field-wrapper" >
+			<StyleDiv>
 			{label && (
-				<h3 className="input-label" htmlFor={name} error={error}>
+				<Label className="input-label" htmlFor={name} error={error}>
 					{label}
-				</h3>
+				</Label>
 			)}
-
+			
 			<ReactSelect
 				id={id}
 				placeholder={placeholder}
@@ -270,6 +215,7 @@ export const SelectField = ({ label, ...props }) => {
 				hideSelectedOptions={true}
 				closeMenuOnSelect={false}
 			/>
+</StyleDiv>
 
 			{touched && error ? <p className="error-text">{error}</p> : null}
 		</div>
@@ -305,11 +251,12 @@ export const SelectInput = ({ label, ...props }) => {
 	} = props;
 	return (
 		<>
+		<StyleDiv>
+			
+			<Label style={{paddingBottom:'0'}} htmlFor={props.id || props.name}>{label}</Label>
 	
-			<Label htmlFor={props.id || props.name}>{label}</Label>
+	
 			{/* {console.log(designFields)} */}
-			
-			
 				<ReactSelect
 					// options={options}
 					id={id}
@@ -332,6 +279,7 @@ export const SelectInput = ({ label, ...props }) => {
 				
         </ReactSelect>
 			
+			</StyleDiv>
 				{meta.touched && meta.error ? (
 					<div className="error">{meta.error}</div>
 				) : null}
