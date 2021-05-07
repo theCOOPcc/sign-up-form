@@ -79,7 +79,7 @@ const ContactForm = (props) => {
 						<label htmlFor="email">Email: </label>
 						<Inputs.TextInput id="email" name="email"></Inputs.TextInput>
 
-						<Inputs.SelectInput
+						<Inputs.SelectField
 							options={pronounOptions}
 							key={pronouns.name}
 							label={pronouns.name}
