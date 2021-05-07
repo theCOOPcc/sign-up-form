@@ -5,20 +5,8 @@ import * as Yup from "yup";
 import { bootcamps } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
+import {FormStyle, StyleDiv} from './inputs'
 
-const FormStyle = styled.div`
-background-color: black;
-  color: #fefefe;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  line-height: 1;
-  padding: 10px;
-`
 
 const Button = styled.button`
 background-color: #00C9B1;
@@ -76,7 +64,7 @@ const InfoIntakeForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h1>Tell us more about you</h1>
+						<h3>Tell us more about you</h3>
 
 						<Inputs.SelectInput
 							options={bootcampOptions}
@@ -86,17 +74,24 @@ const InfoIntakeForm = (props) => {
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
 						/>
+            <StyleDiv>
 
 						<label htmlFor="github">Github: </label>
 						<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
+            </StyleDiv>
+            
+            <StyleDiv>
 
 						<label htmlFor="portfolio">Portfolio: </label>
 						<Inputs.TextInput
 							id="portfolio"
 							name="portfolio"></Inputs.TextInput>
+            </StyleDiv>
 
+        <StyleDiv>
 						<label htmlFor="linkedin">Linkedin: </label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
+        </StyleDiv>
 
 						<Button type="submit">Submit</Button>
 					</FormStyle>

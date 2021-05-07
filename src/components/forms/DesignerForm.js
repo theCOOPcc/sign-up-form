@@ -7,7 +7,7 @@ import * as Inputs from "./inputs";
 import styled from "styled-components";
 import ReactSelect from "react-select";
 import MySelect from "./SelectTests/select-re";
-
+import {FormStyle, Label, StyleDiv} from './inputs'
 import { designerTech, designerSkills } from "./fields";
 
 // export const FormStyles = {
@@ -58,20 +58,7 @@ border-radius: 3px;
 width: 100px;
 height:25px;
 `
-const FormStyle = styled.div`
 
-  background-color: black;
-  color: #fefefe;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  line-height: 1;
-  padding: 10px;
-`
 
 const Options = styled.option`
   color: white !important;
@@ -139,7 +126,7 @@ const DesignerForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h4>Tell us a little about your interests...</h4>
-
+            
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -147,7 +134,8 @@ const DesignerForm = (props) => {
 							label={designerSkills.name}
 							name={designerSkills.value}
 							options={designSkillOptions}
-						/>
+              />
+
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -156,11 +144,14 @@ const DesignerForm = (props) => {
 							name={designerTech.value}
 							options={designTechOptions}
 						/>
+            <StyleDiv>
 
-						<label htmlFor="whyJoin">
+    					<Label htmlFor="whyJoin">
 							Tell us why you'd like to join The COOP:{" "}
-						</label>
+						</Label>
 						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+            </StyleDiv>
+              
 
 						<Button type="submit">Submit</Button>
 					</FormStyle>

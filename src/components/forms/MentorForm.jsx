@@ -5,22 +5,7 @@ import * as Yup from "yup";
 import { helpOptions, helpDates } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
-
-const FormStyle = styled.div`
-
-background-color: black;
-  color: #fefefe;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  line-height: 1;
-  padding: 10px;
-`
-
+import {FormStyle, StyleDiv, Label} from './inputs'
 
 const Button = styled.button`
 background-color: #00C9B1;
@@ -79,7 +64,7 @@ const MentorForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h1>Tell us more about You</h1>
+						<h3>Tell us more about You</h3>
 						{/* {Fields.mentorFields.map((f) => (
 							<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
 								<option value={f.value}></option>
@@ -100,9 +85,11 @@ const MentorForm = (props) => {
 							options={helpOptionOptions}
 						/>
 
-
-						<label htmlFor="linkedin">Linkedin Profile: </label>
+							<StyleDiv>
+						<Label htmlFor="linkedin">Linkedin Profile: </Label>
 						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
+
+							</StyleDiv>
 						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>

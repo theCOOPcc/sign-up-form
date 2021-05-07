@@ -6,20 +6,8 @@ import { engineerSkills, engineerTech } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
 import "../../App.css";
+import {FormStyle, StyleDiv} from './inputs'
 
-const FormStyle = styled.div`
-background-color: black;
-  color: #fefefe;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  line-height: 1;
-  padding: 10px;
-`
 
 const Button = styled.button`
 background-color: #00C9B1;
@@ -109,8 +97,11 @@ const EngineerForm = (props) => {
 							name={engineerTech.value}
 							options={engineerTechOptions}
 						/>
+						<StyleDiv>
+
 						<Label htmlFor="whyJoin">Tell us why you'd like to join: </Label>
 						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+						</StyleDiv>
 						<Button type="submit">Submit</Button>
 					</FormStyle>
 				</Form>
