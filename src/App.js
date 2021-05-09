@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react";
 import SignUp from "./components/Form/Form";
 import axios from "axios";
 import "./App.css";
-import ContactForm from "./components/forms/ContactForm";
-import DataScienceForm from "./components/forms/DataScienceForm";
-import DesignerForm from "./components/forms/DesignerForm";
-import EngineerForm from "./components/forms/EngineerForm";
-import InfoIntakeForm from "./components/forms/InfoIntakeForm";
-import MentorForm from "./components/forms/MentorForm";
 import ChoosePath from "./components/forms/ChoosePath";
 import Confirmation from "./pages/Confirmation";
 import coopLogo from "./components/forms/imgs/coopLogo.svg";
+import DesignerRouter from "./pages/DesignerRouter";
+import MentorRouter from "./pages/MentorRouter.jsx";
+import EngineerRouter from "./pages/EngineerRouter"
+import DataScientistRouter from "./pages/DataScientistRouter";
 
 // import CoryForm from "./components/CoryTestForm/CoryForm"
 // import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
@@ -98,23 +96,22 @@ const App = () => {
 	function addItem(newForm) {
 		axios
 			.post("/api/forms/", newForm)
-			// .then(refreshList())
 			.catch((err) => console.log(err));
 	}
 
-	function deleteItem(form) {
-		axios
-			.delete(`/api/forms/${form.id}/`)
-			// .then(refreshList())
-			.catch((err) => console.log(err));
-	}
+// This function is currently not used in production
+
+	// function deleteItem(form) {
+	// 	axios
+	// 		.delete(`/api/forms/${form.id}/`)
+	// 		.catch((err) => console.log(err));
+	// }
 
 	return (
 		<div className="App">
 			<a href="http://localhost:3000">
 				<img src={coopLogo} />
 			</a>
-			{/* <Confirmation /> */}
 			{newForm.role === undefined ? (
 				<ChoosePath
 					newForm={newForm}
@@ -124,67 +121,34 @@ const App = () => {
 			) : (
 				<div></div>
 			)}
-			{newForm.role === "Mentor" && newForm.linkedin === "" ? (
-				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
-			) : (
-				<div></div>
-			)}
-			{newForm.role === "Mentor" && newForm.linkedin !== "" ? (
-				<ContactForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-					addItem={addItem}
-					newForm={newForm}
-				/>
-			) : (
-				<div>3</div>
-			)}
-			{newForm.role === "Designer" && newForm.why_join === "" ? (
-				<DesignerForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-			) : (
-				<div></div>
-			)}
-			{newForm.role === "Designer" &&
-			newForm.why_join !== "" &&
-			newForm.bootcamps === undefined ? (
-				<InfoIntakeForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-			) : (
-				<div></div>
-			)}
-			{newForm.role === "Designer" && newForm.bootcamps !== undefined ? (
-				<ContactForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-					addItem={addItem}
-					newForm={newForm}
-				/>
-			) : (
-				<div></div>
-			)}
 
-			{/* <MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
-			<EngineerForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
-			<DataScienceForm
-				currentForm={currentForm}
-				setCurrentForm={setCurrentForm}
-			/>
-			<DesignerForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
-			<InfoIntakeForm
-				currentForm={currentForm}
-				setCurrentForm={setCurrentForm}
-			/>
-			<ContactForm
+			<MentorRouter
 				currentForm={currentForm}
 				setCurrentForm={setCurrentForm}
 				addItem={addItem}
 				newForm={newForm}
-			/> */}
+			/>
+
+			<DesignerRouter
+				currentForm={currentForm}
+				setCurrentForm={setCurrentForm}
+				addItem={addItem}
+				newForm={newForm}
+			/>
+
+			<EngineerRouter
+				currentForm={currentForm}
+				setCurrentForm={setCurrentForm}
+				addItem={addItem}
+				newForm={newForm}
+			/>
+
+			<DataScientistRouter
+				currentForm={currentForm}
+				setCurrentForm={setCurrentForm}
+				addItem={addItem}
+				newForm={newForm}
+			/>
 		</div>
 	);
 };

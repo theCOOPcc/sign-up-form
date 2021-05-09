@@ -58,7 +58,7 @@ const EngineerForm = (props) => {
 				engineer_techs: "",
 				why_join: "",
 			}}
-			validationSchema={validationSchema}
+			// validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({

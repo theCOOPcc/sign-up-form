@@ -9,7 +9,7 @@ const Confirmation = () => {
 			together.
 		</p>
     <p>- theCOOP team</p>
-    <a style={{color: '#00C9B1'}} href="">Return to theCoop homepage</a>
+    <a style={{color: '#00C9B1'}} href="http://thecoop.cc">Return to theCoop homepage</a>
     </>
 	);
 }
