@@ -22,7 +22,14 @@ border-radius: 3px;
 width: 100px;
 height:25px;
 `
-
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
 
 const validationSchema = Yup.object().shape({
 	data_sci_skillset: Yup.mixed().oneOf(
@@ -55,7 +62,7 @@ const DataScienceForm = (props) => {
 					data_sci_skillset: values.data_sci_skillset,
 					why_join: values.why_join,
 				});
-				console.log('data science', props.currentForm);
+				console.log("data science", props.currentForm);
 			}}
 			render={({
 				values,
@@ -69,7 +76,6 @@ const DataScienceForm = (props) => {
 					<FormStyle>
 						<h4>Tell us a little about your interests...</h4>
 
-
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -79,17 +85,22 @@ const DataScienceForm = (props) => {
 							options={dataSciOptions}
 						/>
 
-            <StyleDiv>
-
-						<TextLabel htmlFor="whyJoin">
-							Tell us why you'd like to join The COOP:{" "}
-						</TextLabel>
-						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-
-            </StyleDiv>
-
-
-						<Button type="submit">Submit</Button>
+						<StyleDiv>
+							<TextLabel htmlFor="whyJoin">
+								Tell us why you'd like to join The COOP:{" "}
+							</TextLabel>
+							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+						</StyleDiv>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}

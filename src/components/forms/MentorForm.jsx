@@ -15,6 +15,15 @@ width: 100px;
 height:25px;
 `
 
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
+
 
 const validateSchema = Yup.object().shape({
 	help_with: Yup.mixed().oneOf(
@@ -36,7 +45,6 @@ const MentorForm = (props) => {
 		});
 		
 	return (
-
 		<Formik
 			initialValues={{
 				help_with: "",
@@ -51,7 +59,7 @@ const MentorForm = (props) => {
 					help_with: values.help_with,
 					linkedin: values.linkedin,
 				});
-				console.log('mentor', props.currentForm);
+				console.log("mentor", props.currentForm);
 			}}
 			render={({
 				values,
@@ -84,12 +92,22 @@ const MentorForm = (props) => {
 							options={helpOptionOptions}
 						/>
 
-							<StyleDiv>
-						<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
-						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
-
-							</StyleDiv>
-						<Button type="submit">Submit</Button>
+						<StyleDiv>
+							<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
+							<Inputs.TextInput
+								id="linkedin"
+								name="linkedin"></Inputs.TextInput>
+						</StyleDiv>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}

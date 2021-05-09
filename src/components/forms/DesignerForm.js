@@ -6,7 +6,7 @@ import * as Fields from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import ReactSelect from "react-select";
-import {FormStyle, TextLabel, StyleDiv} from '../meta/inputs'
+import { FormStyle, TextLabel, StyleDiv } from "../meta/inputs";
 import { designerTech, designerSkills } from "../meta/fields";
 
 // export const FormStyles = {
@@ -48,27 +48,32 @@ import { designerTech, designerSkills } from "../meta/fields";
 
 // Basic form styling for each page
 
-
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 25px;
+`;
 
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
 
 const Options = styled.option`
-  color: white !important;
-`
+	color: white !important;
+`;
 
 const FullForm = styled.div`
-width: 100%;
-height: 100%;
-`
-
-
+	width: 100%;
+	height: 100%;
+`;
 
 const validationSchema = Yup.object().shape({
 	design_skillset: Yup.mixed().oneOf(
@@ -112,7 +117,7 @@ const DesignerForm = (props) => {
 					design_skillset: values.design_skillset,
 					why_join: values.why_join,
 				});
-				console.log('design', props.currentForm);
+				console.log("design", props.currentForm);
 			}}
 			render={({
 				values,
@@ -125,7 +130,7 @@ const DesignerForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h4>Tell us a little about your interests...</h4>
-            
+
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -133,7 +138,7 @@ const DesignerForm = (props) => {
 							label={designerSkills.name}
 							name={designerSkills.value}
 							options={designSkillOptions}
-              />
+						/>
 
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
@@ -143,22 +148,27 @@ const DesignerForm = (props) => {
 							name={designerTech.value}
 							options={designTechOptions}
 						/>
-            <StyleDiv>
-
-    					<TextLabel htmlFor="whyJoin">
-							Tell us why you'd like to join The COOP:{" "}
-						</TextLabel>
-						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-            </StyleDiv>
-              
-
-						<Button type="submit">Submit</Button>
+						<StyleDiv>
+							<TextLabel htmlFor="whyJoin">
+								Tell us why you'd like to join The COOP:{" "}
+							</TextLabel>
+							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+						</StyleDiv>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}
 		/>
 	);
 };
-
 
 export default DesignerForm;

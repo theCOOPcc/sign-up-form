@@ -18,6 +18,15 @@ width: 100px;
 height:25px;
 `
 
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
+
 const Label = styled.label`
 color: #FEFEFE;
 `
@@ -65,9 +74,9 @@ const EngineerForm = (props) => {
 					...props.currentForm,
 					engineer_skillset: values.engineer_skillset,
 					engineer_techs: values.engineer_techs,
-          why_join: values.why_join
+					why_join: values.why_join,
 				});
-				console.log('engineer', props.currentForm);
+				console.log("engineer", props.currentForm);
 			}}
 			render={({
 				values,
@@ -98,11 +107,21 @@ const EngineerForm = (props) => {
 							options={engineerTechOptions}
 						/>
 						<StyleDiv>
-
-						<TextLabel htmlFor="whyJoin">Tell us why you'd like to join: </TextLabel>
-						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+							<TextLabel htmlFor="whyJoin">
+								Tell us why you'd like to join:{" "}
+							</TextLabel>
+							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 						</StyleDiv>
-						<Button type="submit">Submit</Button>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}

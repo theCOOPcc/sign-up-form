@@ -6,13 +6,14 @@ import Confirmation from "./pages/Confirmation";
 import coopLogo from "./components/forms/imgs/coopLogo.svg";
 import DesignerRouter from "./pages/DesignerRouter";
 import MentorRouter from "./pages/MentorRouter.jsx";
-import EngineerRouter from "./pages/EngineerRouter"
+import EngineerRouter from "./pages/EngineerRouter";
 import DataScientistRouter from "./pages/DataScientistRouter";
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const App = () => {
+	const [formComplete, setFormComplete] = useState(false);
 	const [currentForm, setCurrentForm] = useState({
 		role: "",
 		pronouns: "",
@@ -31,8 +32,6 @@ const App = () => {
 		engineer_skillset: [],
 		engineer_techs: [],
 	});
-
-	const [formComplete, setFormComplete] = useState(false)
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -90,12 +89,16 @@ const App = () => {
 	}, [newForm]);
 
 	function addItem(newForm) {
-		axios
-			.post("/api/forms/", newForm)
-			.catch((err) => console.log(err));
+		axios.post("/api/forms/", newForm).catch((err) => console.log(err));
 	}
 
-// This function is currently not used in production
+	function submitForm() {
+		addItem(newForm);
+		setFormComplete(true);
+		setCurrentForm({...currentForm, first_name: ""})
+	}
+
+	// This function is currently not used in production
 
 	// function deleteItem(form) {
 	// 	axios
@@ -133,6 +136,7 @@ const App = () => {
 						setCurrentForm={setCurrentForm}
 						addItem={addItem}
 						newForm={newForm}
+						setFormComplete={setFormComplete}
 					/>
 
 					<EngineerRouter
@@ -140,6 +144,7 @@ const App = () => {
 						setCurrentForm={setCurrentForm}
 						addItem={addItem}
 						newForm={newForm}
+						setFormComplete={setFormComplete}
 					/>
 
 					<DataScientistRouter
@@ -147,10 +152,16 @@ const App = () => {
 						setCurrentForm={setCurrentForm}
 						addItem={addItem}
 						newForm={newForm}
+						setFormComplete={setFormComplete}
 					/>
 				</>
 			) : (
 				<Confirmation />
+			)}
+			{newForm.first_name === "" ? (
+				<div></div>
+			) : (
+				<button onClick={submitForm}>Finish</button>
 			)}
 		</div>
 	);
