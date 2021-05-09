@@ -11,7 +11,7 @@ const validationSchema = Yup.object().shape({
 	role: Yup.object({
 		label: Yup.string().oneOf(candidatePath.choices),
 		value: Yup.string().oneOf(candidatePath.choices)
-	}),
+	}).required(),
 }, "Please choose from one of the selections")
 
 

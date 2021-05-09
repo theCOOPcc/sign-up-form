@@ -76,14 +76,11 @@ const FullForm = styled.div`
 `;
 
 const validationSchema = Yup.object().shape({
-	design_skillset: Yup.mixed().oneOf(
-		Fields.designerSkills.choices,
+	design_skillset: Yup.array().min(
+		1,
 		"Please choose from one of the selections"
 	),
-	design_techs: Yup.mixed().oneOf(
-		Fields.designerTech.choices,
-		"Please choose from one of the selections"
-	),
+	design_techs: Yup.array().min(1, "Please choose from one of the selections"),
 	why_join: Yup.string().required("This field is required").max(100),
 });
 
@@ -103,12 +100,11 @@ const DesignerForm = (props) => {
 	return (
 		<Formik
 			initialValues={{
-				design_techs: "",
-				design_skillset: "",
+				design_techs: [],
+				design_skillset: [],
 				why_join: "",
 			}}
-			// TODO: Reconfigure validation!!!!
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({

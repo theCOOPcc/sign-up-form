@@ -47,7 +47,7 @@ const MentorForm = (props) => {
 	return (
 		<Formik
 			initialValues={{
-				help_with: "",
+				help_with: [],
 				avail_dates: "",
 				linkedin: "",
 			}}
@@ -72,16 +72,6 @@ const MentorForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h3>Tell us more about You</h3>
-						{/* {Fields.mentorFields.map((f) => (
-							<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
-								<option value={f.value}></option>
-								{f.choices.map((c) => (
-									<option name={c.value} key={c} value={c}>
-										{c}
-									</option>
-								))}
-							</Inputs.SelectInput>
-						))} */}
 
 						<Inputs.SelectField
 							onBlur={setFieldTouched}

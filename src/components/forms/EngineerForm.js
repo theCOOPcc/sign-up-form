@@ -6,17 +6,16 @@ import { engineerSkills, engineerTech } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import "../../App.css";
-import {FormStyle, StyleDiv, TextLabel} from '../meta/inputs'
-
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 25px;
+`;
 
 const BackBtn = styled.button`
 	background-color: black;
@@ -28,46 +27,46 @@ const BackBtn = styled.button`
 `;
 
 const Label = styled.label`
-color: #FEFEFE;
-`
+	color: #fefefe;
+`;
 
 const FullForm = styled.div`
-width: 100%;
-height: 100%;
-`
+	width: 100%;
+	height: 100%;
+`;
 
 const validationSchema = Yup.object().shape({
-	engineer_skillset: Yup.mixed().oneOf(
-		engineerSkills.choices,
+	engineer_skillset: Yup.array().min(
+		1,
 		"Please choose from one of the selections"
 	),
-	engineer_techs: Yup.mixed().oneOf(
-		engineerTech.choices,
+	engineer_techs: Yup.array().min(
+		1,
 		"Please choose from one of the selections"
 	),
 	why_join: Yup.string().required("This field is required"),
 });
 
 const EngineerForm = (props) => {
-  	const engineerSkillsOptions = [];
-		engineerSkills.choices.forEach((element) => {
-			let skill = { label: `${element}`, value: `${element}` };
-			engineerSkillsOptions.push(skill);
-		});
+	const engineerSkillsOptions = [];
+	engineerSkills.choices.forEach((element) => {
+		let skill = { label: `${element}`, value: `${element}` };
+		engineerSkillsOptions.push(skill);
+	});
 
-		const engineerTechOptions = [];
-		engineerTech.choices.forEach((element) => {
-			let tech = { label: `${element}`, value: `${element}` };
-			engineerTechOptions.push(tech);
-		});
+	const engineerTechOptions = [];
+	engineerTech.choices.forEach((element) => {
+		let tech = { label: `${element}`, value: `${element}` };
+		engineerTechOptions.push(tech);
+	});
 	return (
 		<Formik
 			initialValues={{
-				engineer_skillset: "",
-				engineer_techs: "",
+				engineer_skillset: [],
+				engineer_techs: [],
 				why_join: "",
 			}}
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({
@@ -130,4 +129,3 @@ const EngineerForm = (props) => {
 };
 
 export default EngineerForm;
-

@@ -5,23 +5,21 @@ import * as Yup from "yup";
 import { dataSciSkills } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from '../meta/inputs'
-
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 
 const FullForm = styled.div`
-width: 100%;
-height: 100%;
-`
-
+	width: 100%;
+	height: 100%;
+`;
 
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 25px;
+`;
 const BackBtn = styled.button`
 	background-color: black;
 	color: #00c9b1;
@@ -32,26 +30,24 @@ const BackBtn = styled.button`
 `;
 
 const validationSchema = Yup.object().shape({
-	data_sci_skillset: Yup.mixed().oneOf(
-		dataSciSkills.choices,
+	data_sci_skillset: Yup.array().min(
+		1,
 		"Please choose from one of the selections"
 	),
 	why_join: Yup.string().required("This field is required"),
 });
 
 const DataScienceForm = (props) => {
-
-  	const dataSciOptions = [];
-		dataSciSkills.choices.forEach((element) => {
-			let skill = { label: `${element}`, value: `${element}` };
-			dataSciOptions.push(skill);
-		});
-
+	const dataSciOptions = [];
+	dataSciSkills.choices.forEach((element) => {
+		let skill = { label: `${element}`, value: `${element}` };
+		dataSciOptions.push(skill);
+	});
 
 	return (
 		<Formik
 			initialValues={{
-				data_sci_skillset: "",
+				data_sci_skillset: [],
 				why_join: "",
 			}}
 			// validationSchema={validationSchema}
@@ -107,6 +103,5 @@ const DataScienceForm = (props) => {
 		/>
 	);
 };
-
 
 export default DataScienceForm;
