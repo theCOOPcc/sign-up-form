@@ -2,10 +2,10 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { dataSciSkills } from "./fields";
-import * as Inputs from "./inputs";
+import { dataSciSkills } from "./meta/fields";
+import * as Inputs from "./meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from './inputs'
+import {FormStyle, StyleDiv, TextLabel} from './meta/inputs'
 
 
 const FullForm = styled.div`

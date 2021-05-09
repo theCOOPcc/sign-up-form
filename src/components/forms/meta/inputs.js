@@ -2,7 +2,7 @@ import { Form, useField, FieldProps } from "formik";
 import styled from "styled-components";
 import ReactSelect, { ReactSelectProps } from "react-select";
 import * as Fields from "./fields";
-import { designFields } from "../Form/fields";
+import { designFields } from "./fields";
 
 const Input = styled.input`
   padding: 0.75em;

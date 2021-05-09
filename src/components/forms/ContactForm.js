@@ -2,10 +2,10 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { pronouns } from "./fields";
-import * as Inputs from "./inputs";
+import { pronouns } from "./meta/fields";
+import * as Inputs from "./meta/inputs";
 import styled from "styled-components";
-import { FormStyle, StyleDiv, TextLabel } from "./inputs";
+import { FormStyle, StyleDiv, TextLabel } from "./meta/inputs";
 
 const Button = styled.button`
   background-color: #00c9b1;

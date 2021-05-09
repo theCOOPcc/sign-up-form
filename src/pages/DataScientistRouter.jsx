@@ -24,7 +24,7 @@ const DataScientistRouter = (props) => {
 			) : (
 				<div></div>
 			)}
-			{props.newForm.role === "Designer" &&
+			{props.newForm.role === "Data Scientist" &&
 			props.newForm.bootcamps !== undefined ? (
 				<ContactForm
 					currentForm={props.currentForm}

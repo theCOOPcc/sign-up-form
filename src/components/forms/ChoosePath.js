@@ -2,10 +2,10 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { candidatePath } from "./fields";
-import * as Inputs from "./inputs";
+import { candidatePath } from "./meta/fields";
+import * as Inputs from "./meta/inputs";
 import styled from "styled-components";
-import { FormStyle } from './inputs'
+import { FormStyle } from './meta/inputs'
 
 const validationSchema = Yup.object().shape({
 	role: Yup.object({

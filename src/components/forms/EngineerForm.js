@@ -2,11 +2,11 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { engineerSkills, engineerTech } from "./fields";
-import * as Inputs from "./inputs";
+import { engineerSkills, engineerTech } from "./meta/fields";
+import * as Inputs from "./meta/inputs";
 import styled from "styled-components";
 import "../../App.css";
-import {FormStyle, StyleDiv, TextLabel} from './inputs'
+import {FormStyle, StyleDiv, TextLabel} from './meta/inputs'
 
 
 const Button = styled.button`

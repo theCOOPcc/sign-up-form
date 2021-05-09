@@ -10,10 +10,6 @@ import MentorRouter from "./pages/MentorRouter.jsx";
 import EngineerRouter from "./pages/EngineerRouter"
 import DataScientistRouter from "./pages/DataScientistRouter";
 
-// import CoryForm from "./components/CoryTestForm/CoryForm"
-// import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
-// import ResearchForm from "./components/CoryTestForm/Codepen/ResearchForm";
-
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
