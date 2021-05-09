@@ -31,6 +31,7 @@ const EngineerRouter = (props) => {
 					setCurrentForm={props.setCurrentForm}
 					addItem={props.addItem}
 					newForm={props.newForm}
+					setFormComplete={props.setFormComplete}
 				/>
 			) : (
 				<div></div>

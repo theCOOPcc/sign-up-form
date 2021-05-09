@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import SignUp from "./components/Form/Form";
 import axios from "axios";
 import "./App.css";
 import ChoosePath from "./components/forms/ChoosePath";
@@ -32,7 +31,8 @@ const App = () => {
 		engineer_skillset: [],
 		engineer_techs: [],
 	});
-	const [currentPage, setCurrentPage] = useState(1);
+
+	const [formComplete, setFormComplete] = useState(false)
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -108,43 +108,50 @@ const App = () => {
 			<a href="http://localhost:3000">
 				<img src={coopLogo} />
 			</a>
-			{newForm.role === undefined ? (
-				<ChoosePath
-					newForm={newForm}
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
+			{formComplete === false ? (
+				<>
+					{newForm.role === undefined ? (
+						<ChoosePath
+							newForm={newForm}
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+						/>
+					) : (
+						<div></div>
+					)}
+
+					<MentorRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+						setFormComplete={setFormComplete}
+					/>
+
+					<DesignerRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+					/>
+
+					<EngineerRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+					/>
+
+					<DataScientistRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+					/>
+				</>
 			) : (
-				<div></div>
+				<Confirmation />
 			)}
-
-			<MentorRouter
-				currentForm={currentForm}
-				setCurrentForm={setCurrentForm}
-				addItem={addItem}
-				newForm={newForm}
-			/>
-
-			<DesignerRouter
-				currentForm={currentForm}
-				setCurrentForm={setCurrentForm}
-				addItem={addItem}
-				newForm={newForm}
-			/>
-
-			<EngineerRouter
-				currentForm={currentForm}
-				setCurrentForm={setCurrentForm}
-				addItem={addItem}
-				newForm={newForm}
-			/>
-
-			<DataScientistRouter
-				currentForm={currentForm}
-				setCurrentForm={setCurrentForm}
-				addItem={addItem}
-				newForm={newForm}
-			/>
 		</div>
 	);
 };

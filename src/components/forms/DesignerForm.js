@@ -2,13 +2,12 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import * as Fields from "./meta/fields";
-import * as Inputs from "./meta/inputs";
+import * as Fields from "../meta/fields";
+import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import ReactSelect from "react-select";
-import MySelect from "./SelectTests/select-re";
-import {FormStyle, TextLabel, StyleDiv} from './meta/inputs'
-import { designerTech, designerSkills } from "./meta/fields";
+import {FormStyle, TextLabel, StyleDiv} from '../meta/inputs'
+import { designerTech, designerSkills } from "../meta/fields";
 
 // export const FormStyles = {
 //   container: (provided, state) => ({

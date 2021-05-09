@@ -1,10 +1,10 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { helpOptions, helpDates } from "./meta/fields";
-import * as Inputs from "./meta/inputs";
+import { helpOptions, helpDates } from "../meta/fields";
+import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from './meta/inputs'
+import {FormStyle, StyleDiv, TextLabel} from '../meta/inputs'
 
 const Button = styled.button`
 background-color: #00C9B1;

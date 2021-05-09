@@ -4,9 +4,9 @@ import InfoIntakeForm from '../components/forms/InfoIntakeForm'
 import ContactForm from '../components/forms/ContactForm'
 
 const DesignerRouter = (props) => {
-  return ( 
-    <>
-    {props.newForm.role === "Designer" && props.newForm.why_join === "" ? (
+  return (
+		<>
+			{props.newForm.role === "Designer" && props.newForm.why_join === "" ? (
 				<DesignerForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
@@ -24,18 +24,20 @@ const DesignerRouter = (props) => {
 			) : (
 				<div></div>
 			)}
-			{props.newForm.role === "Designer" && props.newForm.bootcamps !== undefined ? (
+			{props.newForm.role === "Designer" &&
+			props.newForm.bootcamps !== undefined ? (
 				<ContactForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
 					addItem={props.addItem}
 					newForm={props.newForm}
+					setFormComplete={props.setFormComplete}
 				/>
 			) : (
 				<div></div>
 			)}
-      </>
-   );
+		</>
+	);
 }
  
 export default DesignerRouter;

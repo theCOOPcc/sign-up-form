@@ -3,10 +3,13 @@ import MentorForm from '../components/forms/MentorForm'
 import ContactForm from '../components/forms/ContactForm'
 
 const MentorRouter = (props) => {
-  return ( 
-    <>
-    	{props.newForm.role === "Mentor" && props.newForm.linkedin === "" ? (
-				<MentorForm currentForm={props.currentForm} setCurrentForm={props.setCurrentForm} />
+  return (
+		<>
+			{props.newForm.role === "Mentor" && props.newForm.linkedin === "" ? (
+				<MentorForm
+					currentForm={props.currentForm}
+					setCurrentForm={props.setCurrentForm}
+				/>
 			) : (
 				<div></div>
 			)}
@@ -16,12 +19,13 @@ const MentorRouter = (props) => {
 					setCurrentForm={props.setCurrentForm}
 					addItem={props.addItem}
 					newForm={props.newForm}
+					setFormComplete={props.setFormComplete}
 				/>
 			) : (
 				<div></div>
 			)}
-      </>
-   );
+		</>
+	);
 }
  
 export default MentorRouter;

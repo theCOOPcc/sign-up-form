@@ -2,10 +2,10 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { pronouns } from "./meta/fields";
-import * as Inputs from "./meta/inputs";
+import { pronouns } from "../meta/fields";
+import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import { FormStyle, StyleDiv, TextLabel } from "./meta/inputs";
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 
 const Button = styled.button`
   background-color: #00c9b1;
@@ -27,7 +27,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const ContactForm = (props) => {
-	const submitForm = () => props.addItem(props.newForm)
+	const submitForm = () => {
+    props.addItem(props.newForm)
+    props.setFormComplete(true)
+  }
   const pronounOptions = [];
   pronouns.choices.forEach((element) => {
     let pronoun = { label: `${element}`, value: `${element}` };

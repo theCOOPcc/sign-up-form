@@ -6,7 +6,8 @@ import ContactForm from "../components/forms/ContactForm";
 const DataScientistRouter = (props) => {
   return (
 		<>
-			{props.newForm.role === "Data Scientist" && props.newForm.why_join === "" ? (
+			{props.newForm.role === "Data Scientist" &&
+			props.newForm.why_join === "" ? (
 				<DataScienceForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
@@ -31,6 +32,7 @@ const DataScientistRouter = (props) => {
 					setCurrentForm={props.setCurrentForm}
 					addItem={props.addItem}
 					newForm={props.newForm}
+					setFormComplete={props.setFormComplete}
 				/>
 			) : (
 				<div></div>
