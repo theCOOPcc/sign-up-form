@@ -7,9 +7,10 @@ import DataScienceForm from "./components/forms/DataScienceForm";
 import DesignerForm from "./components/forms/DesignerForm";
 import EngineerForm from "./components/forms/EngineerForm";
 import InfoIntakeForm from "./components/forms/InfoIntakeForm";
-import MentorForm from './components/forms/MentorForm'
+import MentorForm from "./components/forms/MentorForm";
 import ChoosePath from "./components/forms/ChoosePath";
-import coopLogo from "./components/forms/imgs/coopLogo.svg"
+import Confirmation from "./pages/Confirmation";
+import coopLogo from "./components/forms/imgs/coopLogo.svg";
 
 // import CoryForm from "./components/CoryTestForm/CoryForm"
 // import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
@@ -37,8 +38,7 @@ const App = () => {
 		engineer_skillset: [],
 		engineer_techs: [],
 	});
-
-	const [forms, setForms] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -78,11 +78,11 @@ const App = () => {
 		github: currentForm.github,
 		portfolio: currentForm.portfolio,
 		why_join: currentForm.why_join,
-		
+
 		bootcamps: currentForm.bootcamps.value,
 		role: currentForm.role.value,
 		pronouns: currentForm.pronouns.value,
-		
+
 		help_with: finalHelpWith,
 		data_sci_skillset: finalDataSciSkillset,
 		design_techs: finalDesignTechs,
@@ -92,15 +92,8 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		console.log('newForm', newForm)
-	}, [currentForm]);
-
-	// function refreshList() {
-	// 	axios.get("/api/forms/").then(
-	// 		(res) => setForms(res.data)
-	// 		// console.log(res.data)
-	// 	);
-	// }
+		console.log("newForm", newForm);
+	}, [newForm]);
 
 	function addItem(newForm) {
 		axios
@@ -117,57 +110,82 @@ const App = () => {
 	}
 
 	return (
-		<>
-			<div className="App">
-				<div className="logobar">
-					<img src={coopLogo}/>
-				</div>
-				<ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
+		<div className="App">
+			<a href="http://localhost:3000">
+				<img src={coopLogo} />
+			</a>
+			{/* <Confirmation /> */}
+			{newForm.role === undefined ? (
+				<ChoosePath
+					newForm={newForm}
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm}
+				/>
+			) : (
+				<div></div>
+			)}
+			{newForm.role === "Mentor" && newForm.linkedin === "" ? (
 				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
-				<EngineerForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-				<DataScienceForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-				<DesignerForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-				<InfoIntakeForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
+			) : (
+				<div></div>
+			)}
+			{newForm.role === "Mentor" && newForm.linkedin !== "" ? (
 				<ContactForm
 					currentForm={currentForm}
 					setCurrentForm={setCurrentForm}
 					addItem={addItem}
 					newForm={newForm}
 				/>
-			</div>
-{/* <div className="App"> */}
-			{/* <button onClick={refreshList}>Refresh</button>
-			<SignUp addItem={addItem} />  */}
-			{/* { forms ?
+			) : (
+				<div>3</div>
+			)}
+			{newForm.role === "Designer" && newForm.why_join === "" ? (
+				<DesignerForm
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm}
+				/>
+			) : (
+				<div></div>
+			)}
+			{newForm.role === "Designer" &&
+			newForm.why_join !== "" &&
+			newForm.bootcamps === undefined ? (
+				<InfoIntakeForm
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm}
+				/>
+			) : (
+				<div></div>
+			)}
+			{newForm.role === "Designer" && newForm.bootcamps !== undefined ? (
+				<ContactForm
+					currentForm={currentForm}
+					setCurrentForm={setCurrentForm}
+					addItem={addItem}
+					newForm={newForm}
+				/>
+			) : (
+				<div></div>
+			)}
 
-			<ul className="forms">
-				{forms.map((form, idx) => (
-					<div key={idx}>
-						<li>
-							{form.first_name} <span>{form.id}</span>
-						</li>
-						<button key={idx} onClick={() => deleteItem(form)}>
-							X
-						</button>
-					</div>
-				))}
-			</ul>
-		 :
-				<div></div>}  */}
-			{/* </div> */}
-		</>
+			{/* <MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
+			<EngineerForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
+			<DataScienceForm
+				currentForm={currentForm}
+				setCurrentForm={setCurrentForm}
+			/>
+			<DesignerForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
+			<InfoIntakeForm
+				currentForm={currentForm}
+				setCurrentForm={setCurrentForm}
+			/>
+			<ContactForm
+				currentForm={currentForm}
+				setCurrentForm={setCurrentForm}
+				addItem={addItem}
+				newForm={newForm}
+			/> */}
+		</div>
 	);
 };
 

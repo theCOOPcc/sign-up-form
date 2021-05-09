@@ -52,7 +52,6 @@ const ContactForm = (props) => {
           pronouns: values.pronouns,
         });
         console.log("contact form", props.currentForm);
-        props.addItem(props.newForm);
       }}
       render={({
         values,
@@ -94,14 +93,6 @@ const ContactForm = (props) => {
               onBlur={setFieldTouched}
               onChange={setFieldValue}
             />
-						<Inputs.SelectInput
-							options={pronounOptions}
-							key={pronouns.name}
-							label={pronouns.name}
-							name={pronouns.value}
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-						/>
 
 						<Button type="submit">Submit</Button>
 					</FormStyle>

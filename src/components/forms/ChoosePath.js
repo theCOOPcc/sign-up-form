@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { candidatePath } from "./fields";
 import * as Inputs from "./inputs";
 import styled from "styled-components";
-import {FormStyle} from './inputs'
+import { FormStyle } from './inputs'
 
 const validationSchema = Yup.object().shape({
 	role: Yup.object({
