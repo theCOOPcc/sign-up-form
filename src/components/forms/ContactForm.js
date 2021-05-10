@@ -101,7 +101,7 @@ const ContactForm = (props) => {
 							/>
 
 							<div style={{ display: "flex" }}>
-								{props.currentForm.role.label == "Mentor" ? (
+								{props.currentForm.role.label === "Mentor" ? (
 									<BackBtn
 										type="button"
 										onClick={() => {

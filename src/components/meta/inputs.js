@@ -221,6 +221,7 @@ export const SelectField = ({ label, ...props }) => {
 	);
 };
 
+// TODO: There are several things in this component that are defined but never used, or commented out. For now, leave them in, so we can return to this component down the road to use for future select inputs and have the whole set of props available.
 export const SelectInput = ({ label, ...props }) => {
 	const [field, meta] = useField(props);
 	function handleChange(value) {
