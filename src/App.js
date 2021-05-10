@@ -25,6 +25,7 @@ const App = () => {
 		portfolio: "",
 		bootcamps: "",
 		why_join: "",
+		avail_dates: "",
 		help_with: [],
 		data_sci_skillset: [],
 		design_techs: [],
@@ -71,7 +72,8 @@ const App = () => {
 		github: currentForm.github,
 		portfolio: currentForm.portfolio,
 		why_join: currentForm.why_join,
-
+		
+		avail_dates: currentForm.avail_dates.value,
 		bootcamps: currentForm.bootcamps.value,
 		role: currentForm.role.value,
 		pronouns: currentForm.pronouns.value,

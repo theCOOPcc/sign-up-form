@@ -4,16 +4,16 @@ import * as Yup from "yup";
 import { helpOptions, helpDates } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from '../meta/inputs'
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 25px;
+`;
 
 const BackBtn = styled.button`
 	background-color: black;
@@ -24,26 +24,25 @@ const BackBtn = styled.button`
 	height: 25px;
 `;
 
-
 const validateSchema = Yup.object().shape({
-	help_with: Yup.mixed().oneOf(
-		helpOptions.choices,
-		"Please choose from one of the selections"
-	),
-	avail_dates: Yup.mixed().oneOf(
-		helpDates.choices,
-		"Please choose from one of the options"
-	),
+	help_with: Yup.array().min(1, "Please choose from one of the selections."),
+	avail_dates: Yup.object().required("Please note your availability."),
 	linkedin: Yup.string().required("Required"),
 });
 
 const MentorForm = (props) => {
-		const helpOptionOptions = [];
-		helpOptions.choices.forEach((element) => {
-			let option = { label: `${element}`, value: `${element}` };
-			helpOptionOptions.push(option);
-		});
-		
+	const helpOptionOptions = [];
+	helpOptions.choices.forEach((element) => {
+		let option = { label: `${element}`, value: `${element}` };
+		helpOptionOptions.push(option);
+	});
+
+	const helpDatesOptions = [];
+	helpDates.choices.forEach((element) => {
+		let time = { label: `${element}`, value: `${element}` };
+		helpDatesOptions.push(time);
+	});
+
 	return (
 		<Formik
 			initialValues={{
@@ -51,13 +50,14 @@ const MentorForm = (props) => {
 				avail_dates: "",
 				linkedin: "",
 			}}
-			// validationSchema={validateSchema}
+			validationSchema={validateSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({
 					...props.currentForm,
 					help_with: values.help_with,
 					linkedin: values.linkedin,
+					avail_dates: values.avail_dates
 				});
 				console.log("mentor", props.currentForm);
 			}}
@@ -80,6 +80,15 @@ const MentorForm = (props) => {
 							label={helpOptions.name}
 							name={helpOptions.value}
 							options={helpOptionOptions}
+						/>
+
+						<Inputs.SelectInput
+							options={helpDatesOptions}
+							key={helpDates.name}
+							label={helpDates.name}
+							name={helpDates.value}
+							onBlur={setFieldTouched}
+							onChange={setFieldValue}
 						/>
 
 						<StyleDiv>
@@ -105,6 +114,4 @@ const MentorForm = (props) => {
 	);
 };
 
-
 export default MentorForm;
-

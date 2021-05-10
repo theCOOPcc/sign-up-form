@@ -50,7 +50,7 @@ const DataScienceForm = (props) => {
 				data_sci_skillset: [],
 				why_join: "",
 			}}
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({
