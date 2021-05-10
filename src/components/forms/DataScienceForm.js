@@ -6,6 +6,7 @@ import { dataSciSkills } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const FullForm = styled.div`
 	width: 100%;
@@ -16,12 +17,11 @@ const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
-	border-radius: 3px;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 const BackBtn = styled.button`
-	background-color: black;
+	background-color: #1f1216;
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
@@ -70,32 +70,36 @@ const DataScienceForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h4>Tell us a little about your interests...</h4>
+						<h4>TELL US A LITTLE ABOUT YOUR INTERESTS...</h4>
+						<img alt="some fields are required" src={group122} />
+						<div className="container">
+							<Inputs.SelectField
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={dataSciSkills.name}
+								label={dataSciSkills.name}
+								name={dataSciSkills.value}
+								options={dataSciOptions}
+							/>
 
-						<Inputs.SelectField
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={dataSciSkills.name}
-							label={dataSciSkills.name}
-							name={dataSciSkills.value}
-							options={dataSciOptions}
-						/>
-
-						<StyleDiv>
-							<TextLabel htmlFor="whyJoin">
-								Tell us why you'd like to join The COOP:{" "}
-							</TextLabel>
-							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-						</StyleDiv>
-						<div style={{ display: "flex" }}>
-							<BackBtn
-								onClick={() =>
-									props.setCurrentForm({ ...props.currentForm, role: "" })
-								}>
-								{" "}
-								&lt; Back{" "}
-							</BackBtn>
-							<Button type="submit">Submit</Button>
+							<StyleDiv>
+								<TextLabel htmlFor="whyJoin">
+									Tell us why you'd like to join The COOP:{" "}
+								</TextLabel>
+								<Inputs.TextInput
+									id="whyJoin"
+									name="why_join"></Inputs.TextInput>
+							</StyleDiv>
+							<div style={{ display: "flex" }}>
+								<BackBtn
+									onClick={() =>
+										props.setCurrentForm({ ...props.currentForm, role: "" })
+									}>
+									{" "}
+									&lt; Back{" "}
+								</BackBtn>
+								<Button type="submit">Next</Button>
+							</div>
 						</div>
 					</FormStyle>
 				</Form>

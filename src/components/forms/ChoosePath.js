@@ -19,9 +19,8 @@ const Button = styled.button`
 background-color: #00C9B1;
 color: #F6F6F6;
 border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
+width: 183px;
+height: 50px;
 `
 
 const ChoosePath = (props) => {
@@ -54,9 +53,17 @@ const ChoosePath = (props) => {
 							<h4>
 								We're constantly looking for new talent to join our efforts. Let
 								us know what your interests are below, and we'll be in touch as
-								soon as something comes up.{" "}
+								soon as something comes up.
 							</h4>
 						</div>
+
+						{/* //TODO: Turn these buttons into selecting role */}
+						{/* <div>
+
+						{candidatePath.choices.map(choice => 
+							<button onClick={() => props.setCurrentForm({ ...props.currentForm, role: choice })}>{choice}</button>
+						)}
+						</div> */}
 
 						<Inputs.SelectInput
 							options={roleOptions}
@@ -68,7 +75,7 @@ const ChoosePath = (props) => {
 						/> 
 
 						<Button style={{ marginTop: "5px" }} type="submit">
-							Submit
+							Next
 						</Button>
 					</FormStyle>
 				</Form>

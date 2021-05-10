@@ -17,7 +17,6 @@ button {
   background-color: #c4c4c4;
   color: #f6f6f6;
   font-size: 18px;
-  border-radius: 2px;
   cursor: pointer;
 }
 
@@ -48,8 +47,8 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   /* border: 1px solid green; */
-  -webkit-text-fill-color: #F25187BF;
-  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  -webkit-text-fill-color: #F25187;
+  -webkit-box-shadow: #1F1216;
   transition: background-color 5000s ease-in-out 0s;
   font-size: 18px;
 }
@@ -66,7 +65,7 @@ select:-webkit-autofill:focus {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #FEFEFE;
 }
 
 .container {
@@ -79,4 +78,17 @@ select:-webkit-autofill:focus {
 .input-field-wrapper {
   display: flex;
   justify-content: end;
+}
+
+h2 {
+  margin: 15px;
+}
+
+.star {
+  color:
+}
+
+.css-12jo7m5 {
+  color: #FEFEFE !important;
+  line-height: 32px;
 }

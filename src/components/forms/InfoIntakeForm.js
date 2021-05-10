@@ -5,27 +5,25 @@ import * as Yup from "yup";
 import { bootcamps } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from '../meta/inputs'
-
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	width: 183px;
+	height: 50px;
+`;
 
 const BackBtn = styled.button`
-	background-color: black;
+	background-color: #1f1216;
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
 	width: 100px;
 	height: 25px;
 `;
-
 
 const validationSchema = Yup.object().shape({
 	bootcamp: Yup.mixed().oneOf(
@@ -74,43 +72,45 @@ const InfoIntakeForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h2>TELL US MORE ABOUT YOU</h2>
+						<img alt="some fields are required" src={group122} />
+						<div className="container">
+							<Inputs.SelectInput
+								options={bootcampOptions}
+								key={bootcamps.name}
+								label={bootcamps.name}
+								name={bootcamps.value}
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+							/>
+							<StyleDiv>
+								<TextLabel htmlFor="github">Github: </TextLabel>
+								<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
+							</StyleDiv>
 
-						<Inputs.SelectInput
-							options={bootcampOptions}
-							key={bootcamps.name}
-							label={bootcamps.name}
-							name={bootcamps.value}
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-						/>
-						<StyleDiv>
-							<TextLabel htmlFor="github">Github: </TextLabel>
-							<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
-						</StyleDiv>
+							<StyleDiv>
+								<TextLabel htmlFor="portfolio">Portfolio: </TextLabel>
+								<Inputs.TextInput
+									id="portfolio"
+									name="portfolio"></Inputs.TextInput>
+							</StyleDiv>
 
-						<StyleDiv>
-							<TextLabel htmlFor="portfolio">Portfolio: </TextLabel>
-							<Inputs.TextInput
-								id="portfolio"
-								name="portfolio"></Inputs.TextInput>
-						</StyleDiv>
+							<StyleDiv>
+								<TextLabel htmlFor="linkedin">Linkedin: </TextLabel>
+								<Inputs.TextInput
+									id="linkedin"
+									name="linkedin"></Inputs.TextInput>
+							</StyleDiv>
 
-						<StyleDiv>
-							<TextLabel htmlFor="linkedin">Linkedin: </TextLabel>
-							<Inputs.TextInput
-								id="linkedin"
-								name="linkedin"></Inputs.TextInput>
-						</StyleDiv>
-
-						<div style={{ display: "flex" }}>
-							<BackBtn
-								onClick={() =>
-									props.setCurrentForm({ ...props.currentForm, why_join: "" })
-								}>
-								{" "}
-								&lt; Back{" "}
-							</BackBtn>
-							<Button type="submit">Submit</Button>
+							<div style={{ display: "flex" }}>
+								<BackBtn
+									onClick={() =>
+										props.setCurrentForm({ ...props.currentForm, why_join: "" })
+									}>
+									{" "}
+									&lt; Back{" "}
+								</BackBtn>
+								<Button type="submit">Next</Button>
+							</div>
 						</div>
 					</FormStyle>
 				</Form>
@@ -119,6 +119,4 @@ const InfoIntakeForm = (props) => {
 	);
 };
 
-
 export default InfoIntakeForm;
-

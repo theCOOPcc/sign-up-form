@@ -1,5 +1,5 @@
 export const candidatePath = {
-	name: "I am a(n)",
+	name: "I am a(n):",
 	value: "role",
 	choices: ["Engineer", "Designer", "Data Scientist", "Mentor"],
 };
