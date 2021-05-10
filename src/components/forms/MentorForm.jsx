@@ -57,7 +57,8 @@ const MentorForm = (props) => {
 					...props.currentForm,
 					help_with: values.help_with,
 					linkedin: values.linkedin,
-					avail_dates: values.avail_dates
+					avail_dates: values.avail_dates,
+					bootcamps: { label: "", value: "" }
 				});
 				console.log("mentor", props.currentForm);
 			}}

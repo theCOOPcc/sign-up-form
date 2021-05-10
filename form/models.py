@@ -3,8 +3,6 @@ from django.db import models
 
 # Create your models here.
 
-# TODO: update form model to reflect selector choices
-
 class Form(models.Model):
   first_name = models.CharField(max_length=50, default='', blank=True)
   last_name = models.CharField(max_length=50, default='', blank=True)
@@ -12,17 +10,17 @@ class Form(models.Model):
   linkedin = models.CharField(max_length=254, default='', blank=True)
   github = models.CharField(max_length=254, default='', blank=True)
   portfolio = models.CharField(max_length=254,default='', blank=True)
-  why_join = models.TextField(default='')
+  why_join = models.TextField(default='', blank=True)
   avail_dates = models.CharField(max_length=50, default='', blank=True)
   role = models.CharField(max_length=50, default='', blank=True)
   pronouns = models.CharField(max_length=50, default='', blank=True)
   bootcamps = models.CharField(max_length=50, default='', blank=True)
-  help_with = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
-  engineer_skillset = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
-  engineer_techs = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
-  design_skillset = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
-  design_techs = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
-  data_sci_skillset = ArrayField(models.CharField(max_length=50, blank=True), default=list, blank=True)
+  help_with = ArrayField(models.CharField(max_length=100, blank=True), default=list, blank=True)
+  engineer_skillset = ArrayField(models.CharField(max_length=64, blank=True), default=list, blank=True)
+  engineer_techs = ArrayField(models.CharField(max_length=64, blank=True), default=list, blank=True)
+  design_skillset = ArrayField(models.CharField(max_length=64, blank=True), default=list, blank=True)
+  design_techs = ArrayField(models.CharField(max_length=64, blank=True), default=list, blank=True)
+  data_sci_skillset = ArrayField(models.CharField(max_length=64, blank=True), default=list, blank=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
