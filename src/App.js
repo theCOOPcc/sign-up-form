@@ -86,6 +86,7 @@ const App = () => {
 		engineer_techs: finalEngineerTechs,
 	};
 
+	// TODO: This hook updates you of what is going to the backend each time the form is updated. It does not need to go into production.
 	useEffect(() => {
 		console.log("newForm", newForm);
 	}, [newForm]);
@@ -111,7 +112,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<a href="http://localhost:3000">
-				<img src={coopLogo} />
+				<img alt="theCoop logo"src={coopLogo} />
 			</a>
 			{formComplete === false ? (
 				<>
@@ -128,33 +129,25 @@ const App = () => {
 					<MentorRouter
 						currentForm={currentForm}
 						setCurrentForm={setCurrentForm}
-						addItem={addItem}
 						newForm={newForm}
-						setFormComplete={setFormComplete}
 					/>
 
 					<DesignerRouter
 						currentForm={currentForm}
 						setCurrentForm={setCurrentForm}
-						addItem={addItem}
 						newForm={newForm}
-						setFormComplete={setFormComplete}
 					/>
 
 					<EngineerRouter
 						currentForm={currentForm}
 						setCurrentForm={setCurrentForm}
-						addItem={addItem}
 						newForm={newForm}
-						setFormComplete={setFormComplete}
 					/>
 
 					<DataScientistRouter
 						currentForm={currentForm}
 						setCurrentForm={setCurrentForm}
-						addItem={addItem}
 						newForm={newForm}
-						setFormComplete={setFormComplete}
 					/>
 				</>
 			) : (
