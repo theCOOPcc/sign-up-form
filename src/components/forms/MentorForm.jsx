@@ -58,7 +58,7 @@ const MentorForm = (props) => {
 					help_with: values.help_with,
 					linkedin: values.linkedin,
 					avail_dates: values.avail_dates,
-					bootcamps: { label: "", value: "" }
+					bootcamps: { label: "", value: "" },
 				});
 				console.log("mentor", props.currentForm);
 			}}
@@ -81,6 +81,7 @@ const MentorForm = (props) => {
 							label={helpOptions.name}
 							name={helpOptions.value}
 							options={helpOptionOptions}
+							placeholder="Select"
 						/>
 
 						<Inputs.SelectInput
@@ -90,12 +91,14 @@ const MentorForm = (props) => {
 							name={helpDates.value}
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
+							placeholder="Select"
 						/>
 
 						<StyleDiv>
 							<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
 							<Inputs.TextInput
 								id="linkedin"
+								placeholder="Paste your LinkedIn URL here"
 								name="linkedin"></Inputs.TextInput>
 						</StyleDiv>
 						<div style={{ display: "flex" }}>

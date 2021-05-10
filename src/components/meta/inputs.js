@@ -10,13 +10,11 @@ const Input = styled.input`
 	cursor: pointer;
 	background-color: black;
 	border: 1px solid #f25187;
-	/* text-decoration: underline; */
 	color: #fefefe;
 `;
 
 export const Label = styled.label`
 	color: #fefefe;
-	padding-right: 20px;
 `;
 
 export const TextLabel = styled(Label)`
@@ -24,7 +22,7 @@ export const TextLabel = styled(Label)`
 `;
 
 export const FormStyle = styled.div`
-	background-color: black;
+	background-color: #1f1216;
 	color: #fefefe;
 	display: flex;
 	flex-direction: column;
@@ -40,9 +38,10 @@ export const FormStyle = styled.div`
 export const FormStyling = {
 	container: (provided, state) => ({
 		...provided,
-		width: 200,
+		width: 439,
 		display: "inline-flex",
 		flexDirection: "row",
+		// align-items: "right"
 	}),
 	control: (provided, state) => ({
 		...provided,
@@ -53,11 +52,13 @@ export const FormStyling = {
 		borderRadius: 0,
 		backgroundColor: "transparent",
 		borderBottom: "1px solid #F25187",
+		width: 439,
 	}),
 	menu: (provided, state) => ({
 		...provided,
 		backgroundColor: "black",
 		color: "white",
+		width: 439,
 	}),
 	// input: (provided, state) => ({
 	//   display:
@@ -68,7 +69,11 @@ export const FormStyling = {
 		color: "white",
 		backgroundColor: "#562636",
 		padding: 5,
-		width: 200,
+		width: 439,
+		textAlign: "left",
+		paddingLeft: 36,
+		paddingTop: 15,
+		paddingBottom: 15,
 	}),
 	valueContainer: (provided, state) => ({
 		...provided,

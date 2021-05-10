@@ -87,7 +87,9 @@ const EngineerForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h4>Tell us a little about your interests...</h4>
+						<h2>Tell us a little about your interests...</h2>
+						<div className="container">
+
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -95,7 +97,7 @@ const EngineerForm = (props) => {
 							label={engineerSkills.name}
 							name={engineerSkills.value}
 							options={engineerSkillsOptions}
-						/>
+							/>
 
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
@@ -104,7 +106,7 @@ const EngineerForm = (props) => {
 							label={engineerTech.name}
 							name={engineerTech.value}
 							options={engineerTechOptions}
-						/>
+							/>
 						<StyleDiv>
 							<TextLabel htmlFor="whyJoin">
 								Tell us why you'd like to join:{" "}
@@ -121,6 +123,7 @@ const EngineerForm = (props) => {
 							</BackBtn>
 							<Button type="submit">Submit</Button>
 						</div>
+									</div>
 					</FormStyle>
 				</Form>
 			)}

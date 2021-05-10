@@ -4,7 +4,11 @@
 
 body {
   height: 100%;
-  background-color: black;
+  background-color: #1F1216;
+  font-size: 18px;
+  font-family: proxima-nova,
+  sans-serif;
+  margin: 40px;
 }
 
 button {
@@ -17,16 +21,41 @@ button {
   cursor: pointer;
 }
 
-/* .App {
-  display: flex;
-  justify-content: space-evenly;
-  border: 1px solid black;
-  
-} */
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input { 
+  border-top-style: hidden !important;
+  border-right: hidden !important;
+  border-left: hidden !important;
+  width: 439px;
+}
+
+input::placeholder {
+  color: #F25187BF !important;
+  font-size: 18px;
+}
+
+.css-1wa3eu0-placeholder {
+  color: #F25187BF !important;
+  font-size: 18px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  /* border: 1px solid green; */
+  -webkit-text-fill-color: #F25187BF;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 18px;
+}
+
+.css-1thl2mp-control {
+  width: 439px !important;
 }
 
 .App-header {
@@ -40,15 +69,14 @@ button {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  align-items: flex-end;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-field-wrapper {
+  display: flex;
+  justify-content: end;
 }

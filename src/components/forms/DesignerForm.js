@@ -125,7 +125,7 @@ const DesignerForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h4>Tell us a little about your interests...</h4>
+						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
 
 						<Inputs.SelectField
 							onBlur={setFieldTouched}

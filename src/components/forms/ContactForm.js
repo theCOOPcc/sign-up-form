@@ -60,6 +60,7 @@ const ContactForm = (props) => {
 					pronouns: values.pronouns,
 				});
 				console.log("contact form", props.currentForm);
+				props.addItem(props.newForm)
 			}}
 			render={({
 				values,
@@ -72,7 +73,7 @@ const ContactForm = (props) => {
 				<>
 					<Form>
 						<FormStyle>
-							<h3>CONTACT INFO</h3>
+							<h2>CONTACT INFORMATION</h2>
 							<StyleDiv>
 								<TextLabel htmlFor="firstName">First Name: </TextLabel>
 								<Inputs.TextInput
@@ -86,10 +87,6 @@ const ContactForm = (props) => {
 									name="last_name"></Inputs.TextInput>
 							</StyleDiv>
 
-							<StyleDiv>
-								<TextLabel htmlFor="email">Email: </TextLabel>
-								<Inputs.TextInput id="email" name="email"></Inputs.TextInput>
-							</StyleDiv>
 
 							<Inputs.SelectInput
 								options={pronounOptions}
@@ -99,6 +96,12 @@ const ContactForm = (props) => {
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}
 							/>
+							<StyleDiv>
+								<TextLabel htmlFor="email">Email: </TextLabel>
+								<Inputs.TextInput id="email" 
+								placeholder="you@youremail.com"
+								name="email"></Inputs.TextInput>
+							</StyleDiv>
 
 							<div style={{ display: "flex" }}>
 								{props.currentForm.role.label === "Mentor" ? (

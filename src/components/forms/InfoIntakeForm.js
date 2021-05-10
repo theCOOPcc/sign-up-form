@@ -73,7 +73,7 @@ const InfoIntakeForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h3>Tell us more about you</h3>
+						<h2>TELL US MORE ABOUT YOU</h2>
 
 						<Inputs.SelectInput
 							options={bootcampOptions}
