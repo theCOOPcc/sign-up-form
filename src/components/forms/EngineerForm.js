@@ -22,8 +22,8 @@ const BackBtn = styled.button`
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const Label = styled.label`
@@ -109,13 +109,14 @@ const EngineerForm = (props) => {
 							/>
 							<StyleDiv>
 								<TextLabel htmlFor="whyJoin">
-									Tell us why you'd like to join:{" "}
+									Tell us why you'd like to join
 								</TextLabel>
-								<Inputs.TextInput
+								<Inputs.TextInputRequired
 									id="whyJoin"
-									name="why_join"></Inputs.TextInput>
+									name="why_join"/>
 							</StyleDiv>
-							<div style={{ display: "flex" }}>
+						</div>
+							<div className="button-container">
 								<BackBtn
 									onClick={() =>
 										props.setCurrentForm({ ...props.currentForm, role: "" })
@@ -125,7 +126,6 @@ const EngineerForm = (props) => {
 								</BackBtn>
 								<Button type="submit">Next</Button>
 							</div>
-						</div>
 					</FormStyle>
 				</Form>
 			)}

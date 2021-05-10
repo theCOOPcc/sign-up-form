@@ -10,43 +10,6 @@ import { FormStyle, TextLabel, StyleDiv } from "../meta/inputs";
 import { designerTech, designerSkills } from "../meta/fields";
 import group122 from "./imgs/Group122.svg"
 
-// export const FormStyles = {
-//   container: (provided, state) => ({
-//     ...provided,
-//     width: 200,
-
-//   }),
-//   // input: (provided, state) => ({
-//   //   display:
-//   // }),
-//   option: (provided, state) => ({
-//     ...provided,
-//     borderBottom: '1px solid #F25187',
-//     color: 'white',
-//     backgroundColor: '#562636',
-
-//     padding: 5,
-//     width: 200,
-
-//   }),
-//   valueContainer: (provided, state) => ({
-//     ...provided,
-//     backgroundColor:'black',
-//     color: 'white'
-//   }),
-//   multiValue: (provided, state) => ({
-//     ...provided,
-//     backgroundColor: '#F25187',
-//     color: 'white'
-//   }),
-//   singleValue: (provided, state)=> {
-//     const opacity = state.isDisabled ? 0.5 : 1;
-//     const transition = 'opacity 300ms';
-
-//     return {...provided, opacity, transition}
-//   }
-// }
-
 // Basic form styling for each page
 
 const Button = styled.button`
@@ -62,8 +25,8 @@ const BackBtn = styled.button`
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const Options = styled.option`
@@ -153,16 +116,16 @@ const DesignerForm = (props) => {
 									id="whyJoin"
 									name="why_join"></Inputs.TextInput>
 							</StyleDiv>
-							<div style={{ display: "flex" }}>
-								<BackBtn
-									onClick={() =>
-										props.setCurrentForm({ ...props.currentForm, role: "" })
-									}>
-									{" "}
-									&lt; Back{" "}
-								</BackBtn>
-								<Button type="submit">Next</Button>
-							</div>
+						</div>
+						<div className="button-container">
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Next</Button>
 						</div>
 					</FormStyle>
 				</Form>

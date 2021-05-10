@@ -21,8 +21,8 @@ const BackBtn = styled.button`
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const validationSchema = Yup.object().shape({
@@ -30,9 +30,9 @@ const validationSchema = Yup.object().shape({
 		bootcamps.choices,
 		"Please choose from one of the selections"
 	),
-	linkedin: Yup.string().required("This field is required"),
-	github: Yup.string().required("This field is required"),
-	portfolio: Yup.string().required("This field is required"),
+	linkedin: Yup.string(),
+	github: Yup.string(),
+	portfolio: Yup.string(),
 });
 
 const InfoIntakeForm = (props) => {
@@ -74,7 +74,7 @@ const InfoIntakeForm = (props) => {
 						<h2>TELL US MORE ABOUT YOU</h2>
 						<img alt="some fields are required" src={group122} />
 						<div className="container">
-							<Inputs.SelectInput
+							<Inputs.SelectInputRequired
 								options={bootcampOptions}
 								key={bootcamps.name}
 								label={bootcamps.name}
@@ -100,17 +100,16 @@ const InfoIntakeForm = (props) => {
 									id="linkedin"
 									name="linkedin"></Inputs.TextInput>
 							</StyleDiv>
-
-							<div style={{ display: "flex" }}>
-								<BackBtn
-									onClick={() =>
-										props.setCurrentForm({ ...props.currentForm, why_join: "" })
-									}>
-									{" "}
-									&lt; Back{" "}
-								</BackBtn>
-								<Button type="submit">Next</Button>
-							</div>
+						</div>
+						<div className="button-container">
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Next</Button>
 						</div>
 					</FormStyle>
 				</Form>

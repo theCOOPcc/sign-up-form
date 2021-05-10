@@ -156,7 +156,9 @@ const App = () => {
 			{newForm.first_name === "" ? (
 				<div></div>
 			) : (
+				<div className="button-container">
 				<button onClick={submitForm}>Finish</button>
+				</div>
 			)}
 		</div>
 	);

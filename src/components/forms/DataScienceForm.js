@@ -25,8 +25,8 @@ const BackBtn = styled.button`
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const validationSchema = Yup.object().shape({
@@ -70,7 +70,7 @@ const DataScienceForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h4>TELL US A LITTLE ABOUT YOUR INTERESTS...</h4>
+						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
 						<img alt="some fields are required" src={group122} />
 						<div className="container">
 							<Inputs.SelectField
@@ -90,7 +90,8 @@ const DataScienceForm = (props) => {
 									id="whyJoin"
 									name="why_join"></Inputs.TextInput>
 							</StyleDiv>
-							<div style={{ display: "flex" }}>
+						</div>
+							<div className="button-container">
 								<BackBtn
 									onClick={() =>
 										props.setCurrentForm({ ...props.currentForm, role: "" })
@@ -100,7 +101,6 @@ const DataScienceForm = (props) => {
 								</BackBtn>
 								<Button type="submit">Next</Button>
 							</div>
-						</div>
 					</FormStyle>
 				</Form>
 			)}

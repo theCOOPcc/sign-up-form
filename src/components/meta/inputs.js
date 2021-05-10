@@ -61,12 +61,7 @@ export const FormStyling = {
 		borderRadius: "none",
 		margin: "none",
 		padding: 0,
-
-
 	}),
-	// input: (provided, state) => ({
-	//   display:
-	// }),
 	option: (provided, state) => ({
 		...provided,
 		borderBottom: "1px solid #C4C4C4",
@@ -83,7 +78,7 @@ export const FormStyling = {
 		...provided,
 		display: "flex",
 		flexWrap: "nowrap",
-		placeholder: "Please select up to 4",
+		placeholder: "Select up to 4",
 		backgroundColor: "#1f1216",
 		color: "#FFFFFF",
 		width: 200,
@@ -123,12 +118,14 @@ export const StyleDiv = styled.div`
 	padding: 10px 0px;
 `;
 
-export const TextInput = ({ label, ...props }) => {
+export const TextInputRequired = ({ label, ...props }) => {
 	const [field, meta] = useField(props);
 	return (
-			<div className="container">
-		<StyleDiv>
-				<Label htmlFor={props.id || props.name}>{label}</Label>
+		<div className="container">
+			<StyleDiv>
+				<Label htmlFor={props.id || props.name}>
+					{label}<span className="star">*</span>
+				</Label>
 				<Input
 					placeholder="Type response here..."
 					type="text"
@@ -136,35 +133,34 @@ export const TextInput = ({ label, ...props }) => {
 					{...field}
 					{...props}
 				/>
-		</StyleDiv>
-				{meta.touched && meta.error ? (
-					<div className="error">{meta.error}</div>
-				) : null}
-			</div>
+			</StyleDiv>
+			{meta.touched && meta.error ? (
+				<div className="error">{meta.error}</div>
+			) : null}
+		</div>
 	);
 };
 
-export const Dropdown = ({ label, ...props }) => {
-	const [field, meta, helpers] = useField(props);
-
-	const { options } = props;
-	const { touched, error, value } = meta;
-	const { setValue } = helpers;
-
+export const TextInput = ({ label, ...props }) => {
+	const [field, meta] = useField(props);
 	return (
-		<FormStyle>
-			<div>
-				<Label htmlFor={props.id || props.name}>{label}</Label>
-			</div>
-			<div>
-				<ReactSelect
-					options={options}
-					name={field.name}
-					onChange={(option) => setValue(option.value)}
-					instanceId={props.iid}
+		<div className="container">
+			<StyleDiv>
+				<Label htmlFor={props.id || props.name}>
+					{label}
+				</Label>
+				<Input
+					placeholder="Type response here..."
+					type="text"
+					className="text-input"
+					{...field}
+					{...props}
 				/>
-			</div>
-		</FormStyle>
+			</StyleDiv>
+			{meta.touched && meta.error ? (
+				<div className="error">{meta.error}</div>
+			) : null}
+		</div>
 	);
 };
 
@@ -201,7 +197,7 @@ export const SelectField = ({ label, ...props }) => {
 			<StyleDiv>
 				{label && (
 					<Label className="input-label" htmlFor={name} error={error}>
-						{label}
+						{label}<span className="star">*</span>
 					</Label>
 				)}
 				<div className="container">
@@ -266,6 +262,62 @@ export const SelectInput = ({ label, ...props }) => {
 			<StyleDiv>
 				<Label style={{ paddingBottom: "0" }} htmlFor={props.id || props.name}>
 					{label}
+				</Label>
+				<div className="container">
+					<ReactSelect
+						id={id}
+						placeholder={placeholder}
+						options={options}
+						value={value}
+						onChange={handleChange}
+						styles={FormStyling}
+						onBlur={handleBlur}
+						touched={touched}
+						error={error}
+						backspaceRemovesValue={backspaceRemovesValue}
+						components={{ ClearIndicator: null }}></ReactSelect>
+					{meta.touched && meta.error ? (
+						<div className="error">{meta.error}</div>
+					) : null}
+					{touched && error ? <p className="error-text">{error}</p> : null}
+				</div>
+			</StyleDiv>
+		</>
+	);
+};
+
+export const SelectInputRequired = ({ label, ...props }) => {
+	const [field, meta] = useField(props);
+	function handleChange(value) {
+		const { onChange, name } = props;
+
+		onChange(name, value);
+	}
+
+	function handleBlur() {
+		const { onBlur, name } = props;
+
+		onBlur(name, true);
+	}
+	const {
+		id,
+		name,
+		// label,
+		placeholder,
+		options,
+		value,
+		isMulti,
+		isDisabled,
+		touched,
+		error,
+		isClearable,
+		backspaceRemovesValue,
+	} = props;
+	return (
+		<>
+			<StyleDiv>
+				<Label style={{ paddingBottom: "0" }} htmlFor={props.id || props.name}>
+					{label}<span className="star">*</span>
 				</Label>
 				<div className="container">
 					<ReactSelect

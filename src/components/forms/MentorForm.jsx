@@ -5,6 +5,7 @@ import { helpOptions, helpDates } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const Button = styled.button`
 	background-color: #00c9b1;
@@ -19,8 +20,8 @@ const BackBtn = styled.button`
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const validateSchema = Yup.object().shape({
@@ -71,8 +72,8 @@ const MentorForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h3>Tell us more about You</h3>
-
+						<h2>TELL US MORE ABOUT YOU</h2>
+						<img alt="some fields are required" src={group122} />
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}

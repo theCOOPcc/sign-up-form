@@ -6,6 +6,7 @@ import { pronouns } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const Button = styled.button`
 	background-color: #00c9b1;
@@ -20,8 +21,8 @@ const BackBtn = styled.button`
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const validationSchema = Yup.object().shape({
@@ -73,21 +74,22 @@ const ContactForm = (props) => {
 					<Form>
 						<FormStyle>
 							<h2>CONTACT INFORMATION</h2>
+							<img alt="some fields are required" src={group122} />
 							<div className="container">
 								<StyleDiv>
-									<TextLabel htmlFor="firstName">First Name: </TextLabel>
-									<Inputs.TextInput
+									<TextLabel htmlFor="firstName">First Name</TextLabel>
+									<Inputs.TextInputRequired
 										id="firstName"
-										name="first_name"></Inputs.TextInput>
+										name="first_name"></Inputs.TextInputRequired>
 								</StyleDiv>
 								<StyleDiv>
-									<TextLabel htmlFor="lastName">Last Name: </TextLabel>
-									<Inputs.TextInput
+									<TextLabel htmlFor="lastName">Last Name</TextLabel>
+									<Inputs.TextInputRequired
 										id="lastName"
-										name="last_name"></Inputs.TextInput>
+										name="last_name"></Inputs.TextInputRequired>
 								</StyleDiv>
 
-								<Inputs.SelectInput
+								<Inputs.SelectInputRequired
 									options={pronounOptions}
 									key={pronouns.name}
 									label={pronouns.name}
@@ -96,41 +98,41 @@ const ContactForm = (props) => {
 									onChange={setFieldValue}
 								/>
 								<StyleDiv>
-									<TextLabel htmlFor="email">Email: </TextLabel>
-									<Inputs.TextInput
+									<TextLabel htmlFor="email">Email</TextLabel>
+									<Inputs.TextInputRequired
 										id="email"
 										placeholder="you@youremail.com"
-										name="email"></Inputs.TextInput>
+										name="email"
+									/>
 								</StyleDiv>
-
-								<div style={{ display: "flex" }}>
-									{props.currentForm.role.label === "Mentor" ? (
-										<BackBtn
-											type="button"
-											onClick={() => {
-												props.setCurrentForm({
-													...props.currentForm,
-													linkedin: "",
-												});
-												console.log("role should equal mentor");
-											}}>
-											&lt; Back
-										</BackBtn>
-									) : (
-										<BackBtn
-											type="button"
-											onClick={() => {
-												props.setCurrentForm({
-													...props.currentForm,
-													bootcamps: "",
-												});
-												console.log("role should not be mentor");
-											}}>
-											&lt; Back
-										</BackBtn>
-									)}
-									<Button type="submit">Next</Button>
-								</div>
+							</div>
+							<div className="button-container">
+								{props.currentForm.role.label === "Mentor" ? (
+									<BackBtn
+										type="button"
+										onClick={() => {
+											props.setCurrentForm({
+												...props.currentForm,
+												linkedin: "",
+											});
+											console.log("role should equal mentor");
+										}}>
+										&lt; Back
+									</BackBtn>
+								) : (
+									<BackBtn
+										type="button"
+										onClick={() => {
+											props.setCurrentForm({
+												...props.currentForm,
+												bootcamps: "",
+											});
+											console.log("role should not be mentor");
+										}}>
+										&lt; Back
+									</BackBtn>
+								)}
+								<Button type="submit">Next</Button>
 							</div>
 						</FormStyle>
 					</Form>
