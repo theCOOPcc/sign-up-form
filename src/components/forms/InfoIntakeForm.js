@@ -2,10 +2,10 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { bootcamps } from "./fields";
-import * as Inputs from "./inputs";
+import { bootcamps } from "../meta/fields";
+import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from './inputs'
+import {FormStyle, StyleDiv, TextLabel} from '../meta/inputs'
 
 
 const Button = styled.button`
@@ -16,6 +16,15 @@ border-radius: 3px;
 width: 100px;
 height:25px;
 `
+
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
 
 
 const validationSchema = Yup.object().shape({
@@ -74,26 +83,35 @@ const InfoIntakeForm = (props) => {
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
 						/>
-            <StyleDiv>
+						<StyleDiv>
+							<TextLabel htmlFor="github">Github: </TextLabel>
+							<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
+						</StyleDiv>
 
-						<TextLabel htmlFor="github">Github: </TextLabel>
-						<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
-            </StyleDiv>
-            
-            <StyleDiv>
+						<StyleDiv>
+							<TextLabel htmlFor="portfolio">Portfolio: </TextLabel>
+							<Inputs.TextInput
+								id="portfolio"
+								name="portfolio"></Inputs.TextInput>
+						</StyleDiv>
 
-						<TextLabel htmlFor="portfolio">Portfolio: </TextLabel>
-						<Inputs.TextInput
-							id="portfolio"
-							name="portfolio"></Inputs.TextInput>
-            </StyleDiv>
+						<StyleDiv>
+							<TextLabel htmlFor="linkedin">Linkedin: </TextLabel>
+							<Inputs.TextInput
+								id="linkedin"
+								name="linkedin"></Inputs.TextInput>
+						</StyleDiv>
 
-        <StyleDiv>
-						<TextLabel htmlFor="linkedin">Linkedin: </TextLabel>
-						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
-        </StyleDiv>
-
-						<Button type="submit">Submit</Button>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, why_join: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}

@@ -1,58 +1,66 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import "./MentorForm.css";
 import * as Yup from "yup";
-import { helpOptions, helpDates } from "./fields";
-import * as Inputs from "./inputs";
+import { helpOptions, helpDates } from "../meta/fields";
+import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from './inputs'
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 25px;
+`;
 
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
 
 const validateSchema = Yup.object().shape({
-	help_with: Yup.mixed().oneOf(
-		helpOptions.choices,
-		"Please choose from one of the selections"
-	),
-	avail_dates: Yup.mixed().oneOf(
-		helpDates.choices,
-		"Please choose from one of the options"
-	),
+	help_with: Yup.array().min(1, "Please choose from one of the selections."),
+	avail_dates: Yup.object().required("Please note your availability."),
 	linkedin: Yup.string().required("Required"),
 });
 
 const MentorForm = (props) => {
-		const helpOptionOptions = [];
-		helpOptions.choices.forEach((element) => {
-			let option = { label: `${element}`, value: `${element}` };
-			helpOptionOptions.push(option);
-		});
-		
-	return (
+	const helpOptionOptions = [];
+	helpOptions.choices.forEach((element) => {
+		let option = { label: `${element}`, value: `${element}` };
+		helpOptionOptions.push(option);
+	});
 
+	const helpDatesOptions = [];
+	helpDates.choices.forEach((element) => {
+		let time = { label: `${element}`, value: `${element}` };
+		helpDatesOptions.push(time);
+	});
+
+	return (
 		<Formik
 			initialValues={{
-				help_with: "",
+				help_with: [],
 				avail_dates: "",
 				linkedin: "",
 			}}
-			// validationSchema={validateSchema}
+			validationSchema={validateSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({
 					...props.currentForm,
 					help_with: values.help_with,
 					linkedin: values.linkedin,
+					avail_dates: values.avail_dates,
+					bootcamps: { label: "", value: "" }
 				});
-				console.log('mentor', props.currentForm);
+				console.log("mentor", props.currentForm);
 			}}
 			render={({
 				values,
@@ -65,16 +73,6 @@ const MentorForm = (props) => {
 				<Form>
 					<FormStyle>
 						<h3>Tell us more about You</h3>
-						{/* {Fields.mentorFields.map((f) => (
-							<Inputs.SelectInput key={f.name} label={f.name} name={f.value}>
-								<option value={f.value}></option>
-								{f.choices.map((c) => (
-									<option name={c.value} key={c} value={c}>
-										{c}
-									</option>
-								))}
-							</Inputs.SelectInput>
-						))} */}
 
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
@@ -85,12 +83,31 @@ const MentorForm = (props) => {
 							options={helpOptionOptions}
 						/>
 
-							<StyleDiv>
-						<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
-						<Inputs.TextInput id="linkedin" name="linkedin"></Inputs.TextInput>
+						<Inputs.SelectInput
+							options={helpDatesOptions}
+							key={helpDates.name}
+							label={helpDates.name}
+							name={helpDates.value}
+							onBlur={setFieldTouched}
+							onChange={setFieldValue}
+						/>
 
-							</StyleDiv>
-						<Button type="submit">Submit</Button>
+						<StyleDiv>
+							<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
+							<Inputs.TextInput
+								id="linkedin"
+								name="linkedin"></Inputs.TextInput>
+						</StyleDiv>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}
@@ -98,6 +115,4 @@ const MentorForm = (props) => {
 	);
 };
 
-
 export default MentorForm;
-

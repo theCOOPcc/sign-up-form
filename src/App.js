@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from "react";
-import SignUp from "./components/Form/Form";
 import axios from "axios";
 import "./App.css";
-import ContactForm from "./components/forms/ContactForm";
-import DataScienceForm from "./components/forms/DataScienceForm";
-import DesignerForm from "./components/forms/DesignerForm";
-import EngineerForm from "./components/forms/EngineerForm";
-import InfoIntakeForm from "./components/forms/InfoIntakeForm";
-import MentorForm from './components/forms/MentorForm'
 import ChoosePath from "./components/forms/ChoosePath";
-import coopLogo from "./components/forms/imgs/coopLogo.svg"
-
-// import CoryForm from "./components/CoryTestForm/CoryForm"
-// import MySelect, { choices, colorStyles } from "./components/forms/SelectTests/select-re";
-// import ResearchForm from "./components/CoryTestForm/Codepen/ResearchForm";
+import Confirmation from "./pages/Confirmation";
+import coopLogo from "./components/forms/imgs/coopLogo.svg";
+import DesignerRouter from "./pages/DesignerRouter";
+import MentorRouter from "./pages/MentorRouter.jsx";
+import EngineerRouter from "./pages/EngineerRouter";
+import DataScientistRouter from "./pages/DataScientistRouter";
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const App = () => {
+	const [formComplete, setFormComplete] = useState(false);
 	const [currentForm, setCurrentForm] = useState({
 		role: "",
 		pronouns: "",
@@ -30,6 +25,7 @@ const App = () => {
 		portfolio: "",
 		bootcamps: "",
 		why_join: "",
+		avail_dates: "",
 		help_with: [],
 		data_sci_skillset: [],
 		design_techs: [],
@@ -37,8 +33,6 @@ const App = () => {
 		engineer_skillset: [],
 		engineer_techs: [],
 	});
-
-	const [forms, setForms] = useState([]);
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -79,10 +73,11 @@ const App = () => {
 		portfolio: currentForm.portfolio,
 		why_join: currentForm.why_join,
 		
+		avail_dates: currentForm.avail_dates.value,
 		bootcamps: currentForm.bootcamps.value,
 		role: currentForm.role.value,
 		pronouns: currentForm.pronouns.value,
-		
+
 		help_with: finalHelpWith,
 		data_sci_skillset: finalDataSciSkillset,
 		design_techs: finalDesignTechs,
@@ -92,82 +87,85 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		console.log('newForm', newForm)
-	}, [currentForm]);
-
-	// function refreshList() {
-	// 	axios.get("/api/forms/").then(
-	// 		(res) => setForms(res.data)
-	// 		// console.log(res.data)
-	// 	);
-	// }
+		console.log("newForm", newForm);
+	}, [newForm]);
 
 	function addItem(newForm) {
-		axios
-			.post("/api/forms/", newForm)
-			// .then(refreshList())
-			.catch((err) => console.log(err));
+		axios.post("/api/forms/", newForm).catch((err) => console.log(err));
 	}
 
-	function deleteItem(form) {
-		axios
-			.delete(`/api/forms/${form.id}/`)
-			// .then(refreshList())
-			.catch((err) => console.log(err));
+	function submitForm() {
+		addItem(newForm);
+		setFormComplete(true);
+		setCurrentForm({...currentForm, first_name: ""})
 	}
+
+	// This function is currently not used in production
+
+	// function deleteItem(form) {
+	// 	axios
+	// 		.delete(`/api/forms/${form.id}/`)
+	// 		.catch((err) => console.log(err));
+	// }
 
 	return (
-		<>
-			<div className="App">
-				<div className="logobar">
-					<img src={coopLogo}/>
-				</div>
-				<ChoosePath newForm={newForm} currentForm={currentForm} setCurrentForm={setCurrentForm} />
-				<MentorForm currentForm={currentForm} setCurrentForm={setCurrentForm} />
-				<EngineerForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-				<DataScienceForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-				<DesignerForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-				<InfoIntakeForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-				/>
-				<ContactForm
-					currentForm={currentForm}
-					setCurrentForm={setCurrentForm}
-					addItem={addItem}
-					newForm={newForm}
-				/>
-			</div>
-{/* <div className="App"> */}
-			{/* <button onClick={refreshList}>Refresh</button>
-			<SignUp addItem={addItem} />  */}
-			{/* { forms ?
+		<div className="App">
+			<a href="http://localhost:3000">
+				<img src={coopLogo} />
+			</a>
+			{formComplete === false ? (
+				<>
+					{newForm.role === undefined ? (
+						<ChoosePath
+							newForm={newForm}
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+						/>
+					) : (
+						<div></div>
+					)}
 
-			<ul className="forms">
-				{forms.map((form, idx) => (
-					<div key={idx}>
-						<li>
-							{form.first_name} <span>{form.id}</span>
-						</li>
-						<button key={idx} onClick={() => deleteItem(form)}>
-							X
-						</button>
-					</div>
-				))}
-			</ul>
-		 :
-				<div></div>}  */}
-			{/* </div> */}
-		</>
+					<MentorRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+						setFormComplete={setFormComplete}
+					/>
+
+					<DesignerRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+						setFormComplete={setFormComplete}
+					/>
+
+					<EngineerRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+						setFormComplete={setFormComplete}
+					/>
+
+					<DataScientistRouter
+						currentForm={currentForm}
+						setCurrentForm={setCurrentForm}
+						addItem={addItem}
+						newForm={newForm}
+						setFormComplete={setFormComplete}
+					/>
+				</>
+			) : (
+				<Confirmation />
+			)}
+			{newForm.first_name === "" ? (
+				<div></div>
+			) : (
+				<button onClick={submitForm}>Finish</button>
+			)}
+		</div>
 	);
 };
 

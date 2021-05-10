@@ -2,52 +2,55 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { dataSciSkills } from "./fields";
-import * as Inputs from "./inputs";
+import { dataSciSkills } from "../meta/fields";
+import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
-import {FormStyle, StyleDiv, TextLabel} from './inputs'
-
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 
 const FullForm = styled.div`
-width: 100%;
-height: 100%;
-`
-
+	width: 100%;
+	height: 100%;
+`;
 
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
-
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 25px;
+`;
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
 
 const validationSchema = Yup.object().shape({
-	data_sci_skillset: Yup.mixed().oneOf(
-		dataSciSkills.choices,
+	data_sci_skillset: Yup.array().min(
+		1,
 		"Please choose from one of the selections"
 	),
 	why_join: Yup.string().required("This field is required"),
 });
 
 const DataScienceForm = (props) => {
-
-  	const dataSciOptions = [];
-		dataSciSkills.choices.forEach((element) => {
-			let skill = { label: `${element}`, value: `${element}` };
-			dataSciOptions.push(skill);
-		});
-
+	const dataSciOptions = [];
+	dataSciSkills.choices.forEach((element) => {
+		let skill = { label: `${element}`, value: `${element}` };
+		dataSciOptions.push(skill);
+	});
 
 	return (
 		<Formik
 			initialValues={{
-				data_sci_skillset: "",
+				data_sci_skillset: [],
 				why_join: "",
 			}}
-			// validationSchema={validationSchema}
+			validationSchema={validationSchema}
 			onSubmit={(values) => {
 				console.log("Submit Successful", values);
 				props.setCurrentForm({
@@ -55,7 +58,7 @@ const DataScienceForm = (props) => {
 					data_sci_skillset: values.data_sci_skillset,
 					why_join: values.why_join,
 				});
-				console.log('data science', props.currentForm);
+				console.log("data science", props.currentForm);
 			}}
 			render={({
 				values,
@@ -69,7 +72,6 @@ const DataScienceForm = (props) => {
 					<FormStyle>
 						<h4>Tell us a little about your interests...</h4>
 
-
 						<Inputs.SelectField
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -79,23 +81,27 @@ const DataScienceForm = (props) => {
 							options={dataSciOptions}
 						/>
 
-            <StyleDiv>
-
-						<TextLabel htmlFor="whyJoin">
-							Tell us why you'd like to join The COOP:{" "}
-						</TextLabel>
-						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-
-            </StyleDiv>
-
-
-						<Button type="submit">Submit</Button>
+						<StyleDiv>
+							<TextLabel htmlFor="whyJoin">
+								Tell us why you'd like to join The COOP:{" "}
+							</TextLabel>
+							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+						</StyleDiv>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}
 		/>
 	);
 };
-
 
 export default DataScienceForm;

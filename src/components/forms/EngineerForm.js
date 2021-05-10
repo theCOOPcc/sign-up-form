@@ -2,60 +2,68 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { engineerSkills, engineerTech } from "./fields";
-import * as Inputs from "./inputs";
+import { engineerSkills, engineerTech } from "../meta/fields";
+import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import "../../App.css";
-import {FormStyle, StyleDiv, TextLabel} from './inputs'
-
+import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 
 const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
-`
+	background-color: #00c9b1;
+	color: #f6f6f6;
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 25px;
+`;
+
+const BackBtn = styled.button`
+	background-color: black;
+	color: #00c9b1;
+	font-size: 16px;
+	border: none;
+	width: 100px;
+	height: 25px;
+`;
 
 const Label = styled.label`
-color: #FEFEFE;
-`
+	color: #fefefe;
+`;
 
 const FullForm = styled.div`
-width: 100%;
-height: 100%;
-`
+	width: 100%;
+	height: 100%;
+`;
 
 const validationSchema = Yup.object().shape({
-	engineer_skillset: Yup.mixed().oneOf(
-		engineerSkills.choices,
+	engineer_skillset: Yup.array().min(
+		1,
 		"Please choose from one of the selections"
 	),
-	engineer_techs: Yup.mixed().oneOf(
-		engineerTech.choices,
+	engineer_techs: Yup.array().min(
+		1,
 		"Please choose from one of the selections"
 	),
 	why_join: Yup.string().required("This field is required"),
 });
 
 const EngineerForm = (props) => {
-  	const engineerSkillsOptions = [];
-		engineerSkills.choices.forEach((element) => {
-			let skill = { label: `${element}`, value: `${element}` };
-			engineerSkillsOptions.push(skill);
-		});
+	const engineerSkillsOptions = [];
+	engineerSkills.choices.forEach((element) => {
+		let skill = { label: `${element}`, value: `${element}` };
+		engineerSkillsOptions.push(skill);
+	});
 
-		const engineerTechOptions = [];
-		engineerTech.choices.forEach((element) => {
-			let tech = { label: `${element}`, value: `${element}` };
-			engineerTechOptions.push(tech);
-		});
+	const engineerTechOptions = [];
+	engineerTech.choices.forEach((element) => {
+		let tech = { label: `${element}`, value: `${element}` };
+		engineerTechOptions.push(tech);
+	});
 	return (
 		<Formik
 			initialValues={{
-				engineer_skillset: "",
-				engineer_techs: "",
+				engineer_skillset: [],
+				engineer_techs: [],
 				why_join: "",
 			}}
 			validationSchema={validationSchema}
@@ -65,9 +73,9 @@ const EngineerForm = (props) => {
 					...props.currentForm,
 					engineer_skillset: values.engineer_skillset,
 					engineer_techs: values.engineer_techs,
-          why_join: values.why_join
+					why_join: values.why_join,
 				});
-				console.log('engineer', props.currentForm);
+				console.log("engineer", props.currentForm);
 			}}
 			render={({
 				values,
@@ -98,11 +106,21 @@ const EngineerForm = (props) => {
 							options={engineerTechOptions}
 						/>
 						<StyleDiv>
-
-						<TextLabel htmlFor="whyJoin">Tell us why you'd like to join: </TextLabel>
-						<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
+							<TextLabel htmlFor="whyJoin">
+								Tell us why you'd like to join:{" "}
+							</TextLabel>
+							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
 						</StyleDiv>
-						<Button type="submit">Submit</Button>
+						<div style={{ display: "flex" }}>
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Submit</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}
@@ -111,4 +129,3 @@ const EngineerForm = (props) => {
 };
 
 export default EngineerForm;
-

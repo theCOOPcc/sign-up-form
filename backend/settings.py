@@ -98,6 +98,7 @@ DATABASES = {
     }
 }
 
+# TODO: Uncomment this out to deploy
 # import dj_database_url
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
@@ -132,7 +133,7 @@ REST_FRAMEWORK = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -157,5 +158,6 @@ STATICFILES_DIRS = [
     os.path.join(REACT_APP_DIR, 'build', 'static')
 ]
 
+# TODO: Uncomment this out to deploy
 # import django_heroku
 # django_heroku.settings(locals())
