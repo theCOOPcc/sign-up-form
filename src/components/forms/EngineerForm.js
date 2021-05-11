@@ -90,7 +90,7 @@ const EngineerForm = (props) => {
 						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
 						<img alt="some fields are required" src={group122} />
 						<div className="container">
-							<Inputs.SelectField
+							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}
 								key={engineerSkills.name}
@@ -99,7 +99,7 @@ const EngineerForm = (props) => {
 								options={engineerSkillsOptions}
 							/>
 
-							<Inputs.SelectField
+							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}
 								key={engineerTech.name}

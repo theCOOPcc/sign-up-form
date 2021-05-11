@@ -74,7 +74,7 @@ const MentorForm = (props) => {
 					<FormStyle>
 						<h2>TELL US MORE ABOUT YOU</h2>
 						<img alt="some fields are required" src={group122} />
-						<Inputs.SelectField
+						<Inputs.SelectFieldRequired
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
 							key={helpOptions.name}
@@ -84,7 +84,7 @@ const MentorForm = (props) => {
 							placeholder="Select"
 						/>
 
-						<Inputs.SelectInput
+						<Inputs.SelectInputRequired
 							options={helpDatesOptions}
 							key={helpDates.name}
 							label={helpDates.name}
@@ -96,10 +96,10 @@ const MentorForm = (props) => {
 
 						<StyleDiv>
 							<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
-							<Inputs.TextInput
+							<Inputs.TextInputRequired
 								id="linkedin"
 								placeholder="Paste your LinkedIn URL here"
-								name="linkedin"></Inputs.TextInput>
+								name="linkedin" />
 						</StyleDiv>
 						<div style={{ display: "flex" }}>
 							<BackBtn

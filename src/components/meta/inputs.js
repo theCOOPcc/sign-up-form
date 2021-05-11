@@ -197,7 +197,72 @@ export const SelectField = ({ label, ...props }) => {
 			<StyleDiv>
 				{label && (
 					<Label className="input-label" htmlFor={name} error={error}>
-						{label}<span className="star">*</span>
+						{label}
+					</Label>
+				)}
+				<div className="container">
+					<ReactSelect
+						id={id}
+						placeholder={placeholder}
+						options={options}
+						value={value}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						touched={touched}
+						error={error}
+						isMulti
+						isDisabled={isDisabled}
+						isClearable={isClearable}
+						backspaceRemovesValue={backspaceRemovesValue}
+						components={{ ClearIndicator: null }}
+						styles={FormStyling}
+						hideSelectedOptions={true}
+						closeMenuOnSelect={false}
+					/>
+					{meta.touched && meta.error ? (
+						<div className="error">{meta.error}</div>
+					) : null}
+					{touched && error ? <p className="error-text">{error}</p> : null}
+				</div>
+			</StyleDiv>
+		</div>
+	);
+};
+
+export const SelectFieldRequired = ({ label, ...props }) => {
+	const [field, meta] = useField(props);
+	function handleChange(value) {
+		const { onChange, name } = props;
+
+		onChange(name, value);
+	}
+
+	function handleBlur() {
+		const { onBlur, name } = props;
+
+		onBlur(name, true);
+	}
+
+	const {
+		id,
+		name,
+		// label,
+		placeholder,
+		options,
+		value,
+		isMulti,
+		isDisabled,
+		touched,
+		error,
+		isClearable,
+		backspaceRemovesValue,
+	} = props;
+	return (
+		<div className="input-field-wrapper">
+			<StyleDiv>
+				{label && (
+					<Label className="input-label" htmlFor={name} error={error}>
+						{label} <span className="star">*</span>
 					</Label>
 				)}
 				<div className="container">
@@ -317,7 +382,7 @@ export const SelectInputRequired = ({ label, ...props }) => {
 		<>
 			<StyleDiv>
 				<Label style={{ paddingBottom: "0" }} htmlFor={props.id || props.name}>
-					{label}<span className="star">*</span>
+					{label} <span className="star">*</span>
 				</Label>
 				<div className="container">
 					<ReactSelect
