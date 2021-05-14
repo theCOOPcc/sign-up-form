@@ -70,7 +70,7 @@ export const designerTech = {
 };
 
 export const dataSciSkills = {
-	name: "I am comfortable in the following areas",
+	name: "I'm most comfortable with",
 	value: "data_sci_skillset",
 	choices: [
 		"Python",

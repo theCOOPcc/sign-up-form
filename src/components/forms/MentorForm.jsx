@@ -81,7 +81,7 @@ const MentorForm = (props) => {
 							label={helpOptions.name}
 							name={helpOptions.value}
 							options={helpOptionOptions}
-							placeholder="Select"
+							placeholder="Select all that apply"
 						/>
 
 						<Inputs.SelectInputRequired

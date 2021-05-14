@@ -83,22 +83,30 @@ const InfoIntakeForm = (props) => {
 								onChange={setFieldValue}
 							/>
 							<StyleDiv>
-								<TextLabel htmlFor="github">Github: </TextLabel>
-								<Inputs.TextInput id="github" name="github"></Inputs.TextInput>
+								<TextLabel htmlFor="github">Github:</TextLabel>
+								<Inputs.TextInput
+									id="github"
+									name="github"
+									placeholder="Paste your Github URL here"
+								/>
 							</StyleDiv>
 
 							<StyleDiv>
-								<TextLabel htmlFor="portfolio">Portfolio: </TextLabel>
+								<TextLabel htmlFor="portfolio">Portfolio:</TextLabel>
 								<Inputs.TextInput
 									id="portfolio"
-									name="portfolio"></Inputs.TextInput>
+									name="portfolio"
+									placeholder="Paste your portfolio URL here"
+								/>
 							</StyleDiv>
 
 							<StyleDiv>
 								<TextLabel htmlFor="linkedin">Linkedin: </TextLabel>
-								<Inputs.TextInput
+								<Inputs.TextInputRequired
 									id="linkedin"
-									name="linkedin"></Inputs.TextInput>
+									name="linkedin"
+									placeholder="Paste your LinkedIn URL here"
+								/>
 							</StyleDiv>
 						</div>
 						<div className="button-container">

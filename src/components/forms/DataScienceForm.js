@@ -73,22 +73,26 @@ const DataScienceForm = (props) => {
 						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
 						<img alt="some fields are required" src={group122} />
 						<div className="container">
-							<Inputs.SelectField
+							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}
 								key={dataSciSkills.name}
 								label={dataSciSkills.name}
 								name={dataSciSkills.value}
 								options={dataSciOptions}
+								placeholder="Select up to 4"
 							/>
 
 							<StyleDiv>
 								<TextLabel htmlFor="whyJoin">
-									Tell us why you'd like to join The COOP:{" "}
+									Tell us why you'd like to join The COOP.
 								</TextLabel>
-								<Inputs.TextInput
+								<Inputs.TextInputRequired
 									id="whyJoin"
-									name="why_join"></Inputs.TextInput>
+									name="why_join"
+									//TODO: Update placeholder when switched
+									// placeholder="" 
+									/>
 							</StyleDiv>
 						</div>
 							<div className="button-container">

@@ -97,6 +97,7 @@ const EngineerForm = (props) => {
 								label={engineerSkills.name}
 								name={engineerSkills.value}
 								options={engineerSkillsOptions}
+								placeholder="Select up to 4 skills"
 							/>
 
 							<Inputs.SelectFieldRequired
@@ -106,6 +107,7 @@ const EngineerForm = (props) => {
 								label={engineerTech.name}
 								name={engineerTech.value}
 								options={engineerTechOptions}
+								placeholder="Select up to 4 technologies"
 							/>
 							<StyleDiv>
 								<TextLabel htmlFor="whyJoin">
@@ -113,7 +115,10 @@ const EngineerForm = (props) => {
 								</TextLabel>
 								<Inputs.TextInputRequired
 									id="whyJoin"
-									name="why_join"/>
+									name="why_join"
+									// TODO: Fix this for selector
+									// placeholder="Select one"
+									/>
 							</StyleDiv>
 						</div>
 							<div className="button-container">

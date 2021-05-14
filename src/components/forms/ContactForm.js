@@ -60,7 +60,6 @@ const ContactForm = (props) => {
 					pronouns: values.pronouns,
 				});
 				console.log("contact form", props.currentForm);
-				// props.addItem(props.newForm);
 			}}
 			render={({
 				values,
@@ -89,7 +88,7 @@ const ContactForm = (props) => {
 										name="last_name"></Inputs.TextInputRequired>
 								</StyleDiv>
 
-								<Inputs.SelectInputRequired
+								<Inputs.SelectInput
 									options={pronounOptions}
 									key={pronouns.name}
 									label={pronouns.name}
