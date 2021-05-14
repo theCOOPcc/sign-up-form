@@ -60,7 +60,7 @@ const ContactForm = (props) => {
 					pronouns: values.pronouns,
 				});
 				console.log("contact form", props.currentForm);
-				props.addItem(props.newForm);
+				// props.addItem(props.newForm);
 			}}
 			render={({
 				values,
