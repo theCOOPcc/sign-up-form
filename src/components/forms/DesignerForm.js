@@ -84,6 +84,7 @@ const DesignerForm = (props) => {
 				touched,
 				setFieldValue,
 				setFieldTouched,
+				resetForm,
 				isSubmitting,
 			}) => (
 				<Form>
@@ -119,8 +120,11 @@ const DesignerForm = (props) => {
 						</div>
 						<div className="button-container">
 							<BackBtn
-								onClick={() =>
+							type="button"
+								onClick={() => {
+									resetForm()
 									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}
 								}>
 								{" "}
 								&lt; Back{" "}
