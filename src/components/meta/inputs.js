@@ -124,7 +124,8 @@ export const TextInputRequired = ({ label, ...props }) => {
 		<div className="container">
 			<StyleDiv>
 				<Label htmlFor={props.id || props.name}>
-					{label}<span className="star">*</span>
+					{label}
+					<span className="star">*</span>
 				</Label>
 				<Input
 					placeholder="Type response here..."
@@ -146,9 +147,7 @@ export const TextInput = ({ label, ...props }) => {
 	return (
 		<div className="container">
 			<StyleDiv>
-				<Label htmlFor={props.id || props.name}>
-					{label}
-				</Label>
+				<Label htmlFor={props.id || props.name}>{label}</Label>
 				<Input
 					placeholder="Type response here..."
 					type="text"

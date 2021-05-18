@@ -9,6 +9,9 @@ import MentorRouter from "./pages/MentorRouter.jsx";
 import EngineerRouter from "./pages/EngineerRouter";
 import DataScientistRouter from "./pages/DataScientistRouter";
 
+import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import FormSubmit from "./pages/FormSubmit";
+
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
@@ -72,7 +75,7 @@ const App = () => {
 		github: currentForm.github,
 		portfolio: currentForm.portfolio,
 		why_join: currentForm.why_join,
-		
+
 		avail_dates: currentForm.avail_dates.value,
 		bootcamps: currentForm.bootcamps.value,
 		role: currentForm.role.value,
@@ -98,7 +101,7 @@ const App = () => {
 	function submitForm() {
 		addItem(newForm);
 		setFormComplete(true);
-		setCurrentForm({...currentForm, first_name: ""})
+		setCurrentForm({ ...currentForm, first_name: "" });
 	}
 
 	// This function is currently not used in production
@@ -110,57 +113,73 @@ const App = () => {
 	// }
 
 	return (
-		<div className="App">
-			<a href="http://localhost:3000">
-				<img alt="theCoop logo"src={coopLogo} />
-			</a>
-			{formComplete === false ? (
-				<>
-					{newForm.role === undefined ? (
-						<ChoosePath
-							newForm={newForm}
+		<Router>
+			<Route exact path="/submit">
+				<FormSubmit currentForm={currentForm} setCurrentForm={setCurrentForm} />
+			</Route>
+
+			<div className="App">
+				<a href="http://localhost:3000">
+					<img alt="theCoop logo" src={coopLogo} />
+				</a>
+				{formComplete === false ? (
+					<>
+						{newForm.role === undefined ? (
+							<ChoosePath
+								newForm={newForm}
+								currentForm={currentForm}
+								setCurrentForm={setCurrentForm}
+							/>
+						) : (
+							<div></div>
+						)}
+
+						<MentorRouter
 							currentForm={currentForm}
 							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
 						/>
-					) : (
-						<div></div>
-					)}
 
-					<MentorRouter
+						<DesignerRouter
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
+						/>
+
+						<EngineerRouter
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
+						/>
+
+						<DataScientistRouter
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
+						/>
+					</>
+				) : (
+					<FormSubmit
+						submitForm={submitForm}
 						currentForm={currentForm}
 						setCurrentForm={setCurrentForm}
+						setFormComplete={setFormComplete}
 						newForm={newForm}
 					/>
-
-					<DesignerRouter
-						currentForm={currentForm}
-						setCurrentForm={setCurrentForm}
-						newForm={newForm}
-					/>
-
-					<EngineerRouter
-						currentForm={currentForm}
-						setCurrentForm={setCurrentForm}
-						newForm={newForm}
-					/>
-
-					<DataScientistRouter
-						currentForm={currentForm}
-						setCurrentForm={setCurrentForm}
-						newForm={newForm}
-					/>
-				</>
-			) : (
-				<Confirmation />
-			)}
-			{newForm.first_name === "" ? (
-				<div></div>
-			) : (
-				<div className="button-container">
-				<button onClick={submitForm}>Finish</button>
-				</div>
-			)}
-		</div>
+				)}
+				{/* {newForm.first_name === "" ? (
+					<div></div>
+				) : (
+					<div className="button-container">
+						<button onClick={submitForm}>Finish</button>
+					</div>
+				)} */}
+			</div>
+		</Router>
 	);
 };
 

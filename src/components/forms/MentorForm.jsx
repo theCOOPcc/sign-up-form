@@ -25,7 +25,7 @@ const BackBtn = styled.button`
 `;
 
 const validateSchema = Yup.object().shape({
-	help_with: Yup.array().min(1, "Please choose from one of the selections."),
+	help_with: Yup.array().min(1, "Please choose from one of the selections.").ensure(),
 	avail_dates: Yup.object().required("Please note your availability."),
 	linkedin: Yup.string().required("Required"),
 });
@@ -112,7 +112,7 @@ const MentorForm = (props) => {
 								{" "}
 								&lt; Back{" "}
 							</BackBtn>
-							<Button type="submit">Submit</Button>
+							<Button type="submit">Next</Button>
 						</div>
 					</FormStyle>
 				</Form>

@@ -100,6 +100,7 @@ const DesignerForm = (props) => {
 								label={designerSkills.name}
 								name={designerSkills.value}
 								options={designSkillOptions}
+								placeholder="Select up to 4 skills"
 							/>
 
 							<Inputs.SelectField
@@ -109,6 +110,7 @@ const DesignerForm = (props) => {
 								label={designerTech.name}
 								name={designerTech.value}
 								options={designTechOptions}
+								placeholder="Select up to 4 skills"
 							/>
 							<StyleDiv>
 								<TextLabel htmlFor="whyJoin">

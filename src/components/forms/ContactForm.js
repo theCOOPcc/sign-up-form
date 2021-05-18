@@ -30,8 +30,8 @@ const validationSchema = Yup.object().shape({
 	last_name: Yup.string().required("This field is required"),
 	email: Yup.string().email("Invalid email").required("This field is required"),
 	pronouns: Yup.object({
-		label: Yup.string(),
-		value: Yup.string(),
+		label: Yup.string().ensure(),
+		value: Yup.string().ensure(),
 	}),
 });
 
@@ -59,7 +59,9 @@ const ContactForm = (props) => {
 					email: values.email,
 					pronouns: values.pronouns,
 				});
-				console.log("contact form", props.currentForm);
+				console.log("contact form", props.currentForm)
+				props.setFormComplete(true)
+				;
 			}}
 			render={({
 				values,

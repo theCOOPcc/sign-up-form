@@ -8,12 +8,15 @@ import styled from "styled-components";
 import { FormStyle } from '../meta/inputs'
 import group122 from "./imgs/Group122.svg";
 
-const validationSchema = Yup.object().shape({
-	role: Yup.object({
-		label: Yup.string().oneOf(candidatePath.choices),
-		value: Yup.string().oneOf(candidatePath.choices)
-	}).required(),
-}, "Please choose from one of the selections")
+const validationSchema = Yup.object().shape(
+	{
+		role: Yup.object({
+			label: Yup.string().oneOf(candidatePath.choices),
+			value: Yup.string().oneOf(candidatePath.choices),
+		}).required("Please choose from one of the selections"),
+	},
+	"Please choose from one of the selections"
+);
 
 
 const Button = styled.button`
