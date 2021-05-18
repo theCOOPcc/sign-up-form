@@ -30,10 +30,9 @@ const BackBtn = styled.button`
 `;
 
 const validationSchema = Yup.object().shape({
-	data_sci_skillset: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
+	data_sci_skillset: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
 	why_join: Yup.string().required("This field is required"),
 });
 
@@ -91,20 +90,20 @@ const DataScienceForm = (props) => {
 									id="whyJoin"
 									name="why_join"
 									//TODO: Update placeholder when switched
-									// placeholder="" 
-									/>
+									// placeholder=""
+								/>
 							</StyleDiv>
 						</div>
-							<div className="button-container">
-								<BackBtn
-									onClick={() =>
-										props.setCurrentForm({ ...props.currentForm, role: "" })
-									}>
-									{" "}
-									&lt; Back{" "}
-								</BackBtn>
-								<Button type="submit">Next</Button>
-							</div>
+						<div className="button-container">
+							<BackBtn
+								onClick={() =>
+									props.setCurrentForm({ ...props.currentForm, role: "" })
+								}>
+								{" "}
+								&lt; Back{" "}
+							</BackBtn>
+							<Button type="submit">Next</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}

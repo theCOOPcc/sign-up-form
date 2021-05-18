@@ -7,7 +7,7 @@ import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import "../../App.css";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
-import group122 from "./imgs/Group122.svg"
+import group122 from "./imgs/Group122.svg";
 
 const Button = styled.button`
 	background-color: #00c9b1;
@@ -36,14 +36,12 @@ const FullForm = styled.div`
 `;
 
 const validationSchema = Yup.object().shape({
-	engineer_skillset: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
-	engineer_techs: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
+	engineer_skillset: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
+	engineer_techs: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
 	why_join: Yup.string().required("This field is required"),
 });
 
@@ -85,7 +83,7 @@ const EngineerForm = (props) => {
 				setFieldTouched,
 				isSubmitting,
 				actions,
-				resetForm
+				resetForm,
 			}) => (
 				<Form>
 					<FormStyle>
@@ -120,22 +118,21 @@ const EngineerForm = (props) => {
 									name="why_join"
 									// TODO: Fix this for selector
 									// placeholder="Select one"
-									/>
+								/>
 							</StyleDiv>
 						</div>
-							<div className="button-container">
-								<BackBtn
-									type="button"
-									onClick={() => {
-										props.setCurrentForm({ ...props.currentForm, role: "" })
-										resetForm()
-										console.log('back')
-									}
-									}>
-									&lt; Back
-								</BackBtn>
-								<Button type="submit">Next</Button>
-							</div>
+						<div className="button-container">
+							<BackBtn
+								type="button"
+								onClick={() => {
+									props.setCurrentForm({ ...props.currentForm, role: "" });
+									resetForm();
+									console.log("back");
+								}}>
+								&lt; Back
+							</BackBtn>
+							<Button type="submit">Next</Button>
+						</div>
 					</FormStyle>
 				</Form>
 			)}

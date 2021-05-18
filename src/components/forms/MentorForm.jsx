@@ -74,6 +74,8 @@ const MentorForm = (props) => {
 					<FormStyle>
 						<h2>TELL US MORE ABOUT YOU</h2>
 						<img alt="some fields are required" src={group122} />
+						<div className="container">
+
 						<Inputs.SelectFieldRequired
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
@@ -101,6 +103,7 @@ const MentorForm = (props) => {
 								placeholder="Paste your LinkedIn URL here"
 								name="linkedin" />
 						</StyleDiv>
+						</div>
 						<div style={{ display: "flex" }}>
 							<BackBtn
 								onClick={() =>

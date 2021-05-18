@@ -50,12 +50,12 @@ const ChoosePath = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<div>
-							<h4>
+						<div style={{margin: '37px 275px'}}>
+							<p className="role-text">
 								We're constantly looking for new talent to join our efforts. Let
 								us know what your interests are below, and we'll be in touch as
 								soon as something comes up.
-							</h4>
+							</p>
 							<img alt="some fields are required" src={group122} />
 						</div>
 

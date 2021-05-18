@@ -8,7 +8,7 @@ import styled from "styled-components";
 import ReactSelect from "react-select";
 import { FormStyle, TextLabel, StyleDiv } from "../meta/inputs";
 import { designerTech, designerSkills } from "../meta/fields";
-import group122 from "./imgs/Group122.svg"
+import group122 from "./imgs/Group122.svg";
 
 // Basic form styling for each page
 
@@ -39,11 +39,12 @@ const FullForm = styled.div`
 `;
 
 const validationSchema = Yup.object().shape({
-	design_skillset: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
-	design_techs: Yup.array().min(1, "Please choose from one of the selections"),
+	design_skillset: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
+	design_techs: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
 	why_join: Yup.string().required("This field is required").max(100),
 });
 
@@ -120,11 +121,10 @@ const DesignerForm = (props) => {
 						</div>
 						<div className="button-container">
 							<BackBtn
-							type="button"
+								type="button"
 								onClick={() => {
-									props.setCurrentForm({ ...props.currentForm, role: "" })
-								}
-								}>
+									props.setCurrentForm({ ...props.currentForm, role: "" });
+								}}>
 								{" "}
 								&lt; Back{" "}
 							</BackBtn>
