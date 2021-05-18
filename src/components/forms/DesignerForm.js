@@ -122,7 +122,6 @@ const DesignerForm = (props) => {
 							<BackBtn
 							type="button"
 								onClick={() => {
-									resetForm()
 									props.setCurrentForm({ ...props.currentForm, role: "" })
 								}
 								}>

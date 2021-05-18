@@ -68,6 +68,7 @@ const InfoIntakeForm = (props) => {
 				setFieldValue,
 				setFieldTouched,
 				isSubmitting,
+				resetForm,
 			}) => (
 				<Form>
 					<FormStyle>
@@ -112,10 +113,19 @@ const InfoIntakeForm = (props) => {
 						<div className="button-container">
 							<BackBtn
 								onClick={() =>
-									props.setCurrentForm({ ...props.currentForm, role: "" })
+									props.setCurrentForm({
+										...props.currentForm,
+										design_techs: [],
+										design_skillset: [],
+										why_join: "",
+										engineer_skillset: [],
+										engineer_techs: [],
+										why_join: "",
+										data_sci_skillset: [],
+										why_join: "",
+									})
 								}>
-								{" "}
-								&lt; Back{" "}
+								&lt; Back
 							</BackBtn>
 							<Button type="submit">Next</Button>
 						</div>

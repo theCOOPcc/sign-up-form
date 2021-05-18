@@ -32,7 +32,7 @@ const validationSchema = Yup.object().shape({
 	pronouns: Yup.object({
 		label: Yup.string(),
 		value: Yup.string(),
-	}).required("Please fill out this section"),
+	}),
 });
 
 const ContactForm = (props) => {
@@ -112,6 +112,8 @@ const ContactForm = (props) => {
 										onClick={() => {
 											props.setCurrentForm({
 												...props.currentForm,
+												help_with: [],
+												avail_dates: "",
 												linkedin: "",
 											});
 											console.log("role should equal mentor");
@@ -125,6 +127,9 @@ const ContactForm = (props) => {
 											props.setCurrentForm({
 												...props.currentForm,
 												bootcamps: "",
+												linkedin: "",
+												github: "",
+												portfolio: "",
 											});
 											console.log("role should not be mentor");
 										}}>

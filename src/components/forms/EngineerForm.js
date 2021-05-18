@@ -84,6 +84,8 @@ const EngineerForm = (props) => {
 				setFieldValue,
 				setFieldTouched,
 				isSubmitting,
+				actions,
+				resetForm
 			}) => (
 				<Form>
 					<FormStyle>
@@ -123,11 +125,14 @@ const EngineerForm = (props) => {
 						</div>
 							<div className="button-container">
 								<BackBtn
-									onClick={() =>
+									type="button"
+									onClick={() => {
 										props.setCurrentForm({ ...props.currentForm, role: "" })
+										resetForm()
+										console.log('back')
+									}
 									}>
-									{" "}
-									&lt; Back{" "}
+									&lt; Back
 								</BackBtn>
 								<Button type="submit">Next</Button>
 							</div>
