@@ -1,6 +1,7 @@
 import React from 'react'
 import MentorForm from '../components/forms/MentorForm'
 import ContactForm from '../components/forms/ContactForm'
+import FormSubmit from '../pages/FormSubmit'
 
 const MentorRouter = (props) => {
   return (
@@ -24,6 +25,19 @@ const MentorRouter = (props) => {
 			) : (
 				<div></div>
 			)}
+			{/* {props.newForm.role === "Mentor" &&
+			props.newForm.linkedin !== "" &&
+			props.newForm.first_name !== "" ? (
+				<FormSubmit
+					submitForm={props.submitForm}
+					currentForm={props.currentForm}
+					setCurrentForm={props.setCurrentForm}
+					setFormComplete={props.setFormComplete}
+					newForm={props.newForm}
+				/>
+			) : (
+				<div></div>
+			)} */}
 		</>
 	);
 }

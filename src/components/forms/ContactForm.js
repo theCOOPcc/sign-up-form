@@ -59,8 +59,8 @@ const ContactForm = (props) => {
 					email: values.email,
 					pronouns: values.pronouns,
 				});
-				console.log("contact form", props.currentForm)
 				props.setFormComplete(true)
+				console.log("contact form", props.currentForm)
 				;
 			}}
 			render={({

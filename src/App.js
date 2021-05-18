@@ -94,15 +94,13 @@ const App = () => {
 		console.log("newForm", newForm);
 	}, [newForm]);
 
-	function addItem(newForm) {
+	const addItem = (newForm) => {
 		axios.post("/api/forms/", newForm).catch((err) => console.log(err));
-	}
+	};
 
-	function submitForm() {
+	const submitForm = () => {
 		addItem(newForm);
-		setFormComplete(true);
-		setCurrentForm({ ...currentForm, first_name: "" });
-	}
+	};
 
 	// This function is currently not used in production
 
@@ -139,6 +137,7 @@ const App = () => {
 							setCurrentForm={setCurrentForm}
 							newForm={newForm}
 							setFormComplete={setFormComplete}
+							submitForm={submitForm}
 						/>
 
 						<DesignerRouter
@@ -163,21 +162,13 @@ const App = () => {
 						/>
 					</>
 				) : (
-					<FormSubmit
-						submitForm={submitForm}
-						currentForm={currentForm}
-						setCurrentForm={setCurrentForm}
+					<Confirmation
 						setFormComplete={setFormComplete}
-						newForm={newForm}
+						setCurrentForm={setCurrentForm}
+						currentForm={currentForm}
+						submitForm={submitForm}
 					/>
 				)}
-				{/* {newForm.first_name === "" ? (
-					<div></div>
-				) : (
-					<div className="button-container">
-						<button onClick={submitForm}>Finish</button>
-					</div>
-				)} */}
 			</div>
 		</Router>
 	);

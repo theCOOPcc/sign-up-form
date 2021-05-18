@@ -41,7 +41,10 @@ const FormSubmit = (props) => {
 					}}>
 					&lt; Back
 				</BackBtn>
-				<Button onClick={props.submitForm}>Submit</Button>
+				<Button onClick={() => {
+          props.submitForm();
+          console.log('submitting')
+          }}>Submit</Button>
 			</div>
 		</FormStyle>
 	);
