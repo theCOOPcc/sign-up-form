@@ -53,7 +53,7 @@ const ChoosePath = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<div style={{margin: '37px 275px'}}>
+						<div className="modal">
 							<p className="role-text">
 								We're constantly looking for new talent to join our efforts. Let
 								us know what your interests are below, and we'll be in touch as

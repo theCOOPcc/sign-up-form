@@ -18,26 +18,11 @@ const MentorRouter = (props) => {
 				<ContactForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
-					addItem={props.addItem}
-					newForm={props.newForm}
 					setFormComplete={props.setFormComplete}
 				/>
 			) : (
 				<div></div>
 			)}
-			{/* {props.newForm.role === "Mentor" &&
-			props.newForm.linkedin !== "" &&
-			props.newForm.first_name !== "" ? (
-				<FormSubmit
-					submitForm={props.submitForm}
-					currentForm={props.currentForm}
-					setCurrentForm={props.setCurrentForm}
-					setFormComplete={props.setFormComplete}
-					newForm={props.newForm}
-				/>
-			) : (
-				<div></div>
-			)} */}
 		</>
 	);
 }

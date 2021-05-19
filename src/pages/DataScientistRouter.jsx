@@ -30,8 +30,6 @@ const DataScientistRouter = (props) => {
 				<ContactForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
-					addItem={props.addItem}
-					newForm={props.newForm}
 					setFormComplete={props.setFormComplete}
 				/>
 			) : (

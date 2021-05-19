@@ -111,10 +111,6 @@ const App = () => {
 	// }
 
 	return (
-		<Router>
-			<Route exact path="/submit">
-				<FormSubmit currentForm={currentForm} setCurrentForm={setCurrentForm} />
-			</Route>
 
 			<div className="App">
 				<a href="http://localhost:3000">
@@ -170,7 +166,6 @@ const App = () => {
 					/>
 				)}
 			</div>
-		</Router>
 	);
 };
 

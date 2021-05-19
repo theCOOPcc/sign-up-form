@@ -47,7 +47,7 @@ const Confirmation = (props) => {
 						<Button
 							onClick={() => {
 								props.submitForm();
-								setFinished(true)
+								setFinished(true);
 								console.log("submitting");
 							}}>
 							Submit
@@ -55,17 +55,19 @@ const Confirmation = (props) => {
 					</div>
 				</FormStyle>
 			) : (
-				<>
-					<p style={{ color: "#F6F6F6" }}>
-						Your submission is in! Due to the high volume of responses, we’ll
-						follow up with you as opportunities arise, we promise! We look
-						forward to working together.
-					</p>
-					<p>- theCOOP team</p>
-					<a style={{ color: "#00C9B1" }} href="http://thecoop.cc">
-						Return to theCoop homepage
-					</a>
-				</>
+				<FormStyle>
+					<div className="modal">
+						<p style={{ color: "#F6F6F6" }}>
+							Your submission is in! Due to the high volume of responses, we’ll
+							follow up with you as opportunities arise, we promise! We look
+							forward to working together.
+						</p>
+						<p style={{ color: "#F6F6F6" }}>- theCOOP team</p>
+						<a style={{ color: "#00C9B1" }} href="http://thecoop.cc">
+							Return to theCoop homepage
+						</a>
+					</div>
+				</FormStyle>
 			)}
 		</>
 	);
