@@ -7,6 +7,7 @@ import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle } from '../meta/inputs'
 import group122 from "./imgs/Group122.svg";
+import RoleButtons from "./components/RoleButtons";
 
 const validationSchema = Yup.object().shape(
 	{
@@ -59,29 +60,28 @@ const ChoosePath = (props) => {
 								us know what your interests are below, and we'll be in touch as
 								soon as something comes up.
 							</p>
-							<img alt="some fields are required" src={group122} />
+							{/* <img alt="some fields are required" src={group122} /> */}
 						</div>
 
 						{/* //TODO: Turn these buttons into selecting role */}
-						{/* <div>
 
-						{candidatePath.choices.map(choice => 
-							<button onClick={() => props.setCurrentForm({ ...props.currentForm, role: choice })}>{choice}</button>
-						)}
-						</div> */}
-
-						<Inputs.SelectInputRequired
+						{/* <Inputs.SelectInputRequired
 							options={roleOptions}
 							key={candidatePath.name}
 							label={candidatePath.name}
 							name={candidatePath.value}
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
-						/>
+						/> */}
 
+						<RoleButtons 
+							currentForm={props.currentForm}
+							setCurrentForm={props.setCurrentForm}
+						/>
+{/* 
 						<Button style={{ marginTop: "5px" }} type="submit">
 							Next
-						</Button>
+						</Button> */}
 					</FormStyle>
 				</Form>
 			)}
