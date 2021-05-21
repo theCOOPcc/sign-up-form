@@ -114,8 +114,8 @@ const App = () => {
 	return (
 
 			<div className="App">
-				<a href="http://localhost:3000">
-				{/* <a href="http://applicant-form.herokuapp.com"> */}
+				{/* <a href="http://localhost:3000"> */}
+				<a href="http://applicant-form.herokuapp.com">
 					<img alt="theCoop logo" src={coopLogo} />
 				</a>
 				{formComplete === false ? (

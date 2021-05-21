@@ -29,11 +29,6 @@ height: 50px;
 `
 
 const ChoosePath = (props) => {
-	const roleOptions = [];
-	candidatePath.choices.forEach((element) => {
-		let path = { label: `${element}`, value: `${element}` };
-		roleOptions.push(path);
-	});
 	return (
 		<Formik
 			initialValues={{
