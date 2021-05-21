@@ -157,7 +157,7 @@ STATICFILES_DIRS = [
 # TODO: Uncomment this out to deploy
 import django_heroku
 django_heroku.settings(locals())
-
+ 
 # TODO: Uncomment this out to deploy
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
