@@ -5,27 +5,27 @@ import { helpOptions, helpDates } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
-	border-radius: 3px;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const BackBtn = styled.button`
-	background-color: black;
+	background-color: #1f1216;
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const validateSchema = Yup.object().shape({
-	help_with: Yup.array().min(1, "Please choose from one of the selections."),
+	help_with: Yup.array().min(1, "Please choose from one of the selections.").ensure(),
 	avail_dates: Yup.object().required("Please note your availability."),
 	linkedin: Yup.string().required("Required"),
 });
@@ -58,7 +58,7 @@ const MentorForm = (props) => {
 					help_with: values.help_with,
 					linkedin: values.linkedin,
 					avail_dates: values.avail_dates,
-					bootcamps: { label: "", value: "" }
+					bootcamps: { label: "", value: "" },
 				});
 				console.log("mentor", props.currentForm);
 			}}
@@ -72,41 +72,48 @@ const MentorForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h3>Tell us more about You</h3>
+						<h2>TELL US MORE ABOUT YOU</h2>
+						<img alt="some fields are required" src={group122} />
+						<div className="container">
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={helpOptions.name}
+								label={helpOptions.name}
+								name={helpOptions.value}
+								options={helpOptionOptions}
+								placeholder="Select all that apply"
+							/>
 
-						<Inputs.SelectField
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={helpOptions.name}
-							label={helpOptions.name}
-							name={helpOptions.value}
-							options={helpOptionOptions}
-						/>
+							<Inputs.SelectInputRequired
+								options={helpDatesOptions}
+								key={helpDates.name}
+								label={helpDates.name}
+								name={helpDates.value}
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								placeholder="Select"
+							/>
 
-						<Inputs.SelectInput
-							options={helpDatesOptions}
-							key={helpDates.name}
-							label={helpDates.name}
-							name={helpDates.value}
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-						/>
-
-						<StyleDiv>
-							<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
-							<Inputs.TextInput
-								id="linkedin"
-								name="linkedin"></Inputs.TextInput>
-						</StyleDiv>
-						<div style={{ display: "flex" }}>
+							<StyleDiv>
+								<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
+								<Inputs.TextInputRequired
+									id="linkedin"
+									placeholder="Paste your LinkedIn URL here"
+									name="linkedin"
+								/>
+							</StyleDiv>
+						</div>
+						<div className="button-container">
 							<BackBtn
-								onClick={() =>
-									props.setCurrentForm({ ...props.currentForm, role: "" })
-								}>
-								{" "}
-								&lt; Back{" "}
+								type="button"
+								onClick={() => {
+									props.setCurrentForm({ ...props.currentForm, role: "" });
+									console.log("back");
+								}}>
+								&lt; Back
 							</BackBtn>
-							<Button type="submit">Submit</Button>
+							<Button type="submit">Next</Button>
 						</div>
 					</FormStyle>
 				</Form>

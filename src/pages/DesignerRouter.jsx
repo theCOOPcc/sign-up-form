@@ -6,7 +6,7 @@ import ContactForm from '../components/forms/ContactForm'
 const DesignerRouter = (props) => {
   return (
 		<>
-			{props.newForm.role === "Designer" && props.newForm.why_join === "" ? (
+			{props.newForm.role === "Designer" && props.newForm.why_join.length === 0 ? (
 				<DesignerForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
@@ -15,7 +15,7 @@ const DesignerRouter = (props) => {
 				<div></div>
 			)}
 			{props.newForm.role === "Designer" &&
-			props.newForm.why_join !== "" &&
+			props.newForm.why_join.length !== 0 &&
 			props.newForm.bootcamps === undefined ? (
 				<InfoIntakeForm
 					currentForm={props.currentForm}
@@ -29,8 +29,6 @@ const DesignerRouter = (props) => {
 				<ContactForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
-					addItem={props.addItem}
-					newForm={props.newForm}
 					setFormComplete={props.setFormComplete}
 				/>
 			) : (

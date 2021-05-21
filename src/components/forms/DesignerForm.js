@@ -7,44 +7,8 @@ import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import ReactSelect from "react-select";
 import { FormStyle, TextLabel, StyleDiv } from "../meta/inputs";
-import { designerTech, designerSkills } from "../meta/fields";
-
-// export const FormStyles = {
-//   container: (provided, state) => ({
-//     ...provided,
-//     width: 200,
-
-//   }),
-//   // input: (provided, state) => ({
-//   //   display:
-//   // }),
-//   option: (provided, state) => ({
-//     ...provided,
-//     borderBottom: '1px solid #F25187',
-//     color: 'white',
-//     backgroundColor: '#562636',
-
-//     padding: 5,
-//     width: 200,
-
-//   }),
-//   valueContainer: (provided, state) => ({
-//     ...provided,
-//     backgroundColor:'black',
-//     color: 'white'
-//   }),
-//   multiValue: (provided, state) => ({
-//     ...provided,
-//     backgroundColor: '#F25187',
-//     color: 'white'
-//   }),
-//   singleValue: (provided, state)=> {
-//     const opacity = state.isDisabled ? 0.5 : 1;
-//     const transition = 'opacity 300ms';
-
-//     return {...provided, opacity, transition}
-//   }
-// }
+import { designerTech, designerSkills, whyJoin } from "../meta/fields";
+import group122 from "./imgs/Group122.svg";
 
 // Basic form styling for each page
 
@@ -52,18 +16,17 @@ const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
-	border-radius: 3px;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const BackBtn = styled.button`
-	background-color: black;
+	background-color: #1f1216;
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const Options = styled.option`
@@ -76,12 +39,13 @@ const FullForm = styled.div`
 `;
 
 const validationSchema = Yup.object().shape({
-	design_skillset: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
-	design_techs: Yup.array().min(1, "Please choose from one of the selections"),
-	why_join: Yup.string().required("This field is required").max(100),
+	design_skillset: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
+	design_techs: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
+	why_join: Yup.array().min(1, "Please choose from one of the selections"),
 });
 
 const DesignerForm = (props) => {
@@ -97,12 +61,18 @@ const DesignerForm = (props) => {
 		designTechOptions.push(tech);
 	});
 
+	const whyJoinOptions = [];
+	whyJoin.choices.forEach((element) => {
+		let choice = { label: `${element}`, value: `${element}` };
+		whyJoinOptions.push(choice);
+	});
+
 	return (
 		<Formik
 			initialValues={{
 				design_techs: [],
 				design_skillset: [],
-				why_join: "",
+				why_join: [],
 			}}
 			validationSchema={validationSchema}
 			onSubmit={(values) => {
@@ -121,44 +91,61 @@ const DesignerForm = (props) => {
 				touched,
 				setFieldValue,
 				setFieldTouched,
+				resetForm,
 				isSubmitting,
 			}) => (
 				<Form>
 					<FormStyle>
-						<h4>Tell us a little about your interests...</h4>
+						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
+						<img alt="some fields are required" src={group122} />
+						<div className="container">
+							<Inputs.SelectField
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={designerSkills.name}
+								label={designerSkills.name}
+								name={designerSkills.value}
+								options={designSkillOptions}
+								placeholder="Select up to 4 skills"
+							/>
 
-						<Inputs.SelectField
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={designerSkills.name}
-							label={designerSkills.name}
-							name={designerSkills.value}
-							options={designSkillOptions}
-						/>
-
-						<Inputs.SelectField
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={designerTech.name}
-							label={designerTech.name}
-							name={designerTech.value}
-							options={designTechOptions}
-						/>
-						<StyleDiv>
-							<TextLabel htmlFor="whyJoin">
-								Tell us why you'd like to join The COOP:{" "}
-							</TextLabel>
-							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-						</StyleDiv>
-						<div style={{ display: "flex" }}>
+							<Inputs.SelectField
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={designerTech.name}
+								label={designerTech.name}
+								name={designerTech.value}
+								options={designTechOptions}
+								placeholder="Select up to 4 skills"
+							/>
+							{/* <StyleDiv>
+								<TextLabel htmlFor="whyJoin">
+									Tell us why you'd like to join The COOP:{" "}
+								</TextLabel>
+								<Inputs.TextInput
+									id="whyJoin"
+									name="why_join"/>
+							</StyleDiv> */}
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={whyJoin.name}
+								label={whyJoin.name}
+								name={whyJoin.value}
+								options={whyJoinOptions}
+								placeholder="Select all that apply"
+							/>
+						</div>
+						<div className="button-container">
 							<BackBtn
-								onClick={() =>
-									props.setCurrentForm({ ...props.currentForm, role: "" })
-								}>
+								type="button"
+								onClick={() => {
+									props.setCurrentForm({ ...props.currentForm, role: "" });
+								}}>
 								{" "}
 								&lt; Back{" "}
 							</BackBtn>
-							<Button type="submit">Submit</Button>
+							<Button type="submit">Next</Button>
 						</div>
 					</FormStyle>
 				</Form>

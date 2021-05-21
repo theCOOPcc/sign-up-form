@@ -6,30 +6,29 @@ import { candidatePath } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle } from '../meta/inputs'
+import group122 from "./imgs/Group122.svg";
+import RoleButtons from "./components/RoleButtons";
 
-const validationSchema = Yup.object().shape({
-	role: Yup.object({
-		label: Yup.string().oneOf(candidatePath.choices),
-		value: Yup.string().oneOf(candidatePath.choices)
-	}).required(),
-}, "Please choose from one of the selections")
+const validationSchema = Yup.object().shape(
+	{
+		role: Yup.object({
+			label: Yup.string().oneOf(candidatePath.choices),
+			value: Yup.string().oneOf(candidatePath.choices),
+		}).required("Please choose from one of the selections"),
+	},
+	"Please choose from one of the selections"
+);
 
 
 const Button = styled.button`
 background-color: #00C9B1;
 color: #F6F6F6;
 border: none;
-border-radius: 3px;
-width: 100px;
-height:25px;
+width: 183px;
+height: 50px;
 `
 
 const ChoosePath = (props) => {
-	const roleOptions = [];
-	candidatePath.choices.forEach((element) => {
-		let path = { label: `${element}`, value: `${element}` };
-		roleOptions.push(path);
-	});
 	return (
 		<Formik
 			initialValues={{
@@ -50,26 +49,34 @@ const ChoosePath = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<div>
-							<h4>
+						<div className="modal">
+							<p className="role-text">
 								We're constantly looking for new talent to join our efforts. Let
 								us know what your interests are below, and we'll be in touch as
-								soon as something comes up.{" "}
-							</h4>
+								soon as something comes up.
+							</p>
+							{/* <img alt="some fields are required" src={group122} /> */}
 						</div>
 
-						<Inputs.SelectInput
+						{/* //TODO: Turn these buttons into selecting role */}
+
+						{/* <Inputs.SelectInputRequired
 							options={roleOptions}
 							key={candidatePath.name}
 							label={candidatePath.name}
 							name={candidatePath.value}
 							onBlur={setFieldTouched}
 							onChange={setFieldValue}
-						/> 
+						/> */}
 
+						<RoleButtons 
+							currentForm={props.currentForm}
+							setCurrentForm={props.setCurrentForm}
+						/>
+{/* 
 						<Button style={{ marginTop: "5px" }} type="submit">
-							Submit
-						</Button>
+							Next
+						</Button> */}
 					</FormStyle>
 				</Form>
 			)}

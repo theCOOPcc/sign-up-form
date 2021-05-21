@@ -1,6 +1,7 @@
 import React from 'react'
 import MentorForm from '../components/forms/MentorForm'
 import ContactForm from '../components/forms/ContactForm'
+import FormSubmit from '../pages/FormSubmit'
 
 const MentorRouter = (props) => {
   return (
@@ -17,8 +18,6 @@ const MentorRouter = (props) => {
 				<ContactForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
-					addItem={props.addItem}
-					newForm={props.newForm}
 					setFormComplete={props.setFormComplete}
 				/>
 			) : (

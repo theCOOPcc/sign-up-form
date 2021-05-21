@@ -24,8 +24,8 @@ const App = () => {
 		github: "",
 		portfolio: "",
 		bootcamps: "",
-		why_join: "",
 		avail_dates: "",
+		why_join: [],
 		help_with: [],
 		data_sci_skillset: [],
 		design_techs: [],
@@ -33,6 +33,11 @@ const App = () => {
 		engineer_skillset: [],
 		engineer_techs: [],
 	});
+
+	const finalWhyJoin = [];
+	currentForm.why_join.map((why) => {
+		finalWhyJoin.push(why.value);
+	})
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -71,13 +76,13 @@ const App = () => {
 		linkedin: currentForm.linkedin,
 		github: currentForm.github,
 		portfolio: currentForm.portfolio,
-		why_join: currentForm.why_join,
-		
+
 		avail_dates: currentForm.avail_dates.value,
 		bootcamps: currentForm.bootcamps.value,
 		role: currentForm.role.value,
 		pronouns: currentForm.pronouns.value,
 
+		why_join: finalWhyJoin,
 		help_with: finalHelpWith,
 		data_sci_skillset: finalDataSciSkillset,
 		design_techs: finalDesignTechs,
@@ -91,18 +96,15 @@ const App = () => {
 		console.log("newForm", newForm);
 	}, [newForm]);
 
-	function addItem(newForm) {
+	const addItem = (newForm) => {
 		axios.post("/api/forms/", newForm).catch((err) => console.log(err));
-	}
+	};
 
-	function submitForm() {
+	const submitForm = () => {
 		addItem(newForm);
-		setFormComplete(true);
-		setCurrentForm({...currentForm, first_name: ""})
-	}
+	};
 
-	// This function is currently not used in production
-
+	// TODO: This function is currently not used in production
 	// function deleteItem(form) {
 	// 	axios
 	// 		.delete(`/api/forms/${form.id}/`)
@@ -110,55 +112,62 @@ const App = () => {
 	// }
 
 	return (
-		<div className="App">
-			<a href="http://localhost:3000">
-				<img alt="theCoop logo"src={coopLogo} />
-			</a>
-			{formComplete === false ? (
-				<>
-					{newForm.role === undefined ? (
-						<ChoosePath
-							newForm={newForm}
+
+			<div className="App">
+				{/* <a href="http://localhost:3000"> */}
+				<a href="http://applicant-form.herokuapp.com">
+					<img alt="theCoop logo" src={coopLogo} />
+				</a>
+				{formComplete === false ? (
+					<>
+						{newForm.role === undefined ? (
+							<ChoosePath
+								newForm={newForm}
+								currentForm={currentForm}
+								setCurrentForm={setCurrentForm}
+							/>
+						) : (
+							<div></div>
+						)}
+
+						<MentorRouter
 							currentForm={currentForm}
 							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
+							submitForm={submitForm}
 						/>
-					) : (
-						<div></div>
-					)}
 
-					<MentorRouter
-						currentForm={currentForm}
-						setCurrentForm={setCurrentForm}
-						newForm={newForm}
-					/>
+						<DesignerRouter
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
+						/>
 
-					<DesignerRouter
-						currentForm={currentForm}
-						setCurrentForm={setCurrentForm}
-						newForm={newForm}
-					/>
+						<EngineerRouter
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
+						/>
 
-					<EngineerRouter
-						currentForm={currentForm}
+						<DataScientistRouter
+							currentForm={currentForm}
+							setCurrentForm={setCurrentForm}
+							newForm={newForm}
+							setFormComplete={setFormComplete}
+						/>
+					</>
+				) : (
+					<Confirmation
+						setFormComplete={setFormComplete}
 						setCurrentForm={setCurrentForm}
-						newForm={newForm}
-					/>
-
-					<DataScientistRouter
 						currentForm={currentForm}
-						setCurrentForm={setCurrentForm}
-						newForm={newForm}
+						submitForm={submitForm}
 					/>
-				</>
-			) : (
-				<Confirmation />
-			)}
-			{newForm.first_name === "" ? (
-				<div></div>
-			) : (
-				<button onClick={submitForm}>Finish</button>
-			)}
-		</div>
+				)}
+			</div>
 	);
 };
 

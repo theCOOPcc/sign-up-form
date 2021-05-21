@@ -6,23 +6,23 @@ import { pronouns } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
-	border-radius: 3px;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const BackBtn = styled.button`
-	background-color: black;
+	background-color: #1f1216;
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const validationSchema = Yup.object().shape({
@@ -30,9 +30,9 @@ const validationSchema = Yup.object().shape({
 	last_name: Yup.string().required("This field is required"),
 	email: Yup.string().email("Invalid email").required("This field is required"),
 	pronouns: Yup.object({
-		label: Yup.string(),
-		value: Yup.string(),
-	}).required("Please fill out this section"),
+		label: Yup.string().ensure(),
+		value: Yup.string().ensure(),
+	}),
 });
 
 const ContactForm = (props) => {
@@ -59,7 +59,9 @@ const ContactForm = (props) => {
 					email: values.email,
 					pronouns: values.pronouns,
 				});
-				console.log("contact form", props.currentForm);
+				props.setFormComplete(true)
+				console.log("contact form", props.currentForm)
+				;
 			}}
 			render={({
 				values,
@@ -72,41 +74,48 @@ const ContactForm = (props) => {
 				<>
 					<Form>
 						<FormStyle>
-							<h3>CONTACT INFO</h3>
-							<StyleDiv>
-								<TextLabel htmlFor="firstName">First Name: </TextLabel>
-								<Inputs.TextInput
-									id="firstName"
-									name="first_name"></Inputs.TextInput>
-							</StyleDiv>
-							<StyleDiv>
-								<TextLabel htmlFor="lastName">Last Name: </TextLabel>
-								<Inputs.TextInput
-									id="lastName"
-									name="last_name"></Inputs.TextInput>
-							</StyleDiv>
+							<h2>CONTACT INFORMATION</h2>
+							<img alt="some fields are required" src={group122} />
+							<div className="container">
+								<StyleDiv>
+									<TextLabel htmlFor="firstName">First Name</TextLabel>
+									<Inputs.TextInputRequired
+										id="firstName"
+										name="first_name"></Inputs.TextInputRequired>
+								</StyleDiv>
+								<StyleDiv>
+									<TextLabel htmlFor="lastName">Last Name</TextLabel>
+									<Inputs.TextInputRequired
+										id="lastName"
+										name="last_name"></Inputs.TextInputRequired>
+								</StyleDiv>
 
-							<StyleDiv>
-								<TextLabel htmlFor="email">Email: </TextLabel>
-								<Inputs.TextInput id="email" name="email"></Inputs.TextInput>
-							</StyleDiv>
-
-							<Inputs.SelectInput
-								options={pronounOptions}
-								key={pronouns.name}
-								label={pronouns.name}
-								name={pronouns.value}
-								onBlur={setFieldTouched}
-								onChange={setFieldValue}
-							/>
-
-							<div style={{ display: "flex" }}>
+								<Inputs.SelectInput
+									options={pronounOptions}
+									key={pronouns.name}
+									label={pronouns.name}
+									name={pronouns.value}
+									onBlur={setFieldTouched}
+									onChange={setFieldValue}
+								/>
+								<StyleDiv>
+									<TextLabel htmlFor="email">Email</TextLabel>
+									<Inputs.TextInputRequired
+										id="email"
+										placeholder="you@youremail.com"
+										name="email"
+									/>
+								</StyleDiv>
+							</div>
+							<div className="button-container">
 								{props.currentForm.role.label === "Mentor" ? (
 									<BackBtn
 										type="button"
 										onClick={() => {
 											props.setCurrentForm({
 												...props.currentForm,
+												help_with: [],
+												avail_dates: "",
 												linkedin: "",
 											});
 											console.log("role should equal mentor");
@@ -120,13 +129,16 @@ const ContactForm = (props) => {
 											props.setCurrentForm({
 												...props.currentForm,
 												bootcamps: "",
+												linkedin: "",
+												github: "",
+												portfolio: "",
 											});
 											console.log("role should not be mentor");
 										}}>
 										&lt; Back
 									</BackBtn>
 								)}
-								<Button type="submit">Submit</Button>
+								<Button type="submit">Next</Button>
 							</div>
 						</FormStyle>
 					</Form>

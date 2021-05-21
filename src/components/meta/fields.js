@@ -1,3 +1,9 @@
+export const whyJoin = {
+	name: "Tell us why you'd like to join theCOOP",
+	value: "why_join",
+	choices: ["Skillbuilding", "Mentorship", "Interview and Portfolio Help"],
+};
+
 export const candidatePath = {
 	name: "I am a(n)",
 	value: "role",
@@ -5,7 +11,7 @@ export const candidatePath = {
 };
 
 export const engineerSkills = {
-	name: "My skill set includes: ",
+	name: "My skill set includes",
 	value: "engineer_skillset",
 	choices: [
 		"Graph Database",
@@ -22,7 +28,7 @@ export const engineerSkills = {
 };
 
 export const engineerTech = {
-	name: "I am comfortable with the following technologies: ",
+	name: "I am comfortable with the following technologies",
 	value: "engineer_techs",
 	choices: [
 		"React",
@@ -40,7 +46,7 @@ export const engineerTech = {
 };
 
 export const designerSkills = {
-	name: "My skillset includes: ",
+	name: "My skillset includes",
 	value: "design_skillset",
 	choices: [
 		"User Research",
@@ -54,7 +60,7 @@ export const designerSkills = {
 };
 
 export const designerTech = {
-	name: "I would like to focus in: ",
+	name: "I would like to focus in",
 	value: "design_techs",
 	choices: [
 		"Clickable Prototyping",
@@ -70,7 +76,7 @@ export const designerTech = {
 };
 
 export const dataSciSkills = {
-	name: "I am comfortable in the following areas: ",
+	name: "I'm most comfortable with",
 	value: "data_sci_skillset",
 	choices: [
 		"Python",
@@ -111,7 +117,7 @@ export const bootcamps = {
 };
 
 export const helpOptions = {
-	name: "I would love to help with: ",
+	name: "I would love to help with",
 	value: "help_with",
 	choices: [
 		"1:1 Mentoring",
@@ -124,13 +130,13 @@ export const helpOptions = {
 };
 
 export const helpDates = {
-	name: "I am available to help out: ",
+	name: "I am available to help out",
 	value: "avail_dates",
 	choices: ["Monthly", "Weekly", "Bi-Weekly", "Daily", "Sporadically"],
 };
 
 export const pronouns = {
-	name: "Pronouns:",
+	name: "Pronouns",
 	value: "pronouns",
 	choices: ["She, Her, Hers", "He, Him, His", "They, Them, Theirs"],
 };

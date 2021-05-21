@@ -2,10 +2,11 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { dataSciSkills } from "../meta/fields";
+import { dataSciSkills, whyJoin } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const FullForm = styled.div`
 	width: 100%;
@@ -16,25 +17,23 @@ const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
-	border-radius: 3px;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 const BackBtn = styled.button`
-	background-color: black;
+	background-color: #1f1216;
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const validationSchema = Yup.object().shape({
-	data_sci_skillset: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
-	why_join: Yup.string().required("This field is required"),
+	data_sci_skillset: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
+	why_join: Yup.array().min(1, "Please choose from one of the selections"),
 });
 
 const DataScienceForm = (props) => {
@@ -44,11 +43,17 @@ const DataScienceForm = (props) => {
 		dataSciOptions.push(skill);
 	});
 
+	const whyJoinOptions = [];
+	whyJoin.choices.forEach((element) => {
+		let choice = { label: `${element}`, value: `${element}` };
+		whyJoinOptions.push(choice);
+	});
+
 	return (
 		<Formik
 			initialValues={{
 				data_sci_skillset: [],
-				why_join: "",
+				why_join: [],
 			}}
 			validationSchema={validationSchema}
 			onSubmit={(values) => {
@@ -70,24 +75,31 @@ const DataScienceForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h4>Tell us a little about your interests...</h4>
+						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
+						<img alt="some fields are required" src={group122} />
+						<div className="container">
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={dataSciSkills.name}
+								label={dataSciSkills.name}
+								name={dataSciSkills.value}
+								options={dataSciOptions}
+								placeholder="Select up to 4"
+							/>
 
-						<Inputs.SelectField
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={dataSciSkills.name}
-							label={dataSciSkills.name}
-							name={dataSciSkills.value}
-							options={dataSciOptions}
-						/>
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={whyJoin.name}
+								label={whyJoin.name}
+								name={whyJoin.value}
+								options={whyJoinOptions}
+								placeholder="Select all that apply"
+							/>
 
-						<StyleDiv>
-							<TextLabel htmlFor="whyJoin">
-								Tell us why you'd like to join The COOP:{" "}
-							</TextLabel>
-							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-						</StyleDiv>
-						<div style={{ display: "flex" }}>
+						</div>
+						<div className="button-container">
 							<BackBtn
 								onClick={() =>
 									props.setCurrentForm({ ...props.currentForm, role: "" })
@@ -95,7 +107,7 @@ const DataScienceForm = (props) => {
 								{" "}
 								&lt; Back{" "}
 							</BackBtn>
-							<Button type="submit">Submit</Button>
+							<Button type="submit">Next</Button>
 						</div>
 					</FormStyle>
 				</Form>

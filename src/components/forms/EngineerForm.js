@@ -2,28 +2,28 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { engineerSkills, engineerTech } from "../meta/fields";
+import { engineerSkills, engineerTech, whyJoin } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import "../../App.css";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
+import group122 from "./imgs/Group122.svg";
 
 const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
-	border-radius: 3px;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const BackBtn = styled.button`
-	background-color: black;
+	background-color: #1f1216;
 	color: #00c9b1;
 	font-size: 16px;
 	border: none;
-	width: 100px;
-	height: 25px;
+	width: 183px;
+	height: 50px;
 `;
 
 const Label = styled.label`
@@ -36,15 +36,13 @@ const FullForm = styled.div`
 `;
 
 const validationSchema = Yup.object().shape({
-	engineer_skillset: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
-	engineer_techs: Yup.array().min(
-		1,
-		"Please choose from one of the selections"
-	),
-	why_join: Yup.string().required("This field is required"),
+	engineer_skillset: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
+	engineer_techs: Yup.array()
+		.min(1, "Please choose from one of the selections")
+		.max(4, "Submit only up to four entries"),
+	why_join: Yup.array().min(1, "Please choose from one of the selections"),
 });
 
 const EngineerForm = (props) => {
@@ -59,12 +57,19 @@ const EngineerForm = (props) => {
 		let tech = { label: `${element}`, value: `${element}` };
 		engineerTechOptions.push(tech);
 	});
+
+	const whyJoinOptions = [];
+	whyJoin.choices.forEach((element) => {
+		let choice = { label: `${element}`, value: `${element}` };
+		whyJoinOptions.push(choice);
+	});
+
 	return (
 		<Formik
 			initialValues={{
 				engineer_skillset: [],
 				engineer_techs: [],
-				why_join: "",
+				why_join: [],
 			}}
 			validationSchema={validationSchema}
 			onSubmit={(values) => {
@@ -84,42 +89,65 @@ const EngineerForm = (props) => {
 				setFieldValue,
 				setFieldTouched,
 				isSubmitting,
+				actions,
+				resetForm,
 			}) => (
 				<Form>
 					<FormStyle>
-						<h4>Tell us a little about your interests...</h4>
-						<Inputs.SelectField
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={engineerSkills.name}
-							label={engineerSkills.name}
-							name={engineerSkills.value}
-							options={engineerSkillsOptions}
-						/>
+						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
+						<img alt="some fields are required" src={group122} />
+						<div className="container">
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={engineerSkills.name}
+								label={engineerSkills.name}
+								name={engineerSkills.value}
+								options={engineerSkillsOptions}
+								placeholder="Select up to 4 skills"
+							/>
 
-						<Inputs.SelectField
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={engineerTech.name}
-							label={engineerTech.name}
-							name={engineerTech.value}
-							options={engineerTechOptions}
-						/>
-						<StyleDiv>
-							<TextLabel htmlFor="whyJoin">
-								Tell us why you'd like to join:{" "}
-							</TextLabel>
-							<Inputs.TextInput id="whyJoin" name="why_join"></Inputs.TextInput>
-						</StyleDiv>
-						<div style={{ display: "flex" }}>
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={engineerTech.name}
+								label={engineerTech.name}
+								name={engineerTech.value}
+								options={engineerTechOptions}
+								placeholder="Select up to 4 technologies"
+							/>
+							{/* <StyleDiv>
+								<TextLabel htmlFor="whyJoin">
+									Tell us why you'd like to join
+								</TextLabel>
+								<Inputs.TextInputRequired
+									id="whyJoin"
+									name="why_join"
+									// placeholder="Select one"
+								/>
+							</StyleDiv> */}
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={whyJoin.name}
+								label={whyJoin.name}
+								name={whyJoin.value}
+								options={whyJoinOptions}
+								placeholder="Select all that apply"
+							/>
+						</div>
+						
+						<div className="button-container">
 							<BackBtn
-								onClick={() =>
-									props.setCurrentForm({ ...props.currentForm, role: "" })
-								}>
-								{" "}
-								&lt; Back{" "}
+								type="button"
+								onClick={() => {
+									props.setCurrentForm({ ...props.currentForm, role: "" });
+									resetForm();
+									console.log("back");
+								}}>
+								&lt; Back
 							</BackBtn>
-							<Button type="submit">Submit</Button>
+							<Button type="submit">Next</Button>
 						</div>
 					</FormStyle>
 				</Form>
