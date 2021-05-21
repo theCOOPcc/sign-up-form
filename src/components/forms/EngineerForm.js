@@ -50,7 +50,7 @@ const EngineerForm = (props) => {
 	engineerSkills.choices.forEach((element) => {
 		let skill = { label: `${element}`, value: `${element}` };
 		engineerSkillsOptions.push(skill);
-	});
+	}); 
 
 	const engineerTechOptions = [];
 	engineerTech.choices.forEach((element) => {
