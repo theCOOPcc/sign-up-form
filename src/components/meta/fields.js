@@ -1,3 +1,9 @@
+export const whyJoin = {
+	name: "Tell us why you'd like to join theCOOP",
+	value: "why_join",
+	choices: ["Skillbuilding", "Mentorship", "Interview and Portfolio Help"],
+};
+
 export const candidatePath = {
 	name: "I am a(n)",
 	value: "role",

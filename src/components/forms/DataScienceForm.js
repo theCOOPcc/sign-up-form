@@ -2,7 +2,7 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { dataSciSkills } from "../meta/fields";
+import { dataSciSkills, whyJoin } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
@@ -33,7 +33,7 @@ const validationSchema = Yup.object().shape({
 	data_sci_skillset: Yup.array()
 		.min(1, "Please choose from one of the selections")
 		.max(4, "Submit only up to four entries"),
-	why_join: Yup.string().required("This field is required"),
+	why_join: Yup.array().min(1, "Please choose from one of the selections"),
 });
 
 const DataScienceForm = (props) => {
@@ -43,11 +43,17 @@ const DataScienceForm = (props) => {
 		dataSciOptions.push(skill);
 	});
 
+	const whyJoinOptions = [];
+	whyJoin.choices.forEach((element) => {
+		let choice = { label: `${element}`, value: `${element}` };
+		whyJoinOptions.push(choice);
+	});
+
 	return (
 		<Formik
 			initialValues={{
 				data_sci_skillset: [],
-				why_join: "",
+				why_join: [],
 			}}
 			validationSchema={validationSchema}
 			onSubmit={(values) => {
@@ -82,17 +88,16 @@ const DataScienceForm = (props) => {
 								placeholder="Select up to 4"
 							/>
 
-							<StyleDiv>
-								<TextLabel htmlFor="whyJoin">
-									Tell us why you'd like to join The COOP.
-								</TextLabel>
-								<Inputs.TextInputRequired
-									id="whyJoin"
-									name="why_join"
-									//TODO: Update placeholder when switched
-									// placeholder=""
-								/>
-							</StyleDiv>
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={whyJoin.name}
+								label={whyJoin.name}
+								name={whyJoin.value}
+								options={whyJoinOptions}
+								placeholder="Select all that apply"
+							/>
+
 						</div>
 						<div className="button-container">
 							<BackBtn

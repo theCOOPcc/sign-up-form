@@ -7,7 +7,7 @@ import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import ReactSelect from "react-select";
 import { FormStyle, TextLabel, StyleDiv } from "../meta/inputs";
-import { designerTech, designerSkills } from "../meta/fields";
+import { designerTech, designerSkills, whyJoin } from "../meta/fields";
 import group122 from "./imgs/Group122.svg";
 
 // Basic form styling for each page
@@ -45,7 +45,7 @@ const validationSchema = Yup.object().shape({
 	design_techs: Yup.array()
 		.min(1, "Please choose from one of the selections")
 		.max(4, "Submit only up to four entries"),
-	why_join: Yup.string().required("This field is required").max(100),
+	why_join: Yup.array().min(1, "Please choose from one of the selections"),
 });
 
 const DesignerForm = (props) => {
@@ -61,12 +61,18 @@ const DesignerForm = (props) => {
 		designTechOptions.push(tech);
 	});
 
+	const whyJoinOptions = [];
+	whyJoin.choices.forEach((element) => {
+		let choice = { label: `${element}`, value: `${element}` };
+		whyJoinOptions.push(choice);
+	});
+
 	return (
 		<Formik
 			initialValues={{
 				design_techs: [],
 				design_skillset: [],
-				why_join: "",
+				why_join: [],
 			}}
 			validationSchema={validationSchema}
 			onSubmit={(values) => {
@@ -112,14 +118,23 @@ const DesignerForm = (props) => {
 								options={designTechOptions}
 								placeholder="Select up to 4 skills"
 							/>
-							<StyleDiv>
+							{/* <StyleDiv>
 								<TextLabel htmlFor="whyJoin">
 									Tell us why you'd like to join The COOP:{" "}
 								</TextLabel>
 								<Inputs.TextInput
 									id="whyJoin"
-									name="why_join"></Inputs.TextInput>
-							</StyleDiv>
+									name="why_join"/>
+							</StyleDiv> */}
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={whyJoin.name}
+								label={whyJoin.name}
+								name={whyJoin.value}
+								options={whyJoinOptions}
+								placeholder="Select all that apply"
+							/>
 						</div>
 						<div className="button-container">
 							<BackBtn

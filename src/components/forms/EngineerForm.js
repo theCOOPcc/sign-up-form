@@ -2,7 +2,7 @@ import React from "react";
 // import ReactDom from 'react-dom'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { engineerSkills, engineerTech } from "../meta/fields";
+import { engineerSkills, engineerTech, whyJoin } from "../meta/fields";
 import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import "../../App.css";
@@ -42,7 +42,7 @@ const validationSchema = Yup.object().shape({
 	engineer_techs: Yup.array()
 		.min(1, "Please choose from one of the selections")
 		.max(4, "Submit only up to four entries"),
-	why_join: Yup.string().required("This field is required"),
+	why_join: Yup.array().min(1, "Please choose from one of the selections"),
 });
 
 const EngineerForm = (props) => {
@@ -57,12 +57,19 @@ const EngineerForm = (props) => {
 		let tech = { label: `${element}`, value: `${element}` };
 		engineerTechOptions.push(tech);
 	});
+
+	const whyJoinOptions = [];
+	whyJoin.choices.forEach((element) => {
+		let choice = { label: `${element}`, value: `${element}` };
+		whyJoinOptions.push(choice);
+	});
+
 	return (
 		<Formik
 			initialValues={{
 				engineer_skillset: [],
 				engineer_techs: [],
-				why_join: "",
+				why_join: [],
 			}}
 			validationSchema={validationSchema}
 			onSubmit={(values) => {
@@ -109,17 +116,25 @@ const EngineerForm = (props) => {
 								options={engineerTechOptions}
 								placeholder="Select up to 4 technologies"
 							/>
-							<StyleDiv>
+							{/* <StyleDiv>
 								<TextLabel htmlFor="whyJoin">
 									Tell us why you'd like to join
 								</TextLabel>
 								<Inputs.TextInputRequired
 									id="whyJoin"
 									name="why_join"
-									// TODO: Fix this for selector
 									// placeholder="Select one"
 								/>
-							</StyleDiv>
+							</StyleDiv> */}
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={whyJoin.name}
+								label={whyJoin.name}
+								name={whyJoin.value}
+								options={whyJoinOptions}
+								placeholder="Select all that apply"
+							/>
 						</div>
 						<div className="button-container">
 							<BackBtn

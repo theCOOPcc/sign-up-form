@@ -9,9 +9,6 @@ import MentorRouter from "./pages/MentorRouter.jsx";
 import EngineerRouter from "./pages/EngineerRouter";
 import DataScientistRouter from "./pages/DataScientistRouter";
 
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
-import FormSubmit from "./pages/FormSubmit";
-
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
@@ -27,8 +24,8 @@ const App = () => {
 		github: "",
 		portfolio: "",
 		bootcamps: "",
-		why_join: "",
 		avail_dates: "",
+		why_join: [],
 		help_with: [],
 		data_sci_skillset: [],
 		design_techs: [],
@@ -36,6 +33,11 @@ const App = () => {
 		engineer_skillset: [],
 		engineer_techs: [],
 	});
+
+	const finalWhyJoin = [];
+	currentForm.why_join.map((why) => {
+		finalWhyJoin.push(why.value);
+	})
 
 	const finalDataSciSkillset = [];
 	currentForm.data_sci_skillset.map((skill) => {
@@ -74,13 +76,13 @@ const App = () => {
 		linkedin: currentForm.linkedin,
 		github: currentForm.github,
 		portfolio: currentForm.portfolio,
-		why_join: currentForm.why_join,
 
 		avail_dates: currentForm.avail_dates.value,
 		bootcamps: currentForm.bootcamps.value,
 		role: currentForm.role.value,
 		pronouns: currentForm.pronouns.value,
 
+		why_join: finalWhyJoin,
 		help_with: finalHelpWith,
 		data_sci_skillset: finalDataSciSkillset,
 		design_techs: finalDesignTechs,
@@ -102,8 +104,7 @@ const App = () => {
 		addItem(newForm);
 	};
 
-	// This function is currently not used in production
-
+	// TODO: This function is currently not used in production
 	// function deleteItem(form) {
 	// 	axios
 	// 		.delete(`/api/forms/${form.id}/`)
@@ -114,6 +115,7 @@ const App = () => {
 
 			<div className="App">
 				<a href="http://localhost:3000">
+				{/* <a href="http://applicant-form.herokuapp.com"> */}
 					<img alt="theCoop logo" src={coopLogo} />
 				</a>
 				{formComplete === false ? (

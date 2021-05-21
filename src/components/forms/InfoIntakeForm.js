@@ -117,12 +117,10 @@ const InfoIntakeForm = (props) => {
 										...props.currentForm,
 										design_techs: [],
 										design_skillset: [],
-										why_join: "",
+										why_join: [],
 										engineer_skillset: [],
 										engineer_techs: [],
-										why_join: "",
 										data_sci_skillset: [],
-										why_join: "",
 									})
 								}>
 								&lt; Back

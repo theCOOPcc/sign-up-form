@@ -7,7 +7,7 @@ const DataScientistRouter = (props) => {
   return (
 		<>
 			{props.newForm.role === "Data Scientist" &&
-			props.newForm.why_join === "" ? (
+			props.newForm.why_join.length === 0 ? (
 				<DataScienceForm
 					currentForm={props.currentForm}
 					setCurrentForm={props.setCurrentForm}
@@ -16,7 +16,7 @@ const DataScientistRouter = (props) => {
 				<div></div>
 			)}
 			{props.newForm.role === "Data Scientist" &&
-			props.newForm.why_join !== "" &&
+			props.newForm.why_join.length !== 0 &&
 			props.newForm.bootcamps === undefined ? (
 				<InfoIntakeForm
 					currentForm={props.currentForm}
