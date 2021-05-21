@@ -75,42 +75,43 @@ const MentorForm = (props) => {
 						<h2>TELL US MORE ABOUT YOU</h2>
 						<img alt="some fields are required" src={group122} />
 						<div className="container">
+							<Inputs.SelectFieldRequired
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								key={helpOptions.name}
+								label={helpOptions.name}
+								name={helpOptions.value}
+								options={helpOptionOptions}
+								placeholder="Select all that apply"
+							/>
 
-						<Inputs.SelectFieldRequired
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							key={helpOptions.name}
-							label={helpOptions.name}
-							name={helpOptions.value}
-							options={helpOptionOptions}
-							placeholder="Select all that apply"
-						/>
+							<Inputs.SelectInputRequired
+								options={helpDatesOptions}
+								key={helpDates.name}
+								label={helpDates.name}
+								name={helpDates.value}
+								onBlur={setFieldTouched}
+								onChange={setFieldValue}
+								placeholder="Select"
+							/>
 
-						<Inputs.SelectInputRequired
-							options={helpDatesOptions}
-							key={helpDates.name}
-							label={helpDates.name}
-							name={helpDates.value}
-							onBlur={setFieldTouched}
-							onChange={setFieldValue}
-							placeholder="Select"
-						/>
-
-						<StyleDiv>
-							<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
-							<Inputs.TextInputRequired
-								id="linkedin"
-								placeholder="Paste your LinkedIn URL here"
-								name="linkedin" />
-						</StyleDiv>
+							<StyleDiv>
+								<TextLabel htmlFor="linkedin">Linkedin Profile: </TextLabel>
+								<Inputs.TextInputRequired
+									id="linkedin"
+									placeholder="Paste your LinkedIn URL here"
+									name="linkedin"
+								/>
+							</StyleDiv>
 						</div>
-						<div style={{ display: "flex" }}>
+						<div className="button-container">
 							<BackBtn
-								onClick={() =>
-									props.setCurrentForm({ ...props.currentForm, role: "" })
-								}>
-								{" "}
-								&lt; Back{" "}
+								type="button"
+								onClick={() => {
+									props.setCurrentForm({ ...props.currentForm, role: "" });
+									console.log("back");
+								}}>
+								&lt; Back
 							</BackBtn>
 							<Button type="submit">Next</Button>
 						</div>
