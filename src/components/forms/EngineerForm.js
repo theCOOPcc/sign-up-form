@@ -116,16 +116,7 @@ const EngineerForm = (props) => {
 								options={engineerTechOptions}
 								placeholder="Select up to 4 technologies"
 							/>
-							{/* <StyleDiv>
-								<TextLabel htmlFor="whyJoin">
-									Tell us why you'd like to join
-								</TextLabel>
-								<Inputs.TextInputRequired
-									id="whyJoin"
-									name="why_join"
-									// placeholder="Select one"
-								/>
-							</StyleDiv> */}
+
 							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}
