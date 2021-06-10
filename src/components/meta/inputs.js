@@ -82,6 +82,7 @@ export const FormStyling = {
 		backgroundColor: "#1f1216",
 		color: "#FFFFFF",
 		width: 200,
+		
 	}),
 	indicatorSeparator: (provided, state) => ({
 		...provided,
@@ -102,6 +103,8 @@ export const FormStyling = {
 		...provided,
 		backgroundColor: "#F25187",
 		color: "#FEFEFE",
+		height: 25,
+		alignItems: 'center'
 	}),
 	singleValue: (provided, state) => ({
 		...provided,
