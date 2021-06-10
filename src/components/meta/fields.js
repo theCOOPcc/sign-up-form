@@ -66,7 +66,7 @@ export const designerTech = {
 		"Clickable Prototyping",
 		"Interactive Prototyping",
 		"Lean Methodologies",
-		"Sketching / Paper Prototyping",
+		"Sketching/Prototyping",
 		"HTML/CSS",
 		"Usability Testing",
 		"User Flows",
