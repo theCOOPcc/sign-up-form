@@ -118,14 +118,6 @@ const DesignerForm = (props) => {
 								options={designTechOptions}
 								placeholder="Select up to 4 skills"
 							/>
-							{/* <StyleDiv>
-								<TextLabel htmlFor="whyJoin">
-									Tell us why you'd like to join The COOP:{" "}
-								</TextLabel>
-								<Inputs.TextInput
-									id="whyJoin"
-									name="why_join"/>
-							</StyleDiv> */}
 							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}

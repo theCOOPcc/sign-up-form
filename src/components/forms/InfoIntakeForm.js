@@ -30,7 +30,7 @@ const validationSchema = Yup.object().shape({
 		bootcamps.choices,
 		"Please choose from one of the selections"
 	),
-	linkedin: Yup.string(),
+	linkedin: Yup.string().required("Please enter your LinkedIn profile"),
 	github: Yup.string(),
 	portfolio: Yup.string(),
 });

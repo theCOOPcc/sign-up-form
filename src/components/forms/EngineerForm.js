@@ -50,7 +50,7 @@ const EngineerForm = (props) => {
 	engineerSkills.choices.forEach((element) => {
 		let skill = { label: `${element}`, value: `${element}` };
 		engineerSkillsOptions.push(skill);
-	});
+	}); 
 
 	const engineerTechOptions = [];
 	engineerTech.choices.forEach((element) => {
@@ -116,16 +116,7 @@ const EngineerForm = (props) => {
 								options={engineerTechOptions}
 								placeholder="Select up to 4 technologies"
 							/>
-							{/* <StyleDiv>
-								<TextLabel htmlFor="whyJoin">
-									Tell us why you'd like to join
-								</TextLabel>
-								<Inputs.TextInputRequired
-									id="whyJoin"
-									name="why_join"
-									// placeholder="Select one"
-								/>
-							</StyleDiv> */}
+
 							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}

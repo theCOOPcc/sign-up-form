@@ -94,6 +94,7 @@ export const FormStyling = {
 	indicatorsContainer: (provided, state) => ({
 		...provided,
 		color: "#F25187",
+		cursor: "pointer"
 	}),
 	input: (provided, state) => ({
 		display: "inline",
