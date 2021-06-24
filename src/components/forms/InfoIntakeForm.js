@@ -85,7 +85,7 @@ const InfoIntakeForm = (props) => {
 							/>
 							<StyleDiv>
 								<TextLabel htmlFor="github">Github</TextLabel>
-								<Inputs.TextInput
+								<Inputs.TextInputRequired
 									id="github"
 									name="github"
 									placeholder="Paste your Github URL here"
@@ -94,7 +94,7 @@ const InfoIntakeForm = (props) => {
 
 							<StyleDiv>
 								<TextLabel htmlFor="portfolio">Portfolio</TextLabel>
-								<Inputs.TextInput
+								<Inputs.TextInputRequired
 									id="portfolio"
 									name="portfolio"
 									placeholder="Paste your portfolio URL here"

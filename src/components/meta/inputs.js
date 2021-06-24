@@ -10,6 +10,12 @@ const Input = styled.input`
 	border: 1px solid #f25187;
 	color: #fefefe;
 `;
+const InputLast = styled.input`
+	cursor: pointer;
+	background-color: #1f1216;
+	border: 1px solid #f25187;
+	color: #fefefe;
+`;
 
 export const Label = styled.label`
 	color: #fefefe;
@@ -131,12 +137,13 @@ export const TextInputRequired = ({ label, ...props }) => {
 					<span className="star">*</span>
 				</Label>
 				<Input
-					placeholder="Type response here..."
+		
 					type="text"
 					className="text-input"
 					{...field}
 					{...props}
 				/>
+			
 			</StyleDiv>
 			{meta.touched && meta.error ? (
 				<div className="error">{meta.error}</div>

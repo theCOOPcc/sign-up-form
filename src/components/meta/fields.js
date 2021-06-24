@@ -1,7 +1,7 @@
 export const whyJoin = {
 	name: "Tell us why you'd like to join theCOOP",
 	value: "why_join",
-	choices: ["Skillbuilding", "Mentorship", "Interview and Portfolio Help"],
+	choices: ["Skill building", "Mentorship", "Interview and Portfolio Help"],
 };
 
 export const candidatePath = {

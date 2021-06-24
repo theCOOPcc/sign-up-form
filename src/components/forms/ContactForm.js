@@ -81,13 +81,17 @@ const ContactForm = (props) => {
 									<TextLabel htmlFor="firstName">First Name</TextLabel>
 									<Inputs.TextInputRequired
 										id="firstName"
-										name="first_name"></Inputs.TextInputRequired>
+										name="first_name"
+										placeholder='First Name'
+										></Inputs.TextInputRequired>
 								</StyleDiv>
 								<StyleDiv>
 									<TextLabel htmlFor="lastName">Last Name</TextLabel>
 									<Inputs.TextInputRequired
 										id="lastName"
-										name="last_name"></Inputs.TextInputRequired>
+										name="last_name"
+										placeholder='Last Name'
+										></Inputs.TextInputRequired>
 								</StyleDiv>
 
 								<Inputs.SelectInput
