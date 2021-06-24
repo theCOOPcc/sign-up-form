@@ -32,6 +32,7 @@ if os.path.isfile(dotenv_file):
 load_dotenv()
 
 SECRET_KEY = os.environ['SECRET_KEY']
+DATABASE_URL = os.environ['DATABASE_URL']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
