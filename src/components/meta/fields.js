@@ -49,20 +49,6 @@ export const designerSkills = {
 	name: "My skillset includes",
 	value: "design_skillset",
 	choices: [
-		"User Research",
-		"Interaction Design",
-		"Design Systems",
-		"Information Architecture",
-		"UI / Visual Design",
-		"UX Strategy",
-		"Other",
-	],
-};
-
-export const designerTech = {
-	name: "I would like to focus in",
-	value: "design_techs",
-	choices: [
 		"Clickable Prototyping",
 		"Interactive Prototyping",
 		"Lean Methodologies",
@@ -71,6 +57,20 @@ export const designerTech = {
 		"Usability Testing",
 		"User Flows",
 		"Synthesizing and Insights",
+		"Other",
+	],
+};
+
+export const designerTech = {
+	name: "I would like to focus in",
+	value: "design_techs",
+	choices: [
+		"User Research",
+		"Interaction Design",
+		"Design Systems",
+		"Information Architecture",
+		"UI / Visual Design",
+		"UX Strategy",
 		"Other",
 	],
 };
