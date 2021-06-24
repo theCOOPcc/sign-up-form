@@ -101,6 +101,7 @@ const ContactForm = (props) => {
 									name={pronouns.value}
 									onBlur={setFieldTouched}
 									onChange={setFieldValue}
+									placeholder='Select (Optional)'
 								/>
 								<StyleDiv>
 									<TextLabel htmlFor="email">Email</TextLabel>
