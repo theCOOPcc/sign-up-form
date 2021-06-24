@@ -57,6 +57,7 @@ export const FormStyling = {
 		backgroundColor: "transparent",
 		borderBottom: "1px solid #F25187",
 		width: 439,
+		
 	}),
 	menu: (provided, state) => ({
 		...provided,
@@ -67,6 +68,7 @@ export const FormStyling = {
 		borderRadius: "none",
 		margin: "none",
 		padding: 0,
+		
 	}),
 	option: (provided, state) => ({
 		...provided,
@@ -79,6 +81,7 @@ export const FormStyling = {
 		paddingTop: 15,
 		paddingBottom: 15,
 		margin: 0,
+		
 	}),
 	valueContainer: (provided, state) => ({
 		...provided,
