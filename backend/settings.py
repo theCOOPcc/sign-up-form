@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
-
+print(dotenv_file)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -32,6 +32,7 @@ if os.path.isfile(dotenv_file):
 load_dotenv()
 
 SECRET_KEY = os.environ['SECRET_KEY']
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,11 +93,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cooperform',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'cooperform',
+        }
     }
-}
 
 
 # Password validation
@@ -155,9 +156,9 @@ STATICFILES_DIRS = [
 ]
 
 # TODO: Uncomment this out to deploy
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
  
 # TODO: Uncomment this out to deploy
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# import dj_database_url  
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)

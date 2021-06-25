@@ -16,6 +16,8 @@ Access the [api](https://applicant-form.herokuapp.com/api/).
 
 Note: You will need to create a `.env` file that contains two KEY VALUE pairs: `SECRET_KEY=foo` with the secret of your application entered and `DATABASE_URL=postgres://<username>:<password>@5432/<tablename>` with your postgres credentials.
 
+To create heroku postgres Database use
+```heroku addons:create heroku-postgresql:hobby-dev```
 ## Formik ##
 
 We built the form using the Formik React library. Documentation for the library can be found here: https://formik.org/
