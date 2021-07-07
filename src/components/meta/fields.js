@@ -1,7 +1,7 @@
 export const whyJoin = {
 	name: "Tell us why you'd like to join theCOOP",
 	value: "why_join",
-	choices: ["Skillbuilding", "Mentorship", "Interview and Portfolio Help"],
+	choices: ["Skill building", "Mentorship", "Interview and Portfolio Help"],
 };
 
 export const candidatePath = {
@@ -49,12 +49,14 @@ export const designerSkills = {
 	name: "My skillset includes",
 	value: "design_skillset",
 	choices: [
-		"User Research",
-		"Interaction Design",
-		"Design Systems",
-		"Information Architecture",
-		"UI / Visual Design",
-		"UX Strategy",
+		"Clickable Prototyping",
+		"Interactive Prototyping",
+		"Lean Methodologies",
+		"Sketching/Prototyping",
+		"HTML/CSS",
+		"Usability Testing",
+		"User Flows",
+		"Synthesizing and Insights",
 		"Other",
 	],
 };
@@ -63,14 +65,12 @@ export const designerTech = {
 	name: "I would like to focus in",
 	value: "design_techs",
 	choices: [
-		"Clickable Prototyping",
-		"Interactive Prototyping",
-		"Lean Methodologies",
-		"Sketching / Paper Prototyping",
-		"HTML/CSS",
-		"Usability Testing",
-		"User Flows",
-		"Synthesizing and Insights",
+		"User Research",
+		"Interaction Design",
+		"Design Systems",
+		"Information Architecture",
+		"UI / Visual Design",
+		"UX Strategy",
 		"Other",
 	],
 };

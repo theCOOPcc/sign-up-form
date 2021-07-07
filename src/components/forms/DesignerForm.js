@@ -96,10 +96,10 @@ const DesignerForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
+						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS</h2>
 						<img alt="some fields are required" src={group122} />
 						<div className="container">
-							<Inputs.SelectField
+							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}
 								key={designerSkills.name}
@@ -109,7 +109,7 @@ const DesignerForm = (props) => {
 								placeholder="Select up to 4 skills"
 							/>
 
-							<Inputs.SelectField
+							<Inputs.SelectFieldRequired
 								onBlur={setFieldTouched}
 								onChange={setFieldValue}
 								key={designerTech.name}

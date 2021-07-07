@@ -10,6 +10,12 @@ const Input = styled.input`
 	border: 1px solid #f25187;
 	color: #fefefe;
 `;
+const InputLast = styled.input`
+	cursor: pointer;
+	background-color: #1f1216;
+	border: 1px solid #f25187;
+	color: #fefefe;
+`;
 
 export const Label = styled.label`
 	color: #fefefe;
@@ -51,6 +57,7 @@ export const FormStyling = {
 		backgroundColor: "transparent",
 		borderBottom: "1px solid #F25187",
 		width: 439,
+		
 	}),
 	menu: (provided, state) => ({
 		...provided,
@@ -61,6 +68,7 @@ export const FormStyling = {
 		borderRadius: "none",
 		margin: "none",
 		padding: 0,
+		
 	}),
 	option: (provided, state) => ({
 		...provided,
@@ -73,6 +81,7 @@ export const FormStyling = {
 		paddingTop: 15,
 		paddingBottom: 15,
 		margin: 0,
+		
 	}),
 	valueContainer: (provided, state) => ({
 		...provided,
@@ -82,6 +91,7 @@ export const FormStyling = {
 		backgroundColor: "#1f1216",
 		color: "#FFFFFF",
 		width: 200,
+		
 	}),
 	indicatorSeparator: (provided, state) => ({
 		...provided,
@@ -103,6 +113,8 @@ export const FormStyling = {
 		...provided,
 		backgroundColor: "#F25187",
 		color: "#FEFEFE",
+		height: 25,
+		alignItems: 'center'
 	}),
 	singleValue: (provided, state) => ({
 		...provided,
@@ -129,12 +141,13 @@ export const TextInputRequired = ({ label, ...props }) => {
 					<span className="star">*</span>
 				</Label>
 				<Input
-					placeholder="Type response here..."
+		
 					type="text"
 					className="text-input"
 					{...field}
 					{...props}
 				/>
+			
 			</StyleDiv>
 			{meta.touched && meta.error ? (
 				<div className="error">{meta.error}</div>

@@ -94,7 +94,7 @@ const EngineerForm = (props) => {
 			}) => (
 				<Form>
 					<FormStyle>
-						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS...</h2>
+						<h2>TELL US A LITTLE ABOUT YOUR INTERESTS</h2>
 						<img alt="some fields are required" src={group122} />
 						<div className="container">
 							<Inputs.SelectFieldRequired

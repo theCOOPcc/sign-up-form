@@ -84,8 +84,8 @@ const InfoIntakeForm = (props) => {
 								onChange={setFieldValue}
 							/>
 							<StyleDiv>
-								<TextLabel htmlFor="github">Github:</TextLabel>
-								<Inputs.TextInput
+								<TextLabel htmlFor="github">Github</TextLabel>
+								<Inputs.TextInputRequired
 									id="github"
 									name="github"
 									placeholder="Paste your Github URL here"
@@ -93,8 +93,8 @@ const InfoIntakeForm = (props) => {
 							</StyleDiv>
 
 							<StyleDiv>
-								<TextLabel htmlFor="portfolio">Portfolio:</TextLabel>
-								<Inputs.TextInput
+								<TextLabel htmlFor="portfolio">Portfolio</TextLabel>
+								<Inputs.TextInputRequired
 									id="portfolio"
 									name="portfolio"
 									placeholder="Paste your portfolio URL here"
@@ -102,7 +102,7 @@ const InfoIntakeForm = (props) => {
 							</StyleDiv>
 
 							<StyleDiv>
-								<TextLabel htmlFor="linkedin">Linkedin: </TextLabel>
+								<TextLabel htmlFor="linkedin">LinkedIn </TextLabel>
 								<Inputs.TextInputRequired
 									id="linkedin"
 									name="linkedin"
