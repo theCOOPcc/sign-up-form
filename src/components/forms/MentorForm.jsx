@@ -13,6 +13,9 @@ const Button = styled.button`
 	border: none;
 	width: 183px;
 	height: 50px;
+	&:hover {
+		background-color: #00A894 ;
+	}
 `;
 
 const BackBtn = styled.button`
