@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { FormStyle } from '../meta/inputs'
 import group122 from "./imgs/Group122.svg";
 import RoleButtons from "./components/RoleButtons";
-
+import {Button} from './EngineerForm'
 const validationSchema = Yup.object().shape(
 	{
 		role: Yup.object({
@@ -19,14 +19,6 @@ const validationSchema = Yup.object().shape(
 	"Please choose from one of the selections"
 );
 
-
-const Button = styled.button`
-background-color: #00C9B1;
-color: #F6F6F6;
-border: none;
-width: 183px;
-height: 50px;
-`
 
 const ChoosePath = (props) => {
 	return (

@@ -9,16 +9,8 @@ import ReactSelect from "react-select";
 import { FormStyle, TextLabel, StyleDiv } from "../meta/inputs";
 import { designerTech, designerSkills, whyJoin } from "../meta/fields";
 import group122 from "./imgs/Group122.svg";
-
+import { Button } from "./EngineerForm";
 // Basic form styling for each page
-
-const Button = styled.button`
-	background-color: #00c9b1;
-	color: #f6f6f6;
-	border: none;
-	width: 183px;
-	height: 50px;
-`;
 
 const BackBtn = styled.button`
 	background-color: #1f1216;

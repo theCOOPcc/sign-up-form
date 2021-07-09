@@ -9,7 +9,8 @@ import "../../App.css";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 import group122 from "./imgs/Group122.svg";
 
-const Button = styled.button`
+// THE ONLY 'NEXT' BUTTON STYLED COMPONENT--EXPORTED TO ALL OTHER FILES
+export const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
