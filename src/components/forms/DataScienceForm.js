@@ -7,19 +7,14 @@ import * as Inputs from "../meta/inputs";
 import styled from "styled-components";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 import group122 from "./imgs/Group122.svg";
+import {Button} from './EngineerForm';
 
 const FullForm = styled.div`
 	width: 100%;
 	height: 100%;
 `;
 
-const Button = styled.button`
-	background-color: #00c9b1;
-	color: #f6f6f6;
-	border: none;
-	width: 183px;
-	height: 50px;
-`;
+
 const BackBtn = styled.button`
 	background-color: #1f1216;
 	color: #00c9b1;

@@ -57,6 +57,7 @@ export const FormStyling = {
 		backgroundColor: "transparent",
 		borderBottom: "1px solid #F25187",
 		width: 439,
+		// marginBottom: -.5,
 		
 	}),
 	menu: (provided, state) => ({
@@ -64,10 +65,11 @@ export const FormStyling = {
 		backgroundColor: "#1f1216",
 		color: "#FFFFFF",
 		width: 439,
-		border: "1px solid #F25187",
+		border: "0px solid #F25187",
 		borderRadius: "none",
-		margin: "none",
+		margin: 0,
 		padding: 0,
+		marginBottom: -5,
 		
 	}),
 	option: (provided, state) => ({
@@ -87,7 +89,7 @@ export const FormStyling = {
 		...provided,
 		display: "flex",
 		flexWrap: "nowrap",
-		placeholder: "Select up to 4",
+		placeholder: "Select up to 6",
 		backgroundColor: "#1f1216",
 		color: "#FFFFFF",
 		width: 200,
@@ -171,7 +173,7 @@ export const TextInput = ({ label, ...props }) => {
 				/>
 			</StyleDiv>
 			{meta.touched && meta.error ? (
-				<div className="error">{meta.error}</div>
+				<div className="error" >{meta.error}</div>
 			) : null}
 		</div>
 	);
@@ -206,14 +208,14 @@ export const SelectField = ({ label, ...props }) => {
 		backspaceRemovesValue,
 	} = props;
 	return (
-		<div className="input-field-wrapper">
+		<div className="input-field-wrapper" style={{height: '66px'}}>
 			<StyleDiv>
 				{label && (
 					<Label className="input-label" htmlFor={name} error={error}>
 						{label}
 					</Label>
 				)}
-				<div className="container">
+				<div className="container" style={{height: '66px'}}>
 					<ReactSelect
 						id={id}
 						placeholder={placeholder}
@@ -232,6 +234,7 @@ export const SelectField = ({ label, ...props }) => {
 						hideSelectedOptions={true}
 						closeMenuOnSelect={false}
 					/>
+					{/* TODO: Talk to cory about div sizes */}
 					{meta.touched && meta.error ? (
 						<div className="error">{meta.error}</div>
 					) : null}
@@ -298,7 +301,7 @@ export const SelectFieldRequired = ({ label, ...props }) => {
 						closeMenuOnSelect={false}
 					/>
 					{meta.touched && meta.error ? (
-						<div className="error">{meta.error}</div>
+						<div className="error" style={{fontSize: '15px', height: '10px'}}>{meta.error}</div>
 					) : null}
 					{touched && error ? <p className="error-text">{error}</p> : null}
 				</div>

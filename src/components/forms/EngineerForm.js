@@ -9,12 +9,19 @@ import "../../App.css";
 import { FormStyle, StyleDiv, TextLabel } from "../meta/inputs";
 import group122 from "./imgs/Group122.svg";
 
-const Button = styled.button`
+// THE ONLY 'NEXT' BUTTON STYLED COMPONENT--EXPORTED TO ALL OTHER FILES
+export const Button = styled.button`
 	background-color: #00c9b1;
 	color: #f6f6f6;
 	border: none;
 	width: 183px;
 	height: 50px;
+	&:hover {
+		background-color: #00A894 ;
+	}
+	&:active {
+		background-color:#002823;
+	}
 `;
 
 const BackBtn = styled.button`
@@ -63,6 +70,8 @@ const EngineerForm = (props) => {
 		let choice = { label: `${element}`, value: `${element}` };
 		whyJoinOptions.push(choice);
 	});
+
+
 
 	return (
 		<Formik
